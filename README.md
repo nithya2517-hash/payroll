@@ -1,5 +1,11 @@
 # 🧾 ระบบเงินเดือนพนักงานรายวัน — Thai Daily Payroll
 
+[![เว็บไซต์โครงการ](https://img.shields.io/badge/🌐_เว็บไซต์-GitHub_Pages-2ea44f?style=for-the-badge)](https://nithya2517-hash.github.io/payroll/)
+[![โค้ดต้นฉบับ](https://img.shields.io/badge/💻_โค้ดต้นฉบับ-GitHub-181717?style=for-the-badge)](https://github.com/nithya2517-hash/payroll)
+
+> 🔗 **เว็บไซต์โครงการ (GitHub Pages):** https://nithya2517-hash.github.io/payroll/
+> 📦 **คลังโค้ด (Repository):** https://github.com/nithya2517-hash/payroll
+
 โปรแกรมสำเร็จรูปคำนวณค่าแรงพนักงานรายวันแบบครบวงจร ตามกฎหมายคุ้มครองแรงงานไทย
 **ไฟล์เดียวจบ** (`payroll_app.py`) ไม่ต้องติดตั้งไลบรารีเพิ่ม (ใช้เฉพาะ Standard Library)
 ครอบคลุม: ลงเวลา → คำนวณค่าแรง/OT/ลา → หักประกันสังคม/เบิก/กู้ → ออกสลิป → รายงานสรุป
@@ -38,8 +44,13 @@
 **ความต้องการ:** Python 3.8+ (ไม่มีไลบรารีภายนอก)
 
 ```bash
-git clone https://github.com/USERNAME/payroll-thai.git
-cd payroll-thai
+git clone https://github.com/nithya2517-hash/payroll.git
+cd payroll
+python payroll_app.py
+```
+
+หรือดาวน์โหลดไฟล์ `payroll_app.py` จากเว็บนี้แล้วรันได้เลย:
+```bash
 python payroll_app.py
 ```
 
@@ -101,6 +112,7 @@ EMP001,2026-08-14,0,normal,sick,leave
 
 ## ❓ คำถามที่พบบ่อย
 
+- **เว็บ GitHub Pages รันโปรแกรมได้ไหม?** → ไม่ได้ครับ เว็บนี้ใช้แสดงคู่มือ/เอกสาร ส่วนโปรแกรม Python ให้ดาวน์โหลดไปรันบนเครื่องตัวเอง
 - **CSV เปิดใน Excel แล้วภาษาไทยเพี้ยน?** → ไฟล์ถูกบันทึกเป็น UTF-8-BOM แล้ว เปิดได้ปกติ
 - **คำนวณซ้ำจะทับไหม?** → ทับงวดเดิมอัตโนมัติ ไม่เกิดแถวซ้ำ
 - **สลิปเป็น PDF เลยได้ไหม?** → เปิดไฟล์ HTML แล้วพิมพ์เป็น PDF (รองรับฟอนต์ไทยสมบูรณ์)
@@ -114,3 +126,6 @@ EMP001,2026-08-14,0,normal,sick,leave
 ## 📄 ลิขสิทธิ์
 
 ใช้งานได้ฟรีเพื่อการศึกษาและภายในองค์กร (MIT License)
+
+---
+พัฒนาโดย nithya2517-hash • อัปเดตล่าสุด: สิงหาคม 2569
