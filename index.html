@@ -8,7 +8,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Sarabun',sans-serif;background:#f1f5f9;color:#1e293b;padding-bottom:60px;font-size:15px}
-header{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:22px 16px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.15);position:relative}
+header{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:22px 16px;text-align:center;position:relative}
 header h1{font-size:1.5rem;margin-bottom:4px}
 header p{opacity:.9;font-size:.9rem}
 .status-bar{position:absolute;top:8px;right:12px;display:flex;align-items:center;gap:6px;font-size:.75rem;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,.15)}
@@ -16,3226 +16,349 @@ header p{opacity:.9;font-size:.9rem}
 .status-dot.ok{background:#22c55e}
 .status-dot.err{background:#ef4444}
 nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);position:sticky;top:0;z-index:10}
-.tabbtn{border:none;background:#e2e8f0;color:#334155;padding:8px 16px;border-radius:20px;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:500;transition:.2s}
-.tabbtn:hover{background:#cbd5e1}
+.tabbtn{border:none;background:#e2e8f0;color:#334155;padding:8px 16px;border-radius:20px;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:500}
 .tabbtn.active{background:#2563eb;color:#fff}
 main{max-width:1050px;margin:18px auto;padding:0 12px}
 .tab{display:none}
-.tab.active{display:block;animation:fade .25s}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tab.active{display:block}
 .card{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:20px;margin-bottom:16px}
 .card h2{font-size:1.15rem;color:#1e3a8a;margin-bottom:14px;border-left:4px solid #2563eb;padding-left:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
 label{font-size:.85rem;color:#475569;display:block;margin-bottom:4px;font-weight:500}
-input,select,textarea{width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:8px;font-family:inherit;font-size:.95rem;background:#fff}
-input:focus,select:focus,textarea:focus{outline:2px solid #93c5fd;border-color:#2563eb}
-.btn{border:none;border-radius:8px;padding:10px 18px;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:500;margin:4px 4px 0 0;transition:.15s}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-.btn-primary{background:#2563eb;color:#fff}.btn-primary:hover{background:#1d4ed8}
-.btn-green{background:#16a34a;color:#fff}.btn-green:hover{background:#15803d}
+input,select{width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:8px;font-family:inherit;font-size:.95rem;background:#fff}
+.btn{border:none;border-radius:8px;padding:10px 18px;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:500;margin:4px 4px 0 0}
+.btn:disabled{opacity:.5}
+.btn-primary{background:#2563eb;color:#fff}.btn-green{background:#16a34a;color:#fff}
 .btn-red{background:#dc2626;color:#fff;padding:6px 10px;font-size:.82rem}
-.btn-red:hover{background:#b91c1c}
 .btn-gray{background:#64748b;color:#fff;padding:6px 10px;font-size:.82rem}
-.btn-yellow{background:#f59e0b;color:#fff}
-.btn-yellow:hover{background:#d97706}
-.btn-purple{background:#7c3aed;color:#fff}
-.btn-purple:hover{background:#6d28d9}
+.btn-yellow{background:#f59e0b;color:#fff}.btn-purple{background:#7c3aed;color:#fff}
 .btn-sm{padding:6px 10px;font-size:.82rem}
 table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px}
 th,td{border:1px solid #e2e8f0;padding:7px 8px;text-align:left}
 th{background:#1e3a8a;color:#fff;font-weight:500}
 tr:nth-child(even){background:#f8fafc}
-tr:hover{background:#f1f5f9}
-.r{text-align:right}
-.c{text-align:center}
+.r{text-align:right}.c{text-align:center}
 .empty{padding:30px;text-align:center;color:#94a3b8;font-style:italic}
-.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.75rem;font-weight:500}
-.badge-green{background:#dcfce7;color:#166534}
-.badge-red{background:#fee2e2;color:#991b1b}
-.badge-yellow{background:#fef9c3;color:#854d0e}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.75rem}
+.badge-green{background:#dcfce7;color:#166534}.badge-red{background:#fee2e2;color:#991b1b}.badge-yellow{background:#fef9c3;color:#854d0e}
 .note{background:#fef9c3;border:1px solid #fde047;border-radius:8px;padding:10px;font-size:.85rem;margin-top:10px}
-.errbox{background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:12px;font-size:.88rem;margin-top:10px;color:#991b1b;display:none;line-height:1.6}
-.errbox b{color:#7f1d1d}
-.tbl-wrap{overflow-x:auto;border-radius:8px}
+.errbox{background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:12px;font-size:.88rem;margin-top:10px;color:#991b1b;display:none}
+.tbl-wrap{overflow-x:auto}
 .dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.dash-item{background:linear-gradient(135deg,#fff,#f8fafc);border:1px solid #e2e8f0;border-radius:10px;padding:14px;text-align:center}
-.dash-item .v{font-size:1.5rem;font-weight:700;color:#1e3a8a;margin-top:4px}
+.dash-item{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;text-align:center}
+.dash-item .v{font-size:1.5rem;font-weight:700;color:#1e3a8a}
 .dash-item .l{font-size:.82rem;color:#64748b}
 .dash-item.green .v{color:#16a34a}
-.dash-item.yellow .v{color:#d97706}
-.dash-item.purple .v{color:#7c3aed}
-.slip{max-width:780px;margin:0 auto;background:#fff;border:1px solid #cbd5e1;padding:24px;font-size:.92rem;line-height:1.5}
-.slip .co{text-align:center;border-bottom:2px solid #1e3a8a;padding-bottom:10px;margin-bottom:12px}
-.slip .co h3{color:#1e3a8a;font-size:1.2rem;margin-bottom:4px}
-.slip .co .coen{font-weight:600;letter-spacing:.5px;font-size:.9rem}
-.slip .co p{font-size:.82rem;color:#64748b;margin-top:2px}
-.slip h4{text-align:center;color:#1e3a8a;margin:8px 0;font-size:1rem}
-.slip table{margin:8px 0;border-collapse:collapse;width:100%}
-.slip th,.slip td{padding:6px 8px;border:1px solid #cbd5e1;font-size:.88rem}
-.slip .netbox{background:#dcfce7;border:1px solid #86efac;text-align:center;font-size:1.2rem;font-weight:700;color:#15803a;padding:10px;border-radius:8px;margin:12px 0}
-.slip .sig{display:flex;justify-content:space-around;margin-top:50px}
+.slip{max-width:800px;margin:0 auto;background:#fff;border:1px solid #cbd5e1;padding:24px;font-size:.92rem;line-height:1.5}
+.slip .co{text-align:center;border-bottom:2px solid #1e3a8a;padding-bottom:10px;margin-bottom:10px}
+.slip .co h3{color:#1e3a8a;font-size:1.2rem}
+.slip .co p{font-size:.82rem;color:#64748b}
+.slip h4{text-align:center;color:#1e3a8a;margin:6px 0}
+.slip table{margin:6px 0;border-collapse:collapse;width:100%}
+.slip th,.slip td{padding:5px 8px;border:1px solid #cbd5e1;font-size:.85rem}
+.slip .netbox{background:#dcfce7;border:1px solid #86efac;text-align:center;font-size:1.15rem;font-weight:700;color:#15803a;padding:8px;border-radius:8px;margin:10px 0}
+.slip .sig{display:flex;justify-content:space-around;margin-top:45px}
 .slip .sig div{text-align:center;width:45%}
-.slip .sig .line{border-bottom:1px solid #334155;height:24px;margin-top:40px}
-@media print{
-  body *{visibility:hidden}
-  #printArea,#printArea *{visibility:visible}
-  #printArea{position:absolute;left:0;top:0;width:100%}
-  .slip{border:none}
-  .noprint{display:none !important}
-}
+.slip .sig .line{border-bottom:1px solid #334155;height:22px;margin-top:38px}
+@media print{body *{visibility:hidden}#printArea,#printArea *{visibility:visible}#printArea{position:absolute;left:0;top:0;width:100%}.slip{border:none}.noprint{display:none!important}}
 footer{background:#1e293b;color:#cbd5e1;text-align:center;padding:16px;font-size:.85rem;margin-top:30px}
 footer a{color:#93c5fd}
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:center;padding:16px}
 .modal.show{display:flex}
-.modal-box{background:#fff;border-radius:12px;padding:22px;max-width:500px;width:100%;max-height:85vh;overflow:auto}
-.modal-box.big{max-width:850px}
-.loading{display:inline-block;width:14px;height:14px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.toast{position:fixed;bottom:20px;right:20px;background:#1e293b;color:#fff;padding:12px 18px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:200;font-size:.9rem;animation:slideIn .3s;max-width:320px}
-.toast.ok{background:#16a34a}
+.modal-box{background:#fff;border-radius:12px;padding:22px;max-width:860px;width:100%;max-height:88vh;overflow:auto}
+.loading{display:inline-block;width:14px;height:14px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:middle}
+@keyframes sp{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:20px;right:20px;background:#16a34a;color:#fff;padding:12px 18px;border-radius:10px;z-index:200;font-size:.9rem;max-width:320px}
 .toast.err{background:#dc2626}
-@keyframes slideIn{from{transform:translateX(400px)}to{transform:none}}
 </style>
 </head>
 <body>
 <header>
-  <h1>🧾 ระบบเงินเดือนพนักงานรายวัน</h1>
-  <p id="syncStatus">กำลังตรวจสอบการเชื่อมต่อ Cloud...</p>
-  <div class="status-bar">
-    <div class="status-dot" id="dbStatus"></div>
-    <span id="dbStatusText">กำลังเชื่อมต่อ</span>
-  </div>
+<h1>🧾 ระบบเงินเดือนพนักงานรายวัน</h1>
+<p id="syncStatus">ยงเฮง มหาชัย รีไซเคิ้ล — กำลังเชื่อมต่อ...</p>
+<div class="status-bar"><div class="status-dot" id="dbStatus"></div><span id="dbStatusText">กำลังเชื่อมต่อ</span></div>
 </header>
-
 <nav>
-  <button class="tabbtn active" data-tab="dash">📊 แดชบอร์ด</button>
-  <button class="tabbtn" data-tab="emp">👥 พนักงาน</button>
-  <button class="tabbtn" data-tab="att">⏰ ลงเวลา</button>
-  <button class="tabbtn" data-tab="adj">💵 รายการพิเศษ</button>
-  <button class="tabbtn" data-tab="calc">🧮 คำนวณเงินเดือน</button>
-  <button class="tabbtn" data-tab="report">📈 รายงาน</button>
-  <button class="tabbtn" data-tab="set">⚙️ ตั้งค่า</button>
+<button class="tabbtn active" data-tab="dash">📊 แดชบอร์ด</button>
+<button class="tabbtn" data-tab="emp">👥 พนักงาน</button>
+<button class="tabbtn" data-tab="att">⏰ ลงเวลา</button>
+<button class="tabbtn" data-tab="rooms">🏠 ห้อง/มิเตอร์</button>
+<button class="tabbtn" data-tab="adj">💵 รายการงวด</button>
+<button class="tabbtn" data-tab="calc">🧮 คำนวณ</button>
+<button class="tabbtn" data-tab="docs">🖨️ ใบเซ็น/แตกแบงก์/บัญชี</button>
+<button class="tabbtn" data-tab="report">📈 รายงาน</button>
+<button class="tabbtn" data-tab="set">⚙️ ตั้งค่า</button>
 </nav>
-
 <main>
-
 <section class="tab active" id="dash">
-  <div class="card">
-    <h2>📊 ภาพรวมระบบ</h2>
-    <div class="dash">
-      <div class="dash-item"><div class="l">พนักงานทั้งหมด</div><div class="v" id="d-emp">0</div></div>
-      <div class="dash-item"><div class="l">เวลาทำงานที่บันทึก</div><div class="v" id="d-att">0</div></div>
-      <div class="dash-item"><div class="l">งวดที่คำนวณแล้ว</div><div class="v" id="d-pay">0</div></div>
-      <div class="dash-item green"><div class="l">เงินจ่ายรวมล่าสุด</div><div class="v" id="d-net">฿0</div></div>
-    </div>
-    <div class="errbox" id="dbError"></div>
-    <div class="note">💡 <b>กฎเงินพิเศษ:</b> ไม่ขาด/ลา/สาย → ได้เต็ม • ขาด/ลา หักวันละค่าแรงขั้นต่ำจากเงินพิเศษ • สายหักตามนาที • หักอย่างมากจนหมดเงินพิเศษ (ไม่ติดลบ) • OT 1.5/2/3 คิดเพิ่ม</div>
-  </div>
-  <div class="card">
-    <h2>🚀 การใช้งาน 4 ขั้นตอน</h2>
-    <div class="grid">
-      <div><b>1. เพิ่มพนักงาน</b><br><small>แท็บ 👥 พนักงาน</small></div>
-      <div><b>2. บันทึกเวลา</b><br><small>แท็บ ⏰ ลงเวลา (มา/ขาด/ลา/OT/สาย)</small></div>
-      <div><b>3. เพิ่มรายการพิเศษ</b><br><small>แท็บ 💵 รายการพิเศษ (เบิก/กู้)</small></div>
-      <div><b>4. คำนวณเงินเดือน</b><br><small>แท็บ 🧮 คำนวณ → ดูสลิป → พิมพ์</small></div>
-    </div>
-  </div>
-</section>
-
-<section class="tab" id="emp">
-  <div class="card">
-    <h2>➕ เพิ่ม / แก้ไขพนักงาน</h2>
-    <div class="grid">
-      <div><label>รหัสพนักงาน *</label><input id="e-id" placeholder="เช่น EMP01"></div>
-      <div><label>ชื่อ-นามสกุล *</label><input id="e-name" placeholder="เช่น นางมามิว (มอ)"></div>
-      <div><label>ตำแหน่ง</label><input id="e-pos" placeholder="เช่น คนงาน"></div>
-      <div><label>แผนก</label><input id="e-dept" placeholder="เช่น ฝ่ายผลิต"></div>
-      <div><label>ค่าแรง/วัน (บาท) *</label><input id="e-rate" type="number" step="0.01" value="372"></div>
-      <div><label>💰 เงินพิเศษ/งวด (บาท)</label><input id="e-special" type="number" step="0.01" value="0"></div>
-      <div><label>ธนาคาร</label><input id="e-bank" placeholder="เช่น กสิกรไทย"></div>
-      <div><label>เลขบัญชี</label><input id="e-acc" placeholder="เช่น 123-4-56789-0"></div>
-      <div><label>เลขประกันสังคม</label><input id="e-sso" placeholder="เช่น 1-2345-67890-12-3"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveEmp" onclick="saveEmp()">💾 บันทึกพนักงาน</button>
-      <button class="btn btn-gray" onclick="resetEmpForm()">🔄 ล้างฟอร์ม</button>
-      <button class="btn btn-purple" id="btnFillSpecial" onclick="fillSpecial()">✨ ใส่เงินพิเศษตามบัญชีบริษัท</button>
-    </div>
-    <div class="note">💰 <b>ปุ่มม่วง</b> = ใส่เงินพิเศษอัตโนมัติตามบัญชีเดิม (มอ 1330 / เอ้ย-โทน-เอก 2030 / อ๋า 1470 / ชาน 980 / เวย 630 / ซ่าน-โจ 1540 / ลิน 1610)</div>
-  </div>
-  <div class="card">
-    <h2>📋 รายชื่อพนักงาน (<span id="emp-count">0</span>)</h2>
-    <div class="tbl-wrap"><table id="emp-tbl">
-      <thead><tr><th>รหัส</th><th>ชื่อ</th><th>ตำแหน่ง</th><th>แผนก</th><th class="r">ค่าแรง/วัน</th><th class="r">💰 พิเศษ/งวด</th><th>ธนาคาร/บัญชี</th><th class="c">จัดการ</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-  </div>
-</section>
-
-<section class="tab" id="att">
-  <div class="card">
-    <h2>⏰ บันทึกเวลาทำงาน</h2>
-    <div class="grid">
-      <div><label>พนักงาน *</label><select id="a-emp"></select></div>
-      <div><label>วันที่ *</label><input id="a-date" type="date"></div>
-      <div><label>สถานะ *</label>
-        <select id="a-status" onchange="toggleAtt()">
-          <option value="present">มาทำงาน</option>
-          <option value="absent">ขาดงาน</option>
-          <option value="leave">ลา</option>
-        </select>
-      </div>
-      <div id="a-leave-wrap" style="display:none"><label>ประเภทลา</label>
-        <select id="a-leave">
-          <option value="sick">ลาป่วย (ได้ค่าจ้าง 30 วัน/ปี)</option>
-          <option value="personal">ลากิจ (ได้ค่าจ้าง 3 วัน/ปี)</option>
-          <option value="annual">ลาพักร้อน</option>
-          <option value="unpaid">ลาไม่จ่ายค่าจ้าง</option>
-        </select>
-      </div>
-      <div id="a-day-wrap"><label>ประเภทวัน</label>
-        <select id="a-day">
-          <option value="normal">วันทำงานปกติ</option>
-          <option value="holiday">วันหยุดประจำสัปดาห์</option>
-          <option value="special">วันหยุดนักขัตฤกษ์</option>
-        </select>
-      </div>
-      <div id="a-ot-wrap"><label>ชั่วโมง OT</label><input id="a-ot" type="number" step="0.5" value="0" min="0"></div>
-      <div id="a-late-wrap"><label>สาย (นาที)</label><input id="a-late" type="number" step="1" value="0" min="0"></div>
-    </div>
-    <div class="note">ℹ️ <b>OT:</b> วันปกติ ×1.5 | วันหยุด ×2 | นักขัตฤกษ์ ×3 • <b>สาย:</b> หักจากเงินพิเศษตามนาทีที่สาย</div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveAtt" onclick="saveAtt()">💾 บันทึกเวลา</button>
-    </div>
-  </div>
-  <div class="card">
-    <h2>📅 บันทึกเวลาทั้งหมด</h2>
-    <div class="grid2">
-      <div><label>กรองพนักงาน</label><select id="f-emp" onchange="renderAtt()"><option value="">ทั้งหมด</option></select></div>
-      <div><label>กรองเดือน</label><input id="f-month" type="month" onchange="renderAtt()"></div>
-    </div>
-    <div class="tbl-wrap"><table id="att-tbl">
-      <thead><tr><th>พนักงาน</th><th>วันที่</th><th>สถานะ</th><th>ประเภทวัน</th><th>ลา</th><th class="r">สาย(นาที)</th><th class="r">OT(ชม.)</th><th class="c">จัดการ</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-  </div>
-</section>
-
-<section class="tab" id="adj">
-  <div class="card">
-    <h2>💵 รายการพิเศษ / เบิก / กู้ (รายงวด)</h2>
-    <div class="grid">
-      <div><label>พนักงาน *</label><select id="j-emp"></select></div>
-      <div><label>วันเริ่มงวด *</label><input id="j-start" type="date"></div>
-      <div><label>วันสิ้นงวด *</label><input id="j-end" type="date"></div>
-      <div><label>รายรับอื่น ๆ (+)</label><input id="j-extra" type="number" step="0.01" value="0"></div>
-      <div><label>หักเบิกล่วงหน้า (-)</label><input id="j-adv" type="number" step="0.01" value="0"></div>
-      <div><label>หักเงินกู้ (-)</label><input id="j-loan" type="number" step="0.01" value="0"></div>
-      <div><label>หักอื่น ๆ (-)</label><input id="j-other" type="number" step="0.01" value="0"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveAdj" onclick="saveAdj()">💾 บันทึกรายการ</button>
-    </div>
-    <div class="note">💡 "เงินพิเศษ" ตามบัญชีบริษัท จะถูกดึงจากประวัติพนักงาน (ช่อง 💰) อัตโนมัติ — ไม่ต้องกรอกที่นี่</div>
-  </div>
-  <div class="card">
-    <h2>📋 รายการที่บันทึก</h2>
-    <div class="tbl-wrap"><table id="adj-tbl">
-      <thead><tr><th>พนักงาน</th><th>งวด</th><th class="r">รับอื่น</th><th class="r">เบิก</th><th class="r">กู้</th><th class="r">หักอื่น</th><th class="c">จัดการ</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-  </div>
-</section>
-
-<section class="tab" id="calc">
-  <div class="card">
-    <h2>🧮 คำนวณเงินเดือน</h2>
-    <div class="grid">
-      <div><label>พนักงาน</label>
-        <select id="c-emp"><option value="">— ทั้งหมด —</option></select>
-      </div>
-      <div><label>วันเริ่มงวด *</label><input id="c-start" type="date"></div>
-      <div><label>วันสิ้นงวด *</label><input id="c-end" type="date"></div>
-    </div>
-    <div style="margin-top:8px">
-      <button class="btn btn-yellow btn-sm" onclick="setPeriod('1-15')">1-15 ของเดือน</button>
-      <button class="btn btn-yellow btn-sm" onclick="setPeriod('16-end')">16-สิ้นเดือน</button>
-      <button class="btn btn-yellow btn-sm" onclick="setPeriod('full')">ทั้งเดือน</button>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-green" id="btnCalc" onclick="runPayroll()">🚀 คำนวณเงินเดือน</button>
-    </div>
-  </div>
-  <div id="calc-result"></div>
-</section>
-
-<section class="tab" id="report">
-  <div class="card">
-    <h2>📈 รายงานสรุปงวด</h2>
-    <div class="grid">
-      <div><label>วันเริ่มงวด</label><input id="r-start" type="date"></div>
-      <div><label>วันสิ้นงวด</label><input id="r-end" type="date"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-green" onclick="loadReport()">📊 ดูรายงาน</button>
-      <button class="btn btn-primary" onclick="exportCSV()">📥 Export CSV</button>
-    </div>
-  </div>
-  <div id="report-result"></div>
-</section>
-
-<section class="tab" id="set">
-  <div class="card">
-    <h2>🏢 ข้อมูลบริษัท (แสดงบนสลิป)</h2>
-    <div class="grid">
-      <div><label>ชื่อบริษัท (ไทย)</label><input id="s-co"></div>
-      <div><label>ชื่อบริษัท (อังกฤษ)</label><input id="s-coen"></div>
-      <div><label>ที่อยู่</label><input id="s-addr"></div>
-      <div><label>เบอร์โทร</label><input id="s-tel"></div>
-      <div><label>เลขผู้เสียภาษี</label><input id="s-tax" placeholder="กรอกเลข 13 หลัก"></div>
-    </div>
-  </div>
-  <div class="card">
-    <h2>⚙️ กฎเกณฑ์การคำนวณ</h2>
-    <div class="grid">
-      <div><label>ค่าแรงขั้นต่ำเริ่มต้น (บาท/วัน)</label><input id="s-rate" type="number" step="1"></div>
-      <div><label>ชั่วโมงทำงาน/วัน</label><input id="s-hr" type="number" step="0.5"></div>
-      <div><label>ประกันสังคม (%)</label><input id="s-sso" type="number" step="0.01"></div>
-      <div><label>เพดานประกันสังคม/เดือน</label><input id="s-ssomax" type="number" step="1"></div>
-      <div><label>ลาป่วยได้ค่าจ้าง (วัน/ปี)</label><input id="s-sick" type="number" step="1"></div>
-      <div><label>ลากิจได้ค่าจ้าง (วัน/ปี)</label><input id="s-personal" type="number" step="1"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveSet" onclick="saveSet()">💾 บันทึกตั้งค่า</button>
-    </div>
-  </div>
-  <div class="card">
-    <h2>🎁 ข้อมูล & สำรอง</h2>
-    <button class="btn btn-green" id="btnDemo" onclick="loadDemo()">✨ โหลดข้อมูลตัวอย่าง</button>
-    <button class="btn btn-primary" onclick="exportAll()">📥 สำรองข้อมูล (JSON)</button>
-    <button class="btn btn-yellow" onclick="document.getElementById('imp-file').click()">📤 นำเข้าข้อมูล</button>
-    <input type="file" id="imp-file" accept=".json" style="display:none" onchange="importAll(event)">
-    <button class="btn btn-red" onclick="clearAll()">🗑️ ลบข้อมูลทั้งหมด (บน Cloud)</button>
-  </div>
-  <div class="card">
-    <h2>☁️ สถานะฐานข้อมูล</h2>
-    <p><b>Project ID:</b> yh-daily-payroll</p>
-    <p><b>Collections:</b> employees, attendance, adjustments, payroll, settings</p>
-    <p style="margin-top:8px;font-size:.85rem;color:#64748b">ข้อมูลทั้งหมดถูกเก็บใน Firebase Firestore (Cloud) — เข้าถึงได้จากทุกอุปกรณ์ และจะ sync อัตโนมัติ</p>
-  </div>
-</section>
-
-</main>
-
-<div id="printArea"></div>
-<footer>☁️ ยงเฮง มหาชัย รีไซเคิ้ล — <a href="https://github.com/nithya2517-hash/payroll">GitHub Repository</a></footer>
-
-<div class="modal" id="slipModal">
-  <div class="modal-box big">
-    <div style="text-align:right;margin-bottom:10px" class="noprint">
-      <button class="btn btn-green" onclick="window.print()">🖨️ พิมพ์ / Save PDF</button>
-      <button class="btn btn-red" onclick="closeModal()">✕ ปิด</button>
-    </div>
-    <div id="slipContent"></div>
-  </div>
+<div class="card"><h2>📊 ภาพรวมระบบ</h2>
+<div class="dash">
+<div class="dash-item"><div class="l">พนักงานทั้งหมด</div><div class="v" id="d-emp">0</div></div>
+<div class="dash-item"><div class="l">เวลาทำงานที่บันทึก</div><div class="v" id="d-att">0</div></div>
+<div class="dash-item"><div class="l">งวดที่คำนวณแล้ว</div><div class="v" id="d-pay">0</div></div>
+<div class="dash-item green"><div class="l">จ่ายสุทธิรวมล่าสุด</div><div class="v" id="d-net">฿0</div></div>
 </div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {
-  getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot, writeBatch
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAR2P38I28JDXts1-O0xtAjn4YHDM8tFdU",
-  authDomain: "yh-daily-payroll.firebaseapp.com",
-  projectId: "yh-daily-payroll",
-  storageBucket: "yh-daily-payroll.firebasestorage.app",
-  messagingSenderId: "1026361676126",
-  appId: "1:1026361676126:web:9012c2c08989d341ec3fcf",
-  measurementId: "G-91EEL3FSLC"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// เงินพิเศษตามบัญชีบริษัท (บาท/งวด)
-const SPECIAL_PRESET = {
-  'EMP01':1330,'EMP02':2030,'EMP03':2030,'EMP04':630,
-  'EMP05':1470,'EMP06':980,'EMP07':2030,'EMP08':1540,
-  'EMP09':1540,'EMP10':1610
-};
-
-function withTimeout(promise, ms, name='operation'){
-  return Promise.race([
-    promise,
-    new Promise((_,reject) => setTimeout(()=>reject(new Error(`${name} หมดเวลา ${ms/1000} วินาที — เช็คว่า Firestore Database สร้างแล้วหรือยัง`)), ms))
-  ]);
-}
-
-window.EMP = [];
-window.ATT = [];
-window.ADJ = [];
-window.PAY = [];
-window.SET = {
-  co: 'บริษัท ยงเฮง มหาชัย รีไซเคิ้ล จำกัด',
-  coen: 'YONGHANG MAHACHAI RECCYCLE COMPANY LIMITED',
-  addr: '38/50 หมู่ที่ 8 ตำบลท่าทราย อำเภอเมืองสมุทรสาคร จ.สมุทรสาคร 74000',
-  tax: '',
-  tel: '034 414 119',
-  rate: 372, hr: 8, sso: 0.05, ssomax: 750,
-  sick: 30, personal: 3
-};
-
-const r2 = x => Math.round(x*100)/100;
-const fmt = n => Number(n||0).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2});
-const thaiDate = s => {
-  if(!s) return '-';
-  const d = new Date(s + 'T00:00:00');
-  return `${d.getDate()} ${['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'][d.getMonth()]} ${d.getFullYear()+543}`;
-};
-
-function toast(msg, type='ok'){
-  const t = document.createElement('div');
-  t.className = 'toast ' + type;
-  t.textContent = (type==='ok'?'✓ ':'⚠ ') + msg;
-  document.body.appendChild(t);
-  setTimeout(()=>t.remove(), 3500);
-}
-
-function showDbError(msg){
-  const el = document.getElementById('dbError');
-  el.style.display = 'block';
-  el.innerHTML = '❌ <b>ไม่สามารถเชื่อมต่อกับ Cloud ได้:</b><br>' + msg +
-    '<br><br><b>วิธีแก้:</b><br>' +
-    '1. ไปที่ <a href="https://console.firebase.google.com/project/yh-daily-payroll/firestore" target="_blank" style="color:#1e40af"><b>Firebase Console → Firestore Database</b></a><br>' +
-    '2. ถ้ายังไม่มี ให้กด <b>"Create database"</b><br>' +
-    '3. เลือก Location: <b>asia-southeast1 (Singapore)</b><br>' +
-    '4. เลือก <b>"Start in test mode"</b> → Enable<br>' +
-    '5. รีเฟรชหน้าเว็บนี้';
-  setConnStatus(false,'เชื่อมต่อไม่ได้');
-}
-
-function setConnStatus(ok, txt){
-  const dot = document.getElementById('dbStatus');
-  const txtEl = document.getElementById('dbStatusText');
-  const sync = document.getElementById('syncStatus');
-  dot.className = 'status-dot ' + (ok?'ok':'err');
-  txtEl.textContent = txt;
-  sync.textContent = ok ? 'เชื่อมต่อกับ Cloud แล้ว' : txt;
-}
-
-let listenersOk = 0;
-const requiredListeners = 5;
-function checkAllListeners(){
-  listenersOk++;
-  if(listenersOk >= requiredListeners){
-    setConnStatus(true,'เชื่อมต่อกับ Cloud แล้ว');
-    document.getElementById('dbError').style.display = 'none';
-  }
-}
-
-try {
-  onSnapshot(collection(db,'employees'), snap => {
-    window.EMP = snap.docs.map(d => ({id:d.id, ...d.data()}));
-    renderEmp(); refreshEmpSelects(true); renderDash();
-    checkAllListeners();
-  }, err => showDbError('employees: '+err.message));
-
-  onSnapshot(collection(db,'attendance'), snap => {
-    window.ATT = snap.docs.map(d => ({docId:d.id, ...d.data()}));
-    renderAtt(); renderDash();
-    checkAllListeners();
-  }, err => showDbError('attendance: '+err.message));
-
-  onSnapshot(collection(db,'adjustments'), snap => {
-    window.ADJ = snap.docs.map(d => ({docId:d.id, ...d.data()}));
-    renderAdj();
-    checkAllListeners();
-  }, err => showDbError('adjustments: '+err.message));
-
-  onSnapshot(collection(db,'payroll'), snap => {
-    window.PAY = snap.docs.map(d => ({docId:d.id, ...d.data()}));
-    renderDash();
-    checkAllListeners();
-  }, err => showDbError('payroll: '+err.message));
-
-  onSnapshot(doc(db,'settings','config'), snap => {
-    if(snap.exists()){
-      window.SET = {...window.SET, ...snap.data()};
-    }
-    loadSetForm();
-    checkAllListeners();
-  }, err => showDbError('settings: '+err.message));
-} catch(e){
-  showDbError('โหลด SDK: '+e.message);
-}
-
-setTimeout(()=>{
-  if(listenersOk < requiredListeners){
-    showDbError('รอการเชื่อมต่อนานเกินไป — Firestore อาจยังไม่ได้สร้าง');
-  }
-}, 10000);
-
-document.querySelectorAll('.tabbtn').forEach(b => {
-  b.onclick = () => {
-    document.querySelectorAll('.tabbtn').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    document.getElementById(b.dataset.tab).classList.add('active');
-    if(b.dataset.tab==='dash') renderDash();
-    if(b.dataset.tab==='emp') renderEmp();
-    if(b.dataset.tab==='att') { refreshEmpSelects(); renderAtt(); }
-    if(b.dataset.tab==='adj') { refreshEmpSelects(); renderAdj(); }
-    if(b.dataset.tab==='calc') refreshEmpSelects(true);
-    if(b.dataset.tab==='set') loadSetForm();
-  };
-});
-
-// ========== พนักงาน ==========
-window.saveEmp = async function(){
-  const id = document.getElementById('e-id').value.trim();
-  const name = document.getElementById('e-name').value.trim();
-  if(!id || !name){ toast('กรุณากรอกรหัสและชื่อ','err'); return; }
-  const btn = document.getElementById('btnSaveEmp');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const emp = {
-      name,
-      pos: document.getElementById('e-pos').value.trim(),
-      dept: document.getElementById('e-dept').value.trim(),
-      rate: parseFloat(document.getElementById('e-rate').value) || SET.rate,
-      special: parseFloat(document.getElementById('e-special').value) || 0,
-      bank: document.getElementById('e-bank').value.trim(),
-      acc: document.getElementById('e-acc').value.trim(),
-      sso: document.getElementById('e-sso').value.trim()
-    };
-    await withTimeout(setDoc(doc(db,'employees',id), emp), 15000, 'บันทึกพนักงาน');
-    toast('บันทึกพนักงานแล้ว');
-    resetEmpForm();
-  } catch(e){ toast(e.message,'err'); showDbError(e.message); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกพนักงาน';
-};
-
-window.resetEmpForm = function(){
-  ['e-id','e-name','e-pos','e-dept','e-bank','e-acc','e-sso'].forEach(id=>{
-    const el = document.getElementById(id);
-    el.value=''; el.readOnly=false;
-  });
-  document.getElementById('e-rate').value = SET.rate;
-  document.getElementById('e-special').value = 0;
-};
-
-window.delEmp = async function(id){
-  if(!confirm(`ลบพนักงาน ${id}?`)) return;
-  const btn = event.target;
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>';
-  try {
-    const batch = writeBatch(db);
-    batch.delete(doc(db,'employees',id));
-    ATT.filter(a=>a.emp===id).forEach(a=>batch.delete(doc(db,'attendance',a.docId)));
-    ADJ.filter(a=>a.emp===id).forEach(a=>batch.delete(doc(db,'adjustments',a.docId)));
-    PAY.filter(p=>p.emp===id).forEach(p=>batch.delete(doc(db,'payroll',p.docId)));
-    await withTimeout(batch.commit(), 20000, 'ลบพนักงาน');
-    toast('ลบพนักงานแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '🗑️';
-};
-
-window.editEmp = function(id){
-  const e = EMP.find(x=>x.id===id); if(!e) return;
-  document.getElementById('e-id').value = e.id;
-  document.getElementById('e-id').readOnly = true;
-  document.getElementById('e-name').value = e.name;
-  document.getElementById('e-pos').value = e.pos||'';
-  document.getElementById('e-dept').value = e.dept||'';
-  document.getElementById('e-rate').value = e.rate;
-  document.getElementById('e-special').value = e.special||0;
-  document.getElementById('e-bank').value = e.bank||'';
-  document.getElementById('e-acc').value = e.acc||'';
-  document.getElementById('e-sso').value = e.sso||'';
-  window.scrollTo({top:0,behavior:'smooth'});
-};
-
-window.fillSpecial = async function(){
-  if(!confirm('ใส่เงินพิเศษตามบัญชีบริษัท (มอ 1330, เอ้ย/โทน/เอก 2030, อ๋า 1470, ชาน 980, เวย 630, ซ่าน/โจ 1540, ลิน 1610)?')) return;
-  const btn = document.getElementById('btnFillSpecial');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังใส่...';
-  try {
-    const batch = writeBatch(db);
-    let n = 0;
-    EMP.forEach(e=>{
-      if(SPECIAL_PRESET[e.id] !== undefined){
-        batch.set(doc(db,'employees',e.id), {...e, special:SPECIAL_PRESET[e.id]});
-        n++;
-      }
-    });
-    await withTimeout(batch.commit(), 20000, 'ใส่เงินพิเศษ');
-    toast(`ใส่เงินพิเศษ ${n} คนแล้ว`);
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '✨ ใส่เงินพิเศษตามบัญชีบริษัท';
-};
-
-window.renderEmp = function(){
-  const tb = document.querySelector('#emp-tbl tbody');
-  document.getElementById('emp-count').textContent = EMP.length;
-  if(!EMP.length){ tb.innerHTML='<tr><td colspan="8" class="empty">ยังไม่มีพนักงาน — นำเข้า JSON หรือกดโหลดตัวอย่างที่แท็บตั้งค่า</td></tr>'; return; }
-  tb.innerHTML = EMP.map(e=>`
-    <tr>
-      <td><b>${e.id}</b></td><td>${e.name}</td><td>${e.pos||'-'}</td><td>${e.dept||'-'}</td>
-      <td class="r">${fmt(e.rate)}</td>
-      <td class="r" style="color:#7c3aed;font-weight:600">${fmt(e.special||0)}</td>
-      <td>${e.bank||'-'} ${e.acc?'<br><small>'+e.acc+'</small>':''}</td>
-      <td class="c">
-        <button class="btn btn-yellow btn-sm" onclick="editEmp('${e.id}')">✏️</button>
-        <button class="btn btn-red btn-sm" onclick="delEmp('${e.id}')">🗑️</button>
-      </td>
-    </tr>`).join('');
-};
-
-// ========== ลงเวลา ==========
-window.toggleAtt = function(){
-  const st = document.getElementById('a-status').value;
-  document.getElementById('a-leave-wrap').style.display = st==='leave'?'':'none';
-  document.getElementById('a-day-wrap').style.display = st==='present'?'':'none';
-  document.getElementById('a-ot-wrap').style.display = st==='present'?'':'none';
-  document.getElementById('a-late-wrap').style.display = st==='present'?'':'none';
-};
-
-window.saveAtt = async function(){
-  const emp = document.getElementById('a-emp').value;
-  const date = document.getElementById('a-date').value;
-  const status = document.getElementById('a-status').value;
-  if(!emp || !date){ toast('กรุณาเลือกพนักงานและวันที่','err'); return; }
-  const btn = document.getElementById('btnSaveAtt');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const data = {
-      emp, date, status,
-      day: status==='present' ? document.getElementById('a-day').value : 'normal',
-      leave: status==='leave' ? document.getElementById('a-leave').value : 'none',
-      ot: status==='present' ? parseFloat(document.getElementById('a-ot').value)||0 : 0,
-      late: status==='present' ? parseFloat(document.getElementById('a-late').value)||0 : 0
-    };
-    await withTimeout(setDoc(doc(db,'attendance', `${emp}_${date}`), data), 15000, 'บันทึกเวลา');
-    toast('บันทึกเวลาแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกเวลา';
-};
-
-window.delAtt = async function(emp,date){
-  if(!confirm('ลบบันทึกวันนี้?')) return;
-  try {
-    await deleteDoc(doc(db,'attendance', `${emp}_${date}`));
-    toast('ลบบันทึกแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-};
-
-window.renderAtt = function(){
-  const fe = document.getElementById('f-emp').value;
-  const fm = document.getElementById('f-month').value;
-  let list = ATT.slice();
-  if(fe) list = list.filter(a=>a.emp===fe);
-  if(fm) list = list.filter(a=>a.date.startsWith(fm));
-  list.sort((a,b)=>b.date.localeCompare(a.date));
-  const tb = document.querySelector('#att-tbl tbody');
-  if(!list.length){ tb.innerHTML='<tr><td colspan="8" class="empty">ไม่มีข้อมูล</td></tr>'; return; }
-  const stMap = {present:'<span class="badge badge-green">มา</span>',absent:'<span class="badge badge-red">ขาด</span>',leave:'<span class="badge badge-yellow">ลา</span>'};
-  const dayMap = {normal:'ปกติ',holiday:'วันหยุด',special:'นักขัตฤกษ์'};
-  const lvMap = {none:'-',sick:'ป่วย',personal:'กิจ',annual:'พักร้อน',unpaid:'ไม่จ่าย'};
-  tb.innerHTML = list.map(a=>{
-    const e = EMP.find(x=>x.id===a.emp);
-    return `<tr>
-      <td>${e?e.name:a.emp}<br><small>${a.emp}</small></td>
-      <td>${thaiDate(a.date)}</td>
-      <td>${stMap[a.status]||a.status}</td>
-      <td>${dayMap[a.day]||a.day}</td>
-      <td>${lvMap[a.leave]||a.leave}</td>
-      <td class="r">${a.late||0}</td>
-      <td class="r">${a.ot||0}</td>
-      <td class="c"><button class="btn btn-red btn-sm" onclick="delAtt('${a.emp}','${a.date}')">🗑️</button></td>
-    </tr>`;
-  }).join('');
-};
-
-// ========== รายการพิเศษ ==========
-window.saveAdj = async function(){
-  const emp = document.getElementById('j-emp').value;
-  const start = document.getElementById('j-start').value;
-  const end = document.getElementById('j-end').value;
-  if(!emp || !start || !end){ toast('กรุณาเลือกพนักงานและงวด','err'); return; }
-  const btn = document.getElementById('btnSaveAdj');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const data = {
-      emp, start, end,
-      extra: parseFloat(document.getElementById('j-extra').value)||0,
-      adv: parseFloat(document.getElementById('j-adv').value)||0,
-      loan: parseFloat(document.getElementById('j-loan').value)||0,
-      other: parseFloat(document.getElementById('j-other').value)||0
-    };
-    await withTimeout(setDoc(doc(db,'adjustments', `${emp}_${start}_${end}`), data), 15000, 'บันทึกรายการ');
-    toast('บันทึกรายการแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกรายการ';
-};
-
-window.delAdj = async function(docId){
-  if(!confirm('ลบรายการนี้?')) return;
-  await deleteDoc(doc(db,'adjustments', docId));
-  toast('ลบรายการแล้ว');
-};
-
-window.renderAdj = function(){
-  const tb = document.querySelector('#adj-tbl tbody');
-  if(!ADJ.length){ tb.innerHTML='<tr><td colspan="7" class="empty">ไม่มีรายการ</td></tr>'; return; }
-  tb.innerHTML = ADJ.map(a=>{
-    const e = EMP.find(x=>x.id===a.emp);
-    return `<tr>
-      <td>${e?e.name:a.emp}</td>
-      <td>${thaiDate(a.start)} - ${thaiDate(a.end)}</td>
-      <td class="r">${fmt(a.extra)}</td>
-      <td class="r">${fmt(a.adv)}</td>
-      <td class="r">${fmt(a.loan)}</td>
-      <td class="r">${fmt(a.other)}</td>
-      <td class="c"><button class="btn btn-red btn-sm" onclick="delAdj('${a.docId}')">🗑️</button></td>
-    </tr>`;
-  }).join('');
-};
-
-// ========== คำนวณ ==========
-window.setPeriod = function(kind){
-  const today = new Date();
-  const y = today.getFullYear(), m = today.getMonth();
-  const lastDay = new Date(y,m+1,0).getDate();
-  let s,e;
-  if(kind==='1-15'){ s=`${y}-${String(m+1).padStart(2,'0')}-01`; e=`${y}-${String(m+1).padStart(2,'0')}-15`; }
-  else if(kind==='16-end'){ s=`${y}-${String(m+1).padStart(2,'0')}-16`; e=`${y}-${String(m+1).padStart(2,'0')}-${lastDay}`; }
-  else { s=`${y}-${String(m+1).padStart(2,'0')}-01`; e=`${y}-${String(m+1).padStart(2,'0')}-${lastDay}`; }
-  document.getElementById('c-start').value=s;
-  document.getElementById('c-end').value=e;
-};
-
-window.calcOne = function(empId, start, end){
-  const e = EMP.find(x=>x.id===empId); if(!e) return null;
-  const daily = Number(e.rate) || 0;
-  const hourly = daily / (Number(SET.hr) || 8);
-  const recs = ATT.filter(a=>a.emp===empId && a.date>=start && a.date<=end);
-
-  let work=0, absent=0, sick=0, personal=0, annual=0, unpaid=0, holiday=0, otHr=0, lateMin=0;
-  let base=0, otPay=0, holExtra=0;
-  const year = start.slice(0,4);
-  const yearRecs = ATT.filter(a=>a.emp===empId && a.date.startsWith(year));
-  let sickY = yearRecs.filter(a=>a.status==='leave'&&a.leave==='sick').length;
-  let persY = yearRecs.filter(a=>a.status==='leave'&&a.leave==='personal').length;
-
-  for(const r of recs){
-    if(r.status==='present'){
-      work++; base += daily; otHr += r.ot||0; lateMin += r.late||0;
-      if(r.day==='holiday'||r.day==='special'){ holiday++; holExtra += daily; }
-      if(r.ot>0){
-        const mult = r.day==='normal' ? 1.5 : (r.day==='holiday' ? 2 : 3);
-        otPay += r.ot * hourly * mult;
-      }
-    } else if(r.status==='absent'){ absent++; }
-    else if(r.status==='leave'){
-      if(r.leave==='sick'){ sick++; if(sickY<=SET.sick) base += daily; }
-      else if(r.leave==='personal'){ personal++; if(persY<=SET.personal) base += daily; }
-      else if(r.leave==='annual'){ annual++; base += daily; }
-      else unpaid++;
-    }
-  }
-
-  // ===== สูตรเงินพิเศษ =====
-  const allow = Number(e.special) || 0;
-  const missedDays = absent + sick + personal + annual + unpaid;
-  const specialDed = r2(Math.min(allow, missedDays*daily + (lateMin/60)*hourly));
-  const specialNet = r2(allow - specialDed);
-
-  const adj = ADJ.find(a=>a.emp===empId && a.start===start && a.end===end) || {extra:0,adv:0,loan:0,other:0};
-  const extra = Number(adj.extra) || 0;
-  const gross = r2(base + otPay + holExtra + specialNet + extra);
-  const days = Math.max(1, Math.round((new Date(end)-new Date(start))/86400000)+1);
-  const sso = r2(Math.min(gross*SET.sso, SET.ssomax * days/30));
-  const adv = Number(adj.adv)||0;
-  const loan = Number(adj.loan)||0;
-  const otherDed = Number(adj.other)||0;
-  const totalDed = r2(sso + adv + loan + otherDed);
-  const net = r2(gross - totalDed);
-
-  return {
-    emp:e, start, end, work, absent, sick, personal, annual, unpaid, holiday, otHr, lateMin,
-    base:r2(base), otPay:r2(otPay), holExtra:r2(holExtra),
-    allow, specialDed, specialNet, extra,
-    gross, sso, adv, loan, otherDed, totalDed, net
-  };
-};
-
-window.runPayroll = async function(){
-  const empId = document.getElementById('c-emp').value;
-  const start = document.getElementById('c-start').value;
-  const end = document.getElementById('c-end').value;
-  if(!start || !end){ toast('กรุณาระบุงวด','err'); return; }
-  const btn = document.getElementById('btnCalc');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังคำนวณ...';
-  try {
-    const list = empId ? [empId] : EMP.map(e=>e.id);
-    const results = list.map(id=>calcOne(id,start,end)).filter(Boolean);
-    const batch = writeBatch(db);
-    const existing = PAY.filter(p=>p.start===start && p.end===end);
-    existing.forEach(p=>batch.delete(doc(db,'payroll',p.docId)));
-    results.forEach(r=>{
-      const docId = `${r.emp.id}_${start}_${end}`;
-      batch.set(doc(db,'payroll',docId), {
-        emp: r.emp.id, empName: r.emp.name,
-        start, end, work:r.work, absent:r.absent, lateMin:r.lateMin,
-        base:r.base, otPay:r.otPay, holExtra:r.holExtra,
-        allow:r.allow, specialDed:r.specialDed, specialNet:r.specialNet,
-        extra:r.extra, gross:r.gross, sso:r.sso,
-        adv:r.adv, loan:r.loan, otherDed:r.otherDed,
-        totalDed:r.totalDed, net:r.net, calculatedAt: new Date().toISOString()
-      });
-    });
-    await withTimeout(batch.commit(), 20000, 'บันทึกเงินเดือน');
-    toast(`คำนวณแล้ว ${results.length} คน`);
-    renderCalcResults(results);
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '🚀 คำนวณเงินเดือน';
-};
-
-window.renderCalcResults = function(list){
-  const el = document.getElementById('calc-result');
-  if(!list.length){ el.innerHTML='<div class="card"><div class="empty">ไม่มีข้อมูลให้คำนวณ</div></div>'; return; }
-  const totalNet = list.reduce((s,r)=>s+r.net,0);
-  const totalGross = list.reduce((s,r)=>s+r.gross,0);
-  el.innerHTML = `
-    <div class="card">
-      <h2>📋 ผลการคำนวณ (${list.length} คน)</h2>
-      <div class="dash">
-        <div class="dash-item"><div class="l">รายได้รวม</div><div class="v">฿${fmt(totalGross)}</div></div>
-        <div class="dash-item green"><div class="l">จ่ายสุทธิรวม</div><div class="v">฿${fmt(totalNet)}</div></div>
-      </div>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>พนักงาน</th><th class="c">ทำงาน</th><th class="c">ขาด/ลา</th><th class="c">สาย</th><th class="r">💰 พิเศษที่ได้</th><th class="r">รายได้</th><th class="r">หัก</th><th class="r">สุทธิ</th><th class="c">สลิป</th></tr></thead>
-        <tbody>${list.map(r=>`
-          <tr>
-            <td><b>${r.emp.id}</b> ${r.emp.name}</td>
-            <td class="c">${r.work}</td>
-            <td class="c">${r.absent+r.sick+r.personal+r.annual+r.unpaid}</td>
-            <td class="c">${r.lateMin} น.</td>
-            <td class="r" style="color:#7c3aed">${fmt(r.specialNet)}</td>
-            <td class="r">${fmt(r.gross)}</td>
-            <td class="r">${fmt(r.totalDed)}</td>
-            <td class="r"><b>${fmt(r.net)}</b></td>
-            <td class="c"><button class="btn btn-green btn-sm" onclick='showSlip(${JSON.stringify(r).replace(/'/g,"&#39;")})'>🧾</button></td>
-          </tr>`).join('')}
-        </tbody>
-      </table></div>
-    </div>`;
-};
-
-window.showSlip = function(r){
-  document.getElementById('slipContent').innerHTML = `
-    <div class="slip">
-      <div class="co">
-        <h3>${SET.co}</h3>
-        ${SET.coen ? `<p class="coen">${SET.coen}</p>` : ''}
-        <p>ที่ตั้ง : ${SET.addr}</p>
-        <p>โทรศัพท์ : ${SET.tel}${SET.tax ? ' | เลขผู้เสียภาษี: ' + SET.tax : ''}</p>
-      </div>
-      <h4>สลิปเงินเดือน</h4>
-      <p style="text-align:center">งวด ${thaiDate(r.start)} - ${thaiDate(r.end)}</p>
-      <table>
-        <tr><td><b>รหัส:</b> ${r.emp.id}</td><td><b>ชื่อ:</b> ${r.emp.name}</td></tr>
-        <tr><td><b>ตำแหน่ง:</b> ${r.emp.pos||'-'}</td><td><b>แผนก:</b> ${r.emp.dept||'-'}</td></tr>
-      </table>
-      <table>
-        <thead><tr><th colspan="2" style="background:#166534">รายได้</th><th colspan="2" style="background:#991b1b">รายการหัก</th></tr></thead>
-        <tbody>
-          <tr><td>ค่าแรง (${r.work} วัน)</td><td class="r">${fmt(r.base)}</td><td>ประกันสังคม (5%)</td><td class="r">${fmt(r.sso)}</td></tr>
-          <tr><td>ทำงานวันหยุด</td><td class="r">${fmt(r.holExtra)}</td><td>เบิกล่วงหน้า</td><td class="r">${fmt(r.adv)}</td></tr>
-          <tr><td>OT (1.5/2/3)</td><td class="r">${fmt(r.otPay)}</td><td>เงินกู้</td><td class="r">${fmt(r.loan)}</td></tr>
-          <tr><td>เงินพิเศษ (เต็ม ${fmt(r.allow)})</td><td class="r">${fmt(r.allow)}</td><td>หักอื่น ๆ</td><td class="r">${fmt(r.otherDed)}</td></tr>
-          <tr><td>หักพิเศษ (ขาด/ลา/สาย ${r.absent+r.sick+r.personal+r.annual+r.unpaid} วัน + สาย ${r.lateMin} น.)</td><td class="r">-${fmt(r.specialDed)}</td><td></td><td></td></tr>
-          <tr><td>รายรับอื่น ๆ</td><td class="r">${fmt(r.extra)}</td><td></td><td></td></tr>
-          <tr style="background:#f1f5f9;font-weight:700"><td>รวมรายได้</td><td class="r">${fmt(r.gross)}</td><td>รวมหัก</td><td class="r">${fmt(r.totalDed)}</td></tr>
-        </tbody>
-      </table>
-      <div class="netbox">💰 เงินสุทธิ: ฿${fmt(r.net)}</div>
-      <div style="font-size:.85rem;color:#64748b">
-        📊 ทำงาน ${r.work} | ขาด ${r.absent} | ลา ${r.sick+r.personal+r.annual+r.unpaid} | สาย ${r.lateMin} นาที | OT ${r.otHr} ชม. | ทำงานวันหยุด ${r.holiday} วัน
-      </div>
-      <div class="sig">
-        <div><div class="line"></div>ผู้จ่ายเงินเดือน</div>
-        <div><div class="line"></div>ผู้อนุมัติ</div>
-      </div>
-    </div>`;
-  document.getElementById('slipModal').classList.add('show');
-};
-
-window.closeModal = function(){ document.getElementById('slipModal').classList.remove('show'); };
-
-// ========== รายงาน ==========
-window.loadReport = function(){
-  const s = document.getElementById('r-start').value;
-  const e = document.getElementById('r-end').value;
-  if(!s||!e){ toast('กรุณาระบุงวด','err'); return; }
-  const list = PAY.filter(p=>p.start===s && p.end===e);
-  const el = document.getElementById('report-result');
-  if(!list.length){ el.innerHTML='<div class="card"><div class="empty">ไม่มีข้อมูลงวดนี้ (กดคำนวณก่อน)</div></div>'; return; }
-  const tGross = list.reduce((a,r)=>a+r.gross,0);
-  const tNet = list.reduce((a,r)=>a+r.net,0);
-  const tS = list.reduce((a,r)=>a+r.sso,0);
-  const tSp = list.reduce((a,r)=>a+(r.specialNet||0),0);
-  el.innerHTML = `
-    <div class="card">
-      <h2>📈 รายงานงวด ${thaiDate(s)} - ${thaiDate(e)}</h2>
-      <div class="dash">
-        <div class="dash-item"><div class="l">พนักงาน</div><div class="v">${list.length}</div></div>
-        <div class="dash-item purple"><div class="l">เงินพิเศษรวม</div><div class="v">฿${fmt(tSp)}</div></div>
-        <div class="dash-item yellow"><div class="l">ปกส.รวม</div><div class="v">฿${fmt(tS)}</div></div>
-        <div class="dash-item green"><div class="l">สุทธิรวม</div><div class="v">฿${fmt(tNet)}</div></div>
-      </div>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>รหัส</th><th>ชื่อ</th><th class="c">วัน</th><th class="c">ขาด/ลา</th><th class="c">สาย</th><th class="r">ค่าแรง</th><th class="r">OT</th><th class="r">พิเศษที่ได้</th><th class="r">รวมรายได้</th><th class="r">รวมหัก</th><th class="r">สุทธิ</th></tr></thead>
-        <tbody>${list.map(r=>`
-          <tr>
-            <td>${r.emp}</td>
-            <td>${r.empName}</td>
-            <td class="c">${r.work}</td>
-            <td class="c">${r.absent}</td>
-            <td class="c">${r.lateMin||0}</td>
-            <td class="r">${fmt(r.base)}</td>
-            <td class="r">${fmt(r.otPay)}</td>
-            <td class="r">${fmt(r.specialNet)}</td>
-            <td class="r"><b>${fmt(r.gross)}</b></td>
-            <td class="r">${fmt(r.totalDed)}</td>
-            <td class="r"><b style="color:#16a34a">${fmt(r.net)}</b></td>
-          </tr>`).join('')}
-        </tbody>
-        <tfoot><tr style="background:#1e3a8a;color:#fff;font-weight:700">
-          <td colspan="8">รวมทั้งหมด</td>
-          <td class="r">${fmt(tGross)}</td>
-          <td class="r">${fmt(list.reduce((a,r)=>a+r.totalDed,0))}</td>
-          <td class="r">${fmt(tNet)}</td>
-        </tr></tfoot>
-      </table></div>
-    </div>`;
-};
-
-window.exportCSV = function(){
-  const s = document.getElementById('r-start').value;
-  const e = document.getElementById('r-end').value;
-  if(!s||!e){ toast('กรุณาระบุงวดก่อน','err'); return; }
-  const list = PAY.filter(p=>p.start===s && p.end===e);
-  if(!list.length){ toast('ไม่มีข้อมูลงวดนี้','err'); return; }
-  const header = ['รหัส','ชื่อ','วันทำงาน','ขาด','ลา','สาย(นาที)','ค่าแรง','OT','ทำงานวันหยุด','เงินพิเศษเต็ม','หักพิเศษ','พิเศษที่ได้','รวมรายได้','ปกส','รวมหัก','สุทธิ'];
-  const rows = list.map(r=>[r.emp,r.empName,r.work,r.absent,(r.sick||0)+(r.personal||0)+(r.annual||0)+(r.unpaid||0),r.lateMin||0,r.base,r.otPay,r.holExtra,r.allow,r.specialDed,r.specialNet,r.gross,r.sso,r.totalDed,r.net]);
-  const csv = '\ufeff' + [header,...rows].map(r=>r.map(v=>`"${v}"`).join(',')).join('\n');
-  const blob = new Blob([csv],{type:'text/csv;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `payroll_${s}_${e}.csv`;
-  a.click();
-};
-
-// ========== ตั้งค่า ==========
-window.loadSetForm = function(){
-  document.getElementById('s-co').value = SET.co;
-  document.getElementById('s-coen').value = SET.coen||'';
-  document.getElementById('s-addr').value = SET.addr;
-  document.getElementById('s-tax').value = SET.tax||'';
-  document.getElementById('s-tel').value = SET.tel;
-  document.getElementById('s-rate').value = SET.rate;
-  document.getElementById('s-hr').value = SET.hr;
-  document.getElementById('s-sso').value = SET.sso;
-  document.getElementById('s-ssomax').value = SET.ssomax;
-  document.getElementById('s-sick').value = SET.sick;
-  document.getElementById('s-personal').value = SET.personal;
-};
-
-window.saveSet = async function(){
-  const btn = document.getElementById('btnSaveSet');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const data = {
-      co: document.getElementById('s-co').value,
-      coen: document.getElementById('s-coen').value,
-      addr: document.getElementById('s-addr').value,
-      tax: document.getElementById('s-tax').value,
-      tel: document.getElementById('s-tel').value,
-      rate: parseFloat(document.getElementById('s-rate').value)||372,
-      hr: parseFloat(document.getElementById('s-hr').value)||8,
-      sso: parseFloat(document.getElementById('s-sso').value)||0.05,
-      ssomax: parseFloat(document.getElementById('s-ssomax').value)||750,
-      sick: parseInt(document.getElementById('s-sick').value)||30,
-      personal: parseInt(document.getElementById('s-personal').value)||3
-    };
-    await withTimeout(setDoc(doc(db,'settings','config'), data), 15000, 'บันทึกตั้งค่า');
-    toast('บันทึกตั้งค่าแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกตั้งค่า';
-};
-
-window.loadDemo = async function(){
-  if(!confirm('โหลดข้อมูลตัวอย่างขึ้น Cloud?')) return;
-  const btn = document.getElementById('btnDemo');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังโหลด (สูงสุด 20 วินาที)...';
-  try {
-    const batch = writeBatch(db);
-    const demoEmp = [
-      {id:'EMP01',name:'นางมามิว (มอ)',pos:'คนงาน',dept:'ฝ่ายผลิต',rate:372,special:1330},
-      {id:'EMP02',name:'นายตุนเอย (เอ้ย)',pos:'คนงาน',dept:'ฝ่ายผลิต',rate:372,special:2030},
-      {id:'EMP03',name:'นายโทนโลน (โทน)',pos:'คนงาน',dept:'ฝ่ายผลิต',rate:372,special:2030}
-    ];
-    demoEmp.forEach(e=>batch.set(doc(db,'employees',e.id), e));
-    batch.set(doc(db,'attendance','EMP01_2026-08-04'),{emp:'EMP01',date:'2026-08-04',status:'present',day:'normal',leave:'none',ot:2,late:0});
-    batch.set(doc(db,'attendance','EMP01_2026-08-05'),{emp:'EMP01',date:'2026-08-05',status:'present',day:'normal',leave:'none',ot:0,late:60});
-    batch.set(doc(db,'attendance','EMP01_2026-08-06'),{emp:'EMP01',date:'2026-08-06',status:'absent',day:'normal',leave:'none',ot:0,late:0});
-    batch.set(doc(db,'attendance','EMP02_2026-08-04'),{emp:'EMP02',date:'2026-08-04',status:'present',day:'normal',leave:'none',ot:0,late:0});
-    batch.set(doc(db,'attendance','EMP02_2026-08-05'),{emp:'EMP02',date:'2026-08-05',status:'present',day:'normal',leave:'none',ot:3,late:0});
-    batch.set(doc(db,'attendance','EMP03_2026-08-04'),{emp:'EMP03',date:'2026-08-04',status:'leave',day:'normal',leave:'sick',ot:0,late:0});
-    await withTimeout(batch.commit(), 20000, 'โหลดข้อมูลตัวอย่าง');
-    toast('โหลดตัวอย่างแล้ว — ลองคำนวณงวด 1-15 ส.ค. ดู');
-  } catch(e){
-    toast('โหลดไม่สำเร็จ: '+e.message,'err');
-    showDbError(e.message);
-  }
-  btn.disabled = false; btn.innerHTML = '✨ โหลดข้อมูลตัวอย่าง';
-};
-
-window.exportAll = function(){
-  const data = {emp:EMP,att:ATT,adj:ADJ,pay:PAY,set:SET,exported:new Date().toISOString()};
-  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `payroll_backup_${new Date().toISOString().slice(0,10)}.json`;
-  a.click();
-};
-
-window.importAll = async function(ev){
-  const f = ev.target.files[0]; if(!f) return;
-  const r = new FileReader();
-  r.onload = async e => {
-    try{
-      const d = JSON.parse(e.target.result);
-      const batch = writeBatch(db);
-      if(d.emp) d.emp.forEach(emp=>{ const {id,...data}=emp; batch.set(doc(db,'employees',id), data); });
-      if(d.att) d.att.forEach(a=>batch.set(doc(db,'attendance',`${a.emp}_${a.date}`), a));
-      if(d.adj) d.adj.forEach(a=>batch.set(doc(db,'adjustments',`${a.emp}_${a.start}_${a.end}`), a));
-      if(d.set) batch.set(doc(db,'settings','config'), d.set);
-      await withTimeout(batch.commit(), 20000, 'นำเข้าข้อมูล');
-      toast('นำเข้าข้อมูลสำเร็จ');
-    }catch(err){ toast('ไฟล์ไม่ถูกต้อง','err'); }
-  };
-  r.readAsText(f);
-};
-
-window.clearAll = async function(){
-  if(!confirm('⚠️ ลบข้อมูลทั้งหมดบน Cloud? (กู้คืนไม่ได้)')) return;
-  if(!confirm('ยืนยันอีกครั้ง?')) return;
-  try {
-    const batch = writeBatch(db);
-    EMP.forEach(i=>batch.delete(doc(db,'employees', i.id)));
-    ATT.forEach(i=>batch.delete(doc(db,'attendance', i.docId)));
-    ADJ.forEach(i=>batch.delete(doc(db,'adjustments', i.docId)));
-    PAY.forEach(i=>batch.delete(doc(db,'payroll', i.docId)));
-    batch.delete(doc(db,'settings','config'));
-    await withTimeout(batch.commit(), 20000, 'ลบข้อมูล');
-    toast('ลบข้อมูลทั้งหมดแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-};
-
-window.refreshEmpSelects = function(withAll){
-  const opts = (withAll ? '<option value="">— ทั้งหมด —</option>' : '') +
-    EMP.map(e=>`<option value="${e.id}">${e.id} - ${e.name}</option>`).join('');
-  const optsReq = EMP.map(e=>`<option value="${e.id}">${e.id} - ${e.name}</option>`).join('');
-  ['a-emp','j-emp','c-emp'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(el) el.innerHTML = (id==='c-emp'?opts:optsReq);
-  });
-  const femp = document.getElementById('f-emp');
-  if(femp) femp.innerHTML = '<option value="">ทั้งหมด</option>' + optsReq;
-};
-
-window.renderDash = function(){
-  document.getElementById('d-emp').textContent = EMP.length;
-  document.getElementById('d-att').textContent = ATT.length;
-  document.getElementById('d-pay').textContent = PAY.length;
-  if(PAY.length){
-    const recent = [...PAY].sort((a,b)=>(b.calculatedAt||'').localeCompare(a.calculatedAt||''));
-    const latestPeriod = recent[0];
-    const samePeriod = PAY.filter(p=>p.start===latestPeriod.start && p.end===latestPeriod.end);
-    const t = samePeriod.reduce((s,r)=>s+r.net,0);
-    document.getElementById('d-net').textContent = '฿'+fmt(t);
-  }
-};
-
-toggleAtt();
-refreshEmpSelects(true);
-renderDash();
-renderEmp();
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ระบบเงินเดือน — ยงเฮง มหาชัย รีไซเคิ้ล</title>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Sarabun',sans-serif;background:#f1f5f9;color:#1e293b;padding-bottom:60px;font-size:15px}
-header{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:22px 16px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.15);position:relative}
-header h1{font-size:1.5rem;margin-bottom:4px}
-header p{opacity:.9;font-size:.9rem}
-.status-bar{position:absolute;top:8px;right:12px;display:flex;align-items:center;gap:6px;font-size:.75rem;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,.15)}
-.status-dot{width:8px;height:8px;border-radius:50%;background:#fbbf24}
-.status-dot.ok{background:#22c55e}
-.status-dot.err{background:#ef4444}
-nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);position:sticky;top:0;z-index:10}
-.tabbtn{border:none;background:#e2e8f0;color:#334155;padding:8px 16px;border-radius:20px;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:500;transition:.2s}
-.tabbtn:hover{background:#cbd5e1}
-.tabbtn.active{background:#2563eb;color:#fff}
-main{max-width:1050px;margin:18px auto;padding:0 12px}
-.tab{display:none}
-.tab.active{display:block;animation:fade .25s}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.card{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:20px;margin-bottom:16px}
-.card h2{font-size:1.15rem;color:#1e3a8a;margin-bottom:14px;border-left:4px solid #2563eb;padding-left:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-label{font-size:.85rem;color:#475569;display:block;margin-bottom:4px;font-weight:500}
-input,select,textarea{width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:8px;font-family:inherit;font-size:.95rem;background:#fff}
-input:focus,select:focus,textarea:focus{outline:2px solid #93c5fd;border-color:#2563eb}
-.btn{border:none;border-radius:8px;padding:10px 18px;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:500;margin:4px 4px 0 0;transition:.15s}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-.btn-primary{background:#2563eb;color:#fff}.btn-primary:hover{background:#1d4ed8}
-.btn-green{background:#16a34a;color:#fff}.btn-green:hover{background:#15803d}
-.btn-red{background:#dc2626;color:#fff;padding:6px 10px;font-size:.82rem}
-.btn-red:hover{background:#b91c1c}
-.btn-gray{background:#64748b;color:#fff;padding:6px 10px;font-size:.82rem}
-.btn-yellow{background:#f59e0b;color:#fff}
-.btn-yellow:hover{background:#d97706}
-.btn-purple{background:#7c3aed;color:#fff}
-.btn-purple:hover{background:#6d28d9}
-.btn-sm{padding:6px 10px;font-size:.82rem}
-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px}
-th,td{border:1px solid #e2e8f0;padding:7px 8px;text-align:left}
-th{background:#1e3a8a;color:#fff;font-weight:500}
-tr:nth-child(even){background:#f8fafc}
-tr:hover{background:#f1f5f9}
-.r{text-align:right}
-.c{text-align:center}
-.empty{padding:30px;text-align:center;color:#94a3b8;font-style:italic}
-.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.75rem;font-weight:500}
-.badge-green{background:#dcfce7;color:#166534}
-.badge-red{background:#fee2e2;color:#991b1b}
-.badge-yellow{background:#fef9c3;color:#854d0e}
-.note{background:#fef9c3;border:1px solid #fde047;border-radius:8px;padding:10px;font-size:.85rem;margin-top:10px}
-.errbox{background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:12px;font-size:.88rem;margin-top:10px;color:#991b1b;display:none;line-height:1.6}
-.errbox b{color:#7f1d1d}
-.tbl-wrap{overflow-x:auto;border-radius:8px}
-.dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.dash-item{background:linear-gradient(135deg,#fff,#f8fafc);border:1px solid #e2e8f0;border-radius:10px;padding:14px;text-align:center}
-.dash-item .v{font-size:1.5rem;font-weight:700;color:#1e3a8a;margin-top:4px}
-.dash-item .l{font-size:.82rem;color:#64748b}
-.dash-item.green .v{color:#16a34a}
-.dash-item.yellow .v{color:#d97706}
-.dash-item.purple .v{color:#7c3aed}
-.slip{max-width:780px;margin:0 auto;background:#fff;border:1px solid #cbd5e1;padding:24px;font-size:.92rem;line-height:1.5}
-.slip .co{text-align:center;border-bottom:2px solid #1e3a8a;padding-bottom:10px;margin-bottom:12px}
-.slip .co h3{color:#1e3a8a;font-size:1.2rem;margin-bottom:4px}
-.slip .co .coen{font-weight:600;letter-spacing:.5px;font-size:.9rem}
-.slip .co p{font-size:.82rem;color:#64748b;margin-top:2px}
-.slip h4{text-align:center;color:#1e3a8a;margin:8px 0;font-size:1rem}
-.slip table{margin:8px 0;border-collapse:collapse;width:100%}
-.slip th,.slip td{padding:6px 8px;border:1px solid #cbd5e1;font-size:.88rem}
-.slip .netbox{background:#dcfce7;border:1px solid #86efac;text-align:center;font-size:1.2rem;font-weight:700;color:#15803a;padding:10px;border-radius:8px;margin:12px 0}
-.slip .sig{display:flex;justify-content:space-around;margin-top:50px}
-.slip .sig div{text-align:center;width:45%}
-.slip .sig .line{border-bottom:1px solid #334155;height:24px;margin-top:40px}
-@media print{
-  body *{visibility:hidden}
-  #printArea,#printArea *{visibility:visible}
-  #printArea{position:absolute;left:0;top:0;width:100%}
-  .slip{border:none}
-  .noprint{display:none !important}
-}
-footer{background:#1e293b;color:#cbd5e1;text-align:center;padding:16px;font-size:.85rem;margin-top:30px}
-footer a{color:#93c5fd}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:center;padding:16px}
-.modal.show{display:flex}
-.modal-box{background:#fff;border-radius:12px;padding:22px;max-width:500px;width:100%;max-height:85vh;overflow:auto}
-.modal-box.big{max-width:850px}
-.loading{display:inline-block;width:14px;height:14px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.toast{position:fixed;bottom:20px;right:20px;background:#1e293b;color:#fff;padding:12px 18px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:200;font-size:.9rem;animation:slideIn .3s;max-width:320px}
-.toast.ok{background:#16a34a}
-.toast.err{background:#dc2626}
-@keyframes slideIn{from{transform:translateX(400px)}to{transform:none}}
-</style>
-</head>
-<body>
-<header>
-  <h1>🧾 ระบบเงินเดือนพนักงานรายวัน</h1>
-  <p id="syncStatus">กำลังตรวจสอบการเชื่อมต่อ Cloud...</p>
-  <div class="status-bar">
-    <div class="status-dot" id="dbStatus"></div>
-    <span id="dbStatusText">กำลังเชื่อมต่อ</span>
-  </div>
-</header>
-
-<nav>
-  <button class="tabbtn active" data-tab="dash">📊 แดชบอร์ด</button>
-  <button class="tabbtn" data-tab="emp">👥 พนักงาน</button>
-  <button class="tabbtn" data-tab="att">⏰ ลงเวลา</button>
-  <button class="tabbtn" data-tab="adj">💵 รายการพิเศษ</button>
-  <button class="tabbtn" data-tab="calc">🧮 คำนวณเงินเดือน</button>
-  <button class="tabbtn" data-tab="report">📈 รายงาน</button>
-  <button class="tabbtn" data-tab="set">⚙️ ตั้งค่า</button>
-</nav>
-
-<main>
-
-<section class="tab active" id="dash">
-  <div class="card">
-    <h2>📊 ภาพรวมระบบ</h2>
-    <div class="dash">
-      <div class="dash-item"><div class="l">พนักงานทั้งหมด</div><div class="v" id="d-emp">0</div></div>
-      <div class="dash-item"><div class="l">เวลาทำงานที่บันทึก</div><div class="v" id="d-att">0</div></div>
-      <div class="dash-item"><div class="l">งวดที่คำนวณแล้ว</div><div class="v" id="d-pay">0</div></div>
-      <div class="dash-item green"><div class="l">เงินจ่ายรวมล่าสุด</div><div class="v" id="d-net">฿0</div></div>
-    </div>
-    <div class="errbox" id="dbError"></div>
-    <div class="note">💡 <b>กฎเงินพิเศษ:</b> ไม่ขาด/ลา/สาย → ได้เต็ม • ขาด/ลา หักวันละค่าแรงขั้นต่ำจากเงินพิเศษ • สายหักตามนาที • หักอย่างมากจนหมดเงินพิเศษ (ไม่ติดลบ) • OT 1.5/2/3 คิดเพิ่ม</div>
-  </div>
-  <div class="card">
-    <h2>🚀 การใช้งาน 4 ขั้นตอน</h2>
-    <div class="grid">
-      <div><b>1. เพิ่มพนักงาน</b><br><small>แท็บ 👥 พนักงาน</small></div>
-      <div><b>2. บันทึกเวลา</b><br><small>แท็บ ⏰ ลงเวลา (มา/ขาด/ลา/OT/สาย)</small></div>
-      <div><b>3. เพิ่มรายการพิเศษ</b><br><small>แท็บ 💵 รายการพิเศษ (เบิก/กู้)</small></div>
-      <div><b>4. คำนวณเงินเดือน</b><br><small>แท็บ 🧮 คำนวณ → ดูสลิป → พิมพ์</small></div>
-    </div>
-  </div>
-</section>
-
-<section class="tab" id="emp">
-  <div class="card">
-    <h2>➕ เพิ่ม / แก้ไขพนักงาน</h2>
-    <div class="grid">
-      <div><label>รหัสพนักงาน *</label><input id="e-id" placeholder="เช่น EMP01"></div>
-      <div><label>ชื่อ-นามสกุล *</label><input id="e-name" placeholder="เช่น นางมามิว (มอ)"></div>
-      <div><label>ตำแหน่ง</label><input id="e-pos" placeholder="เช่น คนงาน"></div>
-      <div><label>แผนก</label><input id="e-dept" placeholder="เช่น ฝ่ายผลิต"></div>
-      <div><label>ค่าแรง/วัน (บาท) *</label><input id="e-rate" type="number" step="0.01" value="372"></div>
-      <div><label>💰 เงินพิเศษ/งวด (บาท)</label><input id="e-special" type="number" step="0.01" value="0"></div>
-      <div><label>ธนาคาร</label><input id="e-bank" placeholder="เช่น กสิกรไทย"></div>
-      <div><label>เลขบัญชี</label><input id="e-acc" placeholder="เช่น 123-4-56789-0"></div>
-      <div><label>เลขประกันสังคม</label><input id="e-sso" placeholder="เช่น 1-2345-67890-12-3"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveEmp" onclick="saveEmp()">💾 บันทึกพนักงาน</button>
-      <button class="btn btn-gray" onclick="resetEmpForm()">🔄 ล้างฟอร์ม</button>
-      <button class="btn btn-purple" id="btnFillSpecial" onclick="fillSpecial()">✨ ใส่เงินพิเศษตามบัญชีบริษัท</button>
-    </div>
-    <div class="note">💰 <b>ปุ่มม่วง</b> = ใส่เงินพิเศษอัตโนมัติตามบัญชีเดิม (มอ 1330 / เอ้ย-โทน-เอก 2030 / อ๋า 1470 / ชาน 980 / เวย 630 / ซ่าน-โจ 1540 / ลิน 1610)</div>
-  </div>
-  <div class="card">
-    <h2>📋 รายชื่อพนักงาน (<span id="emp-count">0</span>)</h2>
-    <div class="tbl-wrap"><table id="emp-tbl">
-      <thead><tr><th>รหัส</th><th>ชื่อ</th><th>ตำแหน่ง</th><th>แผนก</th><th class="r">ค่าแรง/วัน</th><th class="r">💰 พิเศษ/งวด</th><th>ธนาคาร/บัญชี</th><th class="c">จัดการ</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-  </div>
-</section>
-
-<section class="tab" id="att">
-  <div class="card">
-    <h2>⏰ บันทึกเวลาทำงาน</h2>
-    <div class="grid">
-      <div><label>พนักงาน *</label><select id="a-emp"></select></div>
-      <div><label>วันที่ *</label><input id="a-date" type="date"></div>
-      <div><label>สถานะ *</label>
-        <select id="a-status" onchange="toggleAtt()">
-          <option value="present">มาทำงาน</option>
-          <option value="absent">ขาดงาน</option>
-          <option value="leave">ลา</option>
-        </select>
-      </div>
-      <div id="a-leave-wrap" style="display:none"><label>ประเภทลา</label>
-        <select id="a-leave">
-          <option value="sick">ลาป่วย (ได้ค่าจ้าง 30 วัน/ปี)</option>
-          <option value="personal">ลากิจ (ได้ค่าจ้าง 3 วัน/ปี)</option>
-          <option value="annual">ลาพักร้อน</option>
-          <option value="unpaid">ลาไม่จ่ายค่าจ้าง</option>
-        </select>
-      </div>
-      <div id="a-day-wrap"><label>ประเภทวัน</label>
-        <select id="a-day">
-          <option value="normal">วันทำงานปกติ</option>
-          <option value="holiday">วันหยุดประจำสัปดาห์</option>
-          <option value="special">วันหยุดนักขัตฤกษ์</option>
-        </select>
-      </div>
-      <div id="a-ot-wrap"><label>ชั่วโมง OT</label><input id="a-ot" type="number" step="0.5" value="0" min="0"></div>
-      <div id="a-late-wrap"><label>สาย (นาที)</label><input id="a-late" type="number" step="1" value="0" min="0"></div>
-    </div>
-    <div class="note">ℹ️ <b>OT:</b> วันปกติ ×1.5 | วันหยุด ×2 | นักขัตฤกษ์ ×3 • <b>สาย:</b> หักจากเงินพิเศษตามนาทีที่สาย</div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveAtt" onclick="saveAtt()">💾 บันทึกเวลา</button>
-    </div>
-  </div>
-  <div class="card">
-    <h2>📅 บันทึกเวลาทั้งหมด</h2>
-    <div class="grid2">
-      <div><label>กรองพนักงาน</label><select id="f-emp" onchange="renderAtt()"><option value="">ทั้งหมด</option></select></div>
-      <div><label>กรองเดือน</label><input id="f-month" type="month" onchange="renderAtt()"></div>
-    </div>
-    <div class="tbl-wrap"><table id="att-tbl">
-      <thead><tr><th>พนักงาน</th><th>วันที่</th><th>สถานะ</th><th>ประเภทวัน</th><th>ลา</th><th class="r">สาย(นาที)</th><th class="r">OT(ชม.)</th><th class="c">จัดการ</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-  </div>
-</section>
-
-<section class="tab" id="adj">
-  <div class="card">
-    <h2>💵 รายการพิเศษ / เบิก / กู้ (รายงวด)</h2>
-    <div class="grid">
-      <div><label>พนักงาน *</label><select id="j-emp"></select></div>
-      <div><label>วันเริ่มงวด *</label><input id="j-start" type="date"></div>
-      <div><label>วันสิ้นงวด *</label><input id="j-end" type="date"></div>
-      <div><label>รายรับอื่น ๆ (+)</label><input id="j-extra" type="number" step="0.01" value="0"></div>
-      <div><label>หักเบิกล่วงหน้า (-)</label><input id="j-adv" type="number" step="0.01" value="0"></div>
-      <div><label>หักเงินกู้ (-)</label><input id="j-loan" type="number" step="0.01" value="0"></div>
-      <div><label>หักอื่น ๆ (-)</label><input id="j-other" type="number" step="0.01" value="0"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveAdj" onclick="saveAdj()">💾 บันทึกรายการ</button>
-    </div>
-    <div class="note">💡 "เงินพิเศษ" ตามบัญชีบริษัท จะถูกดึงจากประวัติพนักงาน (ช่อง 💰) อัตโนมัติ — ไม่ต้องกรอกที่นี่</div>
-  </div>
-  <div class="card">
-    <h2>📋 รายการที่บันทึก</h2>
-    <div class="tbl-wrap"><table id="adj-tbl">
-      <thead><tr><th>พนักงาน</th><th>งวด</th><th class="r">รับอื่น</th><th class="r">เบิก</th><th class="r">กู้</th><th class="r">หักอื่น</th><th class="c">จัดการ</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-  </div>
-</section>
-
-<section class="tab" id="calc">
-  <div class="card">
-    <h2>🧮 คำนวณเงินเดือน</h2>
-    <div class="grid">
-      <div><label>พนักงาน</label>
-        <select id="c-emp"><option value="">— ทั้งหมด —</option></select>
-      </div>
-      <div><label>วันเริ่มงวด *</label><input id="c-start" type="date"></div>
-      <div><label>วันสิ้นงวด *</label><input id="c-end" type="date"></div>
-    </div>
-    <div style="margin-top:8px">
-      <button class="btn btn-yellow btn-sm" onclick="setPeriod('1-15')">1-15 ของเดือน</button>
-      <button class="btn btn-yellow btn-sm" onclick="setPeriod('16-end')">16-สิ้นเดือน</button>
-      <button class="btn btn-yellow btn-sm" onclick="setPeriod('full')">ทั้งเดือน</button>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-green" id="btnCalc" onclick="runPayroll()">🚀 คำนวณเงินเดือน</button>
-    </div>
-  </div>
-  <div id="calc-result"></div>
-</section>
-
-<section class="tab" id="report">
-  <div class="card">
-    <h2>📈 รายงานสรุปงวด</h2>
-    <div class="grid">
-      <div><label>วันเริ่มงวด</label><input id="r-start" type="date"></div>
-      <div><label>วันสิ้นงวด</label><input id="r-end" type="date"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-green" onclick="loadReport()">📊 ดูรายงาน</button>
-      <button class="btn btn-primary" onclick="exportCSV()">📥 Export CSV</button>
-    </div>
-  </div>
-  <div id="report-result"></div>
-</section>
-
-<section class="tab" id="set">
-  <div class="card">
-    <h2>🏢 ข้อมูลบริษัท (แสดงบนสลิป)</h2>
-    <div class="grid">
-      <div><label>ชื่อบริษัท (ไทย)</label><input id="s-co"></div>
-      <div><label>ชื่อบริษัท (อังกฤษ)</label><input id="s-coen"></div>
-      <div><label>ที่อยู่</label><input id="s-addr"></div>
-      <div><label>เบอร์โทร</label><input id="s-tel"></div>
-      <div><label>เลขผู้เสียภาษี</label><input id="s-tax" placeholder="กรอกเลข 13 หลัก"></div>
-    </div>
-  </div>
-  <div class="card">
-    <h2>⚙️ กฎเกณฑ์การคำนวณ</h2>
-    <div class="grid">
-      <div><label>ค่าแรงขั้นต่ำเริ่มต้น (บาท/วัน)</label><input id="s-rate" type="number" step="1"></div>
-      <div><label>ชั่วโมงทำงาน/วัน</label><input id="s-hr" type="number" step="0.5"></div>
-      <div><label>ประกันสังคม (%)</label><input id="s-sso" type="number" step="0.01"></div>
-      <div><label>เพดานประกันสังคม/เดือน</label><input id="s-ssomax" type="number" step="1"></div>
-      <div><label>ลาป่วยได้ค่าจ้าง (วัน/ปี)</label><input id="s-sick" type="number" step="1"></div>
-      <div><label>ลากิจได้ค่าจ้าง (วัน/ปี)</label><input id="s-personal" type="number" step="1"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveSet" onclick="saveSet()">💾 บันทึกตั้งค่า</button>
-    </div>
-  </div>
-  <div class="card">
-    <h2>🎁 ข้อมูล & สำรอง</h2>
-    <button class="btn btn-green" id="btnDemo" onclick="loadDemo()">✨ โหลดข้อมูลตัวอย่าง</button>
-    <button class="btn btn-primary" onclick="exportAll()">📥 สำรองข้อมูล (JSON)</button>
-    <button class="btn btn-yellow" onclick="document.getElementById('imp-file').click()">📤 นำเข้าข้อมูล</button>
-    <input type="file" id="imp-file" accept=".json" style="display:none" onchange="importAll(event)">
-    <button class="btn btn-red" onclick="clearAll()">🗑️ ลบข้อมูลทั้งหมด (บน Cloud)</button>
-  </div>
-  <div class="card">
-    <h2>☁️ สถานะฐานข้อมูล</h2>
-    <p><b>Project ID:</b> yh-daily-payroll</p>
-    <p><b>Collections:</b> employees, attendance, adjustments, payroll, settings</p>
-    <p style="margin-top:8px;font-size:.85rem;color:#64748b">ข้อมูลทั้งหมดถูกเก็บใน Firebase Firestore (Cloud) — เข้าถึงได้จากทุกอุปกรณ์ และจะ sync อัตโนมัติ</p>
-  </div>
-</section>
-
-</main>
-
-<div id="printArea"></div>
-<footer>☁️ ยงเฮง มหาชัย รีไซเคิ้ล — <a href="https://github.com/nithya2517-hash/payroll">GitHub Repository</a></footer>
-
-<div class="modal" id="slipModal">
-  <div class="modal-box big">
-    <div style="text-align:right;margin-bottom:10px" class="noprint">
-      <button class="btn btn-green" onclick="window.print()">🖨️ พิมพ์ / Save PDF</button>
-      <button class="btn btn-red" onclick="closeModal()">✕ ปิด</button>
-    </div>
-    <div id="slipContent"></div>
-  </div>
+<div class="errbox" id="dbError"></div>
+<div class="note">💡 <b>กฎหัก:</b> ค่าไฟ(หารตามห้อง)+ค่าน้ำ(งวด2)+ปกส.ลูกจ้าง → หักจากค่าแรงรายวัน • ปกส.นายจ้าง → หักจากเงินพิเศษ • เงินพิเศษหักตามวันขาด/ลา/สาย (ไม่ติดลบ) • OT 1.5/2/3</div>
 </div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {
-  getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot, writeBatch
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAR2P38I28JDXts1-O0xtAjn4YHDM8tFdU",
-  authDomain: "yh-daily-payroll.firebaseapp.com",
-  projectId: "yh-daily-payroll",
-  storageBucket: "yh-daily-payroll.firebasestorage.app",
-  messagingSenderId: "1026361676126",
-  appId: "1:1026361676126:web:9012c2c08989d341ec3fcf",
-  measurementId: "G-91EEL3FSLC"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// เงินพิเศษตามบัญชีบริษัท (บาท/งวด)
-const SPECIAL_PRESET = {
-  'EMP01':1330,'EMP02':2030,'EMP03':2030,'EMP04':630,
-  'EMP05':1470,'EMP06':980,'EMP07':2030,'EMP08':1540,
-  'EMP09':1540,'EMP10':1610
-};
-
-function withTimeout(promise, ms, name='operation'){
-  return Promise.race([
-    promise,
-    new Promise((_,reject) => setTimeout(()=>reject(new Error(`${name} หมดเวลา ${ms/1000} วินาที — เช็คว่า Firestore Database สร้างแล้วหรือยัง`)), ms))
-  ]);
-}
-
-window.EMP = [];
-window.ATT = [];
-window.ADJ = [];
-window.PAY = [];
-window.SET = {
-  co: 'บริษัท ยงเฮง มหาชัย รีไซเคิ้ล จำกัด',
-  coen: 'YONGHANG MAHACHAI RECCYCLE COMPANY LIMITED',
-  addr: '38/50 หมู่ที่ 8 ตำบลท่าทราย อำเภอเมืองสมุทรสาคร จ.สมุทรสาคร 74000',
-  tax: '',
-  tel: '034 414 119',
-  rate: 372, hr: 8, sso: 0.05, ssomax: 750,
-  sick: 30, personal: 3
-};
-
-const r2 = x => Math.round(x*100)/100;
-const fmt = n => Number(n||0).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2});
-const thaiDate = s => {
-  if(!s) return '-';
-  const d = new Date(s + 'T00:00:00');
-  return `${d.getDate()} ${['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'][d.getMonth()]} ${d.getFullYear()+543}`;
-};
-
-function toast(msg, type='ok'){
-  const t = document.createElement('div');
-  t.className = 'toast ' + type;
-  t.textContent = (type==='ok'?'✓ ':'⚠ ') + msg;
-  document.body.appendChild(t);
-  setTimeout(()=>t.remove(), 3500);
-}
-
-function showDbError(msg){
-  const el = document.getElementById('dbError');
-  el.style.display = 'block';
-  el.innerHTML = '❌ <b>ไม่สามารถเชื่อมต่อกับ Cloud ได้:</b><br>' + msg +
-    '<br><br><b>วิธีแก้:</b><br>' +
-    '1. ไปที่ <a href="https://console.firebase.google.com/project/yh-daily-payroll/firestore" target="_blank" style="color:#1e40af"><b>Firebase Console → Firestore Database</b></a><br>' +
-    '2. ถ้ายังไม่มี ให้กด <b>"Create database"</b><br>' +
-    '3. เลือก Location: <b>asia-southeast1 (Singapore)</b><br>' +
-    '4. เลือก <b>"Start in test mode"</b> → Enable<br>' +
-    '5. รีเฟรชหน้าเว็บนี้';
-  setConnStatus(false,'เชื่อมต่อไม่ได้');
-}
-
-function setConnStatus(ok, txt){
-  const dot = document.getElementById('dbStatus');
-  const txtEl = document.getElementById('dbStatusText');
-  const sync = document.getElementById('syncStatus');
-  dot.className = 'status-dot ' + (ok?'ok':'err');
-  txtEl.textContent = txt;
-  sync.textContent = ok ? 'เชื่อมต่อกับ Cloud แล้ว' : txt;
-}
-
-let listenersOk = 0;
-const requiredListeners = 5;
-function checkAllListeners(){
-  listenersOk++;
-  if(listenersOk >= requiredListeners){
-    setConnStatus(true,'เชื่อมต่อกับ Cloud แล้ว');
-    document.getElementById('dbError').style.display = 'none';
-  }
-}
-
-try {
-  onSnapshot(collection(db,'employees'), snap => {
-    window.EMP = snap.docs.map(d => ({id:d.id, ...d.data()}));
-    renderEmp(); refreshEmpSelects(true); renderDash();
-    checkAllListeners();
-  }, err => showDbError('employees: '+err.message));
-
-  onSnapshot(collection(db,'attendance'), snap => {
-    window.ATT = snap.docs.map(d => ({docId:d.id, ...d.data()}));
-    renderAtt(); renderDash();
-    checkAllListeners();
-  }, err => showDbError('attendance: '+err.message));
-
-  onSnapshot(collection(db,'adjustments'), snap => {
-    window.ADJ = snap.docs.map(d => ({docId:d.id, ...d.data()}));
-    renderAdj();
-    checkAllListeners();
-  }, err => showDbError('adjustments: '+err.message));
-
-  onSnapshot(collection(db,'payroll'), snap => {
-    window.PAY = snap.docs.map(d => ({docId:d.id, ...d.data()}));
-    renderDash();
-    checkAllListeners();
-  }, err => showDbError('payroll: '+err.message));
-
-  onSnapshot(doc(db,'settings','config'), snap => {
-    if(snap.exists()){
-      window.SET = {...window.SET, ...snap.data()};
-    }
-    loadSetForm();
-    checkAllListeners();
-  }, err => showDbError('settings: '+err.message));
-} catch(e){
-  showDbError('โหลด SDK: '+e.message);
-}
-
-setTimeout(()=>{
-  if(listenersOk < requiredListeners){
-    showDbError('รอการเชื่อมต่อนานเกินไป — Firestore อาจยังไม่ได้สร้าง');
-  }
-}, 10000);
-
-document.querySelectorAll('.tabbtn').forEach(b => {
-  b.onclick = () => {
-    document.querySelectorAll('.tabbtn').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    document.getElementById(b.dataset.tab).classList.add('active');
-    if(b.dataset.tab==='dash') renderDash();
-    if(b.dataset.tab==='emp') renderEmp();
-    if(b.dataset.tab==='att') { refreshEmpSelects(); renderAtt(); }
-    if(b.dataset.tab==='adj') { refreshEmpSelects(); renderAdj(); }
-    if(b.dataset.tab==='calc') refreshEmpSelects(true);
-    if(b.dataset.tab==='set') loadSetForm();
-  };
-});
-
-// ========== พนักงาน ==========
-window.saveEmp = async function(){
-  const id = document.getElementById('e-id').value.trim();
-  const name = document.getElementById('e-name').value.trim();
-  if(!id || !name){ toast('กรุณากรอกรหัสและชื่อ','err'); return; }
-  const btn = document.getElementById('btnSaveEmp');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const emp = {
-      name,
-      pos: document.getElementById('e-pos').value.trim(),
-      dept: document.getElementById('e-dept').value.trim(),
-      rate: parseFloat(document.getElementById('e-rate').value) || SET.rate,
-      special: parseFloat(document.getElementById('e-special').value) || 0,
-      bank: document.getElementById('e-bank').value.trim(),
-      acc: document.getElementById('e-acc').value.trim(),
-      sso: document.getElementById('e-sso').value.trim()
-    };
-    await withTimeout(setDoc(doc(db,'employees',id), emp), 15000, 'บันทึกพนักงาน');
-    toast('บันทึกพนักงานแล้ว');
-    resetEmpForm();
-  } catch(e){ toast(e.message,'err'); showDbError(e.message); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกพนักงาน';
-};
-
-window.resetEmpForm = function(){
-  ['e-id','e-name','e-pos','e-dept','e-bank','e-acc','e-sso'].forEach(id=>{
-    const el = document.getElementById(id);
-    el.value=''; el.readOnly=false;
-  });
-  document.getElementById('e-rate').value = SET.rate;
-  document.getElementById('e-special').value = 0;
-};
-
-window.delEmp = async function(id){
-  if(!confirm(`ลบพนักงาน ${id}?`)) return;
-  const btn = event.target;
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>';
-  try {
-    const batch = writeBatch(db);
-    batch.delete(doc(db,'employees',id));
-    ATT.filter(a=>a.emp===id).forEach(a=>batch.delete(doc(db,'attendance',a.docId)));
-    ADJ.filter(a=>a.emp===id).forEach(a=>batch.delete(doc(db,'adjustments',a.docId)));
-    PAY.filter(p=>p.emp===id).forEach(p=>batch.delete(doc(db,'payroll',p.docId)));
-    await withTimeout(batch.commit(), 20000, 'ลบพนักงาน');
-    toast('ลบพนักงานแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '🗑️';
-};
-
-window.editEmp = function(id){
-  const e = EMP.find(x=>x.id===id); if(!e) return;
-  document.getElementById('e-id').value = e.id;
-  document.getElementById('e-id').readOnly = true;
-  document.getElementById('e-name').value = e.name;
-  document.getElementById('e-pos').value = e.pos||'';
-  document.getElementById('e-dept').value = e.dept||'';
-  document.getElementById('e-rate').value = e.rate;
-  document.getElementById('e-special').value = e.special||0;
-  document.getElementById('e-bank').value = e.bank||'';
-  document.getElementById('e-acc').value = e.acc||'';
-  document.getElementById('e-sso').value = e.sso||'';
-  window.scrollTo({top:0,behavior:'smooth'});
-};
-
-window.fillSpecial = async function(){
-  if(!confirm('ใส่เงินพิเศษตามบัญชีบริษัท (มอ 1330, เอ้ย/โทน/เอก 2030, อ๋า 1470, ชาน 980, เวย 630, ซ่าน/โจ 1540, ลิน 1610)?')) return;
-  const btn = document.getElementById('btnFillSpecial');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังใส่...';
-  try {
-    const batch = writeBatch(db);
-    let n = 0;
-    EMP.forEach(e=>{
-      if(SPECIAL_PRESET[e.id] !== undefined){
-        batch.set(doc(db,'employees',e.id), {...e, special:SPECIAL_PRESET[e.id]});
-        n++;
-      }
-    });
-    await withTimeout(batch.commit(), 20000, 'ใส่เงินพิเศษ');
-    toast(`ใส่เงินพิเศษ ${n} คนแล้ว`);
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '✨ ใส่เงินพิเศษตามบัญชีบริษัท';
-};
-
-window.renderEmp = function(){
-  const tb = document.querySelector('#emp-tbl tbody');
-  document.getElementById('emp-count').textContent = EMP.length;
-  if(!EMP.length){ tb.innerHTML='<tr><td colspan="8" class="empty">ยังไม่มีพนักงาน — นำเข้า JSON หรือกดโหลดตัวอย่างที่แท็บตั้งค่า</td></tr>'; return; }
-  tb.innerHTML = EMP.map(e=>`
-    <tr>
-      <td><b>${e.id}</b></td><td>${e.name}</td><td>${e.pos||'-'}</td><td>${e.dept||'-'}</td>
-      <td class="r">${fmt(e.rate)}</td>
-      <td class="r" style="color:#7c3aed;font-weight:600">${fmt(e.special||0)}</td>
-      <td>${e.bank||'-'} ${e.acc?'<br><small>'+e.acc+'</small>':''}</td>
-      <td class="c">
-        <button class="btn btn-yellow btn-sm" onclick="editEmp('${e.id}')">✏️</button>
-        <button class="btn btn-red btn-sm" onclick="delEmp('${e.id}')">🗑️</button>
-      </td>
-    </tr>`).join('');
-};
-
-// ========== ลงเวลา ==========
-window.toggleAtt = function(){
-  const st = document.getElementById('a-status').value;
-  document.getElementById('a-leave-wrap').style.display = st==='leave'?'':'none';
-  document.getElementById('a-day-wrap').style.display = st==='present'?'':'none';
-  document.getElementById('a-ot-wrap').style.display = st==='present'?'':'none';
-  document.getElementById('a-late-wrap').style.display = st==='present'?'':'none';
-};
-
-window.saveAtt = async function(){
-  const emp = document.getElementById('a-emp').value;
-  const date = document.getElementById('a-date').value;
-  const status = document.getElementById('a-status').value;
-  if(!emp || !date){ toast('กรุณาเลือกพนักงานและวันที่','err'); return; }
-  const btn = document.getElementById('btnSaveAtt');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const data = {
-      emp, date, status,
-      day: status==='present' ? document.getElementById('a-day').value : 'normal',
-      leave: status==='leave' ? document.getElementById('a-leave').value : 'none',
-      ot: status==='present' ? parseFloat(document.getElementById('a-ot').value)||0 : 0,
-      late: status==='present' ? parseFloat(document.getElementById('a-late').value)||0 : 0
-    };
-    await withTimeout(setDoc(doc(db,'attendance', `${emp}_${date}`), data), 15000, 'บันทึกเวลา');
-    toast('บันทึกเวลาแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกเวลา';
-};
-
-window.delAtt = async function(emp,date){
-  if(!confirm('ลบบันทึกวันนี้?')) return;
-  try {
-    await deleteDoc(doc(db,'attendance', `${emp}_${date}`));
-    toast('ลบบันทึกแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-};
-
-window.renderAtt = function(){
-  const fe = document.getElementById('f-emp').value;
-  const fm = document.getElementById('f-month').value;
-  let list = ATT.slice();
-  if(fe) list = list.filter(a=>a.emp===fe);
-  if(fm) list = list.filter(a=>a.date.startsWith(fm));
-  list.sort((a,b)=>b.date.localeCompare(a.date));
-  const tb = document.querySelector('#att-tbl tbody');
-  if(!list.length){ tb.innerHTML='<tr><td colspan="8" class="empty">ไม่มีข้อมูล</td></tr>'; return; }
-  const stMap = {present:'<span class="badge badge-green">มา</span>',absent:'<span class="badge badge-red">ขาด</span>',leave:'<span class="badge badge-yellow">ลา</span>'};
-  const dayMap = {normal:'ปกติ',holiday:'วันหยุด',special:'นักขัตฤกษ์'};
-  const lvMap = {none:'-',sick:'ป่วย',personal:'กิจ',annual:'พักร้อน',unpaid:'ไม่จ่าย'};
-  tb.innerHTML = list.map(a=>{
-    const e = EMP.find(x=>x.id===a.emp);
-    return `<tr>
-      <td>${e?e.name:a.emp}<br><small>${a.emp}</small></td>
-      <td>${thaiDate(a.date)}</td>
-      <td>${stMap[a.status]||a.status}</td>
-      <td>${dayMap[a.day]||a.day}</td>
-      <td>${lvMap[a.leave]||a.leave}</td>
-      <td class="r">${a.late||0}</td>
-      <td class="r">${a.ot||0}</td>
-      <td class="c"><button class="btn btn-red btn-sm" onclick="delAtt('${a.emp}','${a.date}')">🗑️</button></td>
-    </tr>`;
-  }).join('');
-};
-
-// ========== รายการพิเศษ ==========
-window.saveAdj = async function(){
-  const emp = document.getElementById('j-emp').value;
-  const start = document.getElementById('j-start').value;
-  const end = document.getElementById('j-end').value;
-  if(!emp || !start || !end){ toast('กรุณาเลือกพนักงานและงวด','err'); return; }
-  const btn = document.getElementById('btnSaveAdj');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const data = {
-      emp, start, end,
-      extra: parseFloat(document.getElementById('j-extra').value)||0,
-      adv: parseFloat(document.getElementById('j-adv').value)||0,
-      loan: parseFloat(document.getElementById('j-loan').value)||0,
-      other: parseFloat(document.getElementById('j-other').value)||0
-    };
-    await withTimeout(setDoc(doc(db,'adjustments', `${emp}_${start}_${end}`), data), 15000, 'บันทึกรายการ');
-    toast('บันทึกรายการแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกรายการ';
-};
-
-window.delAdj = async function(docId){
-  if(!confirm('ลบรายการนี้?')) return;
-  await deleteDoc(doc(db,'adjustments', docId));
-  toast('ลบรายการแล้ว');
-};
-
-window.renderAdj = function(){
-  const tb = document.querySelector('#adj-tbl tbody');
-  if(!ADJ.length){ tb.innerHTML='<tr><td colspan="7" class="empty">ไม่มีรายการ</td></tr>'; return; }
-  tb.innerHTML = ADJ.map(a=>{
-    const e = EMP.find(x=>x.id===a.emp);
-    return `<tr>
-      <td>${e?e.name:a.emp}</td>
-      <td>${thaiDate(a.start)} - ${thaiDate(a.end)}</td>
-      <td class="r">${fmt(a.extra)}</td>
-      <td class="r">${fmt(a.adv)}</td>
-      <td class="r">${fmt(a.loan)}</td>
-      <td class="r">${fmt(a.other)}</td>
-      <td class="c"><button class="btn btn-red btn-sm" onclick="delAdj('${a.docId}')">🗑️</button></td>
-    </tr>`;
-  }).join('');
-};
-
-// ========== คำนวณ ==========
-window.setPeriod = function(kind){
-  const today = new Date();
-  const y = today.getFullYear(), m = today.getMonth();
-  const lastDay = new Date(y,m+1,0).getDate();
-  let s,e;
-  if(kind==='1-15'){ s=`${y}-${String(m+1).padStart(2,'0')}-01`; e=`${y}-${String(m+1).padStart(2,'0')}-15`; }
-  else if(kind==='16-end'){ s=`${y}-${String(m+1).padStart(2,'0')}-16`; e=`${y}-${String(m+1).padStart(2,'0')}-${lastDay}`; }
-  else { s=`${y}-${String(m+1).padStart(2,'0')}-01`; e=`${y}-${String(m+1).padStart(2,'0')}-${lastDay}`; }
-  document.getElementById('c-start').value=s;
-  document.getElementById('c-end').value=e;
-};
-
-window.calcOne = function(empId, start, end){
-  const e = EMP.find(x=>x.id===empId); if(!e) return null;
-  const daily = Number(e.rate) || 0;
-  const hourly = daily / (Number(SET.hr) || 8);
-  const recs = ATT.filter(a=>a.emp===empId && a.date>=start && a.date<=end);
-
-  let work=0, absent=0, sick=0, personal=0, annual=0, unpaid=0, holiday=0, otHr=0, lateMin=0;
-  let base=0, otPay=0, holExtra=0;
-  const year = start.slice(0,4);
-  const yearRecs = ATT.filter(a=>a.emp===empId && a.date.startsWith(year));
-  let sickY = yearRecs.filter(a=>a.status==='leave'&&a.leave==='sick').length;
-  let persY = yearRecs.filter(a=>a.status==='leave'&&a.leave==='personal').length;
-
-  for(const r of recs){
-    if(r.status==='present'){
-      work++; base += daily; otHr += r.ot||0; lateMin += r.late||0;
-      if(r.day==='holiday'||r.day==='special'){ holiday++; holExtra += daily; }
-      if(r.ot>0){
-        const mult = r.day==='normal' ? 1.5 : (r.day==='holiday' ? 2 : 3);
-        otPay += r.ot * hourly * mult;
-      }
-    } else if(r.status==='absent'){ absent++; }
-    else if(r.status==='leave'){
-      if(r.leave==='sick'){ sick++; if(sickY<=SET.sick) base += daily; }
-      else if(r.leave==='personal'){ personal++; if(persY<=SET.personal) base += daily; }
-      else if(r.leave==='annual'){ annual++; base += daily; }
-      else unpaid++;
-    }
-  }
-
-  // ===== สูตรเงินพิเศษ =====
-  const allow = Number(e.special) || 0;
-  const missedDays = absent + sick + personal + annual + unpaid;
-  const specialDed = r2(Math.min(allow, missedDays*daily + (lateMin/60)*hourly));
-  const specialNet = r2(allow - specialDed);
-
-  const adj = ADJ.find(a=>a.emp===empId && a.start===start && a.end===end) || {extra:0,adv:0,loan:0,other:0};
-  const extra = Number(adj.extra) || 0;
-  const gross = r2(base + otPay + holExtra + specialNet + extra);
-  const days = Math.max(1, Math.round((new Date(end)-new Date(start))/86400000)+1);
-  const sso = r2(Math.min(gross*SET.sso, SET.ssomax * days/30));
-  const adv = Number(adj.adv)||0;
-  const loan = Number(adj.loan)||0;
-  const otherDed = Number(adj.other)||0;
-  const totalDed = r2(sso + adv + loan + otherDed);
-  const net = r2(gross - totalDed);
-
-  return {
-    emp:e, start, end, work, absent, sick, personal, annual, unpaid, holiday, otHr, lateMin,
-    base:r2(base), otPay:r2(otPay), holExtra:r2(holExtra),
-    allow, specialDed, specialNet, extra,
-    gross, sso, adv, loan, otherDed, totalDed, net
-  };
-};
-
-window.runPayroll = async function(){
-  const empId = document.getElementById('c-emp').value;
-  const start = document.getElementById('c-start').value;
-  const end = document.getElementById('c-end').value;
-  if(!start || !end){ toast('กรุณาระบุงวด','err'); return; }
-  const btn = document.getElementById('btnCalc');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังคำนวณ...';
-  try {
-    const list = empId ? [empId] : EMP.map(e=>e.id);
-    const results = list.map(id=>calcOne(id,start,end)).filter(Boolean);
-    const batch = writeBatch(db);
-    const existing = PAY.filter(p=>p.start===start && p.end===end);
-    existing.forEach(p=>batch.delete(doc(db,'payroll',p.docId)));
-    results.forEach(r=>{
-      const docId = `${r.emp.id}_${start}_${end}`;
-      batch.set(doc(db,'payroll',docId), {
-        emp: r.emp.id, empName: r.emp.name,
-        start, end, work:r.work, absent:r.absent, lateMin:r.lateMin,
-        base:r.base, otPay:r.otPay, holExtra:r.holExtra,
-        allow:r.allow, specialDed:r.specialDed, specialNet:r.specialNet,
-        extra:r.extra, gross:r.gross, sso:r.sso,
-        adv:r.adv, loan:r.loan, otherDed:r.otherDed,
-        totalDed:r.totalDed, net:r.net, calculatedAt: new Date().toISOString()
-      });
-    });
-    await withTimeout(batch.commit(), 20000, 'บันทึกเงินเดือน');
-    toast(`คำนวณแล้ว ${results.length} คน`);
-    renderCalcResults(results);
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '🚀 คำนวณเงินเดือน';
-};
-
-window.renderCalcResults = function(list){
-  const el = document.getElementById('calc-result');
-  if(!list.length){ el.innerHTML='<div class="card"><div class="empty">ไม่มีข้อมูลให้คำนวณ</div></div>'; return; }
-  const totalNet = list.reduce((s,r)=>s+r.net,0);
-  const totalGross = list.reduce((s,r)=>s+r.gross,0);
-  el.innerHTML = `
-    <div class="card">
-      <h2>📋 ผลการคำนวณ (${list.length} คน)</h2>
-      <div class="dash">
-        <div class="dash-item"><div class="l">รายได้รวม</div><div class="v">฿${fmt(totalGross)}</div></div>
-        <div class="dash-item green"><div class="l">จ่ายสุทธิรวม</div><div class="v">฿${fmt(totalNet)}</div></div>
-      </div>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>พนักงาน</th><th class="c">ทำงาน</th><th class="c">ขาด/ลา</th><th class="c">สาย</th><th class="r">💰 พิเศษที่ได้</th><th class="r">รายได้</th><th class="r">หัก</th><th class="r">สุทธิ</th><th class="c">สลิป</th></tr></thead>
-        <tbody>${list.map(r=>`
-          <tr>
-            <td><b>${r.emp.id}</b> ${r.emp.name}</td>
-            <td class="c">${r.work}</td>
-            <td class="c">${r.absent+r.sick+r.personal+r.annual+r.unpaid}</td>
-            <td class="c">${r.lateMin} น.</td>
-            <td class="r" style="color:#7c3aed">${fmt(r.specialNet)}</td>
-            <td class="r">${fmt(r.gross)}</td>
-            <td class="r">${fmt(r.totalDed)}</td>
-            <td class="r"><b>${fmt(r.net)}</b></td>
-            <td class="c"><button class="btn btn-green btn-sm" onclick='showSlip(${JSON.stringify(r).replace(/'/g,"&#39;")})'>🧾</button></td>
-          </tr>`).join('')}
-        </tbody>
-      </table></div>
-    </div>`;
-};
-
-window.showSlip = function(r){
-  document.getElementById('slipContent').innerHTML = `
-    <div class="slip">
-      <div class="co">
-        <h3>${SET.co}</h3>
-        ${SET.coen ? `<p class="coen">${SET.coen}</p>` : ''}
-        <p>ที่ตั้ง : ${SET.addr}</p>
-        <p>โทรศัพท์ : ${SET.tel}${SET.tax ? ' | เลขผู้เสียภาษี: ' + SET.tax : ''}</p>
-      </div>
-      <h4>สลิปเงินเดือน</h4>
-      <p style="text-align:center">งวด ${thaiDate(r.start)} - ${thaiDate(r.end)}</p>
-      <table>
-        <tr><td><b>รหัส:</b> ${r.emp.id}</td><td><b>ชื่อ:</b> ${r.emp.name}</td></tr>
-        <tr><td><b>ตำแหน่ง:</b> ${r.emp.pos||'-'}</td><td><b>แผนก:</b> ${r.emp.dept||'-'}</td></tr>
-      </table>
-      <table>
-        <thead><tr><th colspan="2" style="background:#166534">รายได้</th><th colspan="2" style="background:#991b1b">รายการหัก</th></tr></thead>
-        <tbody>
-          <tr><td>ค่าแรง (${r.work} วัน)</td><td class="r">${fmt(r.base)}</td><td>ประกันสังคม (5%)</td><td class="r">${fmt(r.sso)}</td></tr>
-          <tr><td>ทำงานวันหยุด</td><td class="r">${fmt(r.holExtra)}</td><td>เบิกล่วงหน้า</td><td class="r">${fmt(r.adv)}</td></tr>
-          <tr><td>OT (1.5/2/3)</td><td class="r">${fmt(r.otPay)}</td><td>เงินกู้</td><td class="r">${fmt(r.loan)}</td></tr>
-          <tr><td>เงินพิเศษ (เต็ม ${fmt(r.allow)})</td><td class="r">${fmt(r.allow)}</td><td>หักอื่น ๆ</td><td class="r">${fmt(r.otherDed)}</td></tr>
-          <tr><td>หักพิเศษ (ขาด/ลา/สาย ${r.absent+r.sick+r.personal+r.annual+r.unpaid} วัน + สาย ${r.lateMin} น.)</td><td class="r">-${fmt(r.specialDed)}</td><td></td><td></td></tr>
-          <tr><td>รายรับอื่น ๆ</td><td class="r">${fmt(r.extra)}</td><td></td><td></td></tr>
-          <tr style="background:#f1f5f9;font-weight:700"><td>รวมรายได้</td><td class="r">${fmt(r.gross)}</td><td>รวมหัก</td><td class="r">${fmt(r.totalDed)}</td></tr>
-        </tbody>
-      </table>
-      <div class="netbox">💰 เงินสุทธิ: ฿${fmt(r.net)}</div>
-      <div style="font-size:.85rem;color:#64748b">
-        📊 ทำงาน ${r.work} | ขาด ${r.absent} | ลา ${r.sick+r.personal+r.annual+r.unpaid} | สาย ${r.lateMin} นาที | OT ${r.otHr} ชม. | ทำงานวันหยุด ${r.holiday} วัน
-      </div>
-      <div class="sig">
-        <div><div class="line"></div>ผู้จ่ายเงินเดือน</div>
-        <div><div class="line"></div>ผู้อนุมัติ</div>
-      </div>
-    </div>`;
-  document.getElementById('slipModal').classList.add('show');
-};
-
-window.closeModal = function(){ document.getElementById('slipModal').classList.remove('show'); };
-
-// ========== รายงาน ==========
-window.loadReport = function(){
-  const s = document.getElementById('r-start').value;
-  const e = document.getElementById('r-end').value;
-  if(!s||!e){ toast('กรุณาระบุงวด','err'); return; }
-  const list = PAY.filter(p=>p.start===s && p.end===e);
-  const el = document.getElementById('report-result');
-  if(!list.length){ el.innerHTML='<div class="card"><div class="empty">ไม่มีข้อมูลงวดนี้ (กดคำนวณก่อน)</div></div>'; return; }
-  const tGross = list.reduce((a,r)=>a+r.gross,0);
-  const tNet = list.reduce((a,r)=>a+r.net,0);
-  const tS = list.reduce((a,r)=>a+r.sso,0);
-  const tSp = list.reduce((a,r)=>a+(r.specialNet||0),0);
-  el.innerHTML = `
-    <div class="card">
-      <h2>📈 รายงานงวด ${thaiDate(s)} - ${thaiDate(e)}</h2>
-      <div class="dash">
-        <div class="dash-item"><div class="l">พนักงาน</div><div class="v">${list.length}</div></div>
-        <div class="dash-item purple"><div class="l">เงินพิเศษรวม</div><div class="v">฿${fmt(tSp)}</div></div>
-        <div class="dash-item yellow"><div class="l">ปกส.รวม</div><div class="v">฿${fmt(tS)}</div></div>
-        <div class="dash-item green"><div class="l">สุทธิรวม</div><div class="v">฿${fmt(tNet)}</div></div>
-      </div>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>รหัส</th><th>ชื่อ</th><th class="c">วัน</th><th class="c">ขาด/ลา</th><th class="c">สาย</th><th class="r">ค่าแรง</th><th class="r">OT</th><th class="r">พิเศษที่ได้</th><th class="r">รวมรายได้</th><th class="r">รวมหัก</th><th class="r">สุทธิ</th></tr></thead>
-        <tbody>${list.map(r=>`
-          <tr>
-            <td>${r.emp}</td>
-            <td>${r.empName}</td>
-            <td class="c">${r.work}</td>
-            <td class="c">${r.absent}</td>
-            <td class="c">${r.lateMin||0}</td>
-            <td class="r">${fmt(r.base)}</td>
-            <td class="r">${fmt(r.otPay)}</td>
-            <td class="r">${fmt(r.specialNet)}</td>
-            <td class="r"><b>${fmt(r.gross)}</b></td>
-            <td class="r">${fmt(r.totalDed)}</td>
-            <td class="r"><b style="color:#16a34a">${fmt(r.net)}</b></td>
-          </tr>`).join('')}
-        </tbody>
-        <tfoot><tr style="background:#1e3a8a;color:#fff;font-weight:700">
-          <td colspan="8">รวมทั้งหมด</td>
-          <td class="r">${fmt(tGross)}</td>
-          <td class="r">${fmt(list.reduce((a,r)=>a+r.totalDed,0))}</td>
-          <td class="r">${fmt(tNet)}</td>
-        </tr></tfoot>
-      </table></div>
-    </div>`;
-};
-
-window.exportCSV = function(){
-  const s = document.getElementById('r-start').value;
-  const e = document.getElementById('r-end').value;
-  if(!s||!e){ toast('กรุณาระบุงวดก่อน','err'); return; }
-  const list = PAY.filter(p=>p.start===s && p.end===e);
-  if(!list.length){ toast('ไม่มีข้อมูลงวดนี้','err'); return; }
-  const header = ['รหัส','ชื่อ','วันทำงาน','ขาด','ลา','สาย(นาที)','ค่าแรง','OT','ทำงานวันหยุด','เงินพิเศษเต็ม','หักพิเศษ','พิเศษที่ได้','รวมรายได้','ปกส','รวมหัก','สุทธิ'];
-  const rows = list.map(r=>[r.emp,r.empName,r.work,r.absent,(r.sick||0)+(r.personal||0)+(r.annual||0)+(r.unpaid||0),r.lateMin||0,r.base,r.otPay,r.holExtra,r.allow,r.specialDed,r.specialNet,r.gross,r.sso,r.totalDed,r.net]);
-  const csv = '\ufeff' + [header,...rows].map(r=>r.map(v=>`"${v}"`).join(',')).join('\n');
-  const blob = new Blob([csv],{type:'text/csv;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `payroll_${s}_${e}.csv`;
-  a.click();
-};
-
-// ========== ตั้งค่า ==========
-window.loadSetForm = function(){
-  document.getElementById('s-co').value = SET.co;
-  document.getElementById('s-coen').value = SET.coen||'';
-  document.getElementById('s-addr').value = SET.addr;
-  document.getElementById('s-tax').value = SET.tax||'';
-  document.getElementById('s-tel').value = SET.tel;
-  document.getElementById('s-rate').value = SET.rate;
-  document.getElementById('s-hr').value = SET.hr;
-  document.getElementById('s-sso').value = SET.sso;
-  document.getElementById('s-ssomax').value = SET.ssomax;
-  document.getElementById('s-sick').value = SET.sick;
-  document.getElementById('s-personal').value = SET.personal;
-};
-
-window.saveSet = async function(){
-  const btn = document.getElementById('btnSaveSet');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const data = {
-      co: document.getElementById('s-co').value,
-      coen: document.getElementById('s-coen').value,
-      addr: document.getElementById('s-addr').value,
-      tax: document.getElementById('s-tax').value,
-      tel: document.getElementById('s-tel').value,
-      rate: parseFloat(document.getElementById('s-rate').value)||372,
-      hr: parseFloat(document.getElementById('s-hr').value)||8,
-      sso: parseFloat(document.getElementById('s-sso').value)||0.05,
-      ssomax: parseFloat(document.getElementById('s-ssomax').value)||750,
-      sick: parseInt(document.getElementById('s-sick').value)||30,
-      personal: parseInt(document.getElementById('s-personal').value)||3
-    };
-    await withTimeout(setDoc(doc(db,'settings','config'), data), 15000, 'บันทึกตั้งค่า');
-    toast('บันทึกตั้งค่าแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกตั้งค่า';
-};
-
-window.loadDemo = async function(){
-  if(!confirm('โหลดข้อมูลตัวอย่างขึ้น Cloud?')) return;
-  const btn = document.getElementById('btnDemo');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังโหลด (สูงสุด 20 วินาที)...';
-  try {
-    const batch = writeBatch(db);
-    const demoEmp = [
-      {id:'EMP01',name:'นางมามิว (มอ)',pos:'คนงาน',dept:'ฝ่ายผลิต',rate:372,special:1330},
-      {id:'EMP02',name:'นายตุนเอย (เอ้ย)',pos:'คนงาน',dept:'ฝ่ายผลิต',rate:372,special:2030},
-      {id:'EMP03',name:'นายโทนโลน (โทน)',pos:'คนงาน',dept:'ฝ่ายผลิต',rate:372,special:2030}
-    ];
-    demoEmp.forEach(e=>batch.set(doc(db,'employees',e.id), e));
-    batch.set(doc(db,'attendance','EMP01_2026-08-04'),{emp:'EMP01',date:'2026-08-04',status:'present',day:'normal',leave:'none',ot:2,late:0});
-    batch.set(doc(db,'attendance','EMP01_2026-08-05'),{emp:'EMP01',date:'2026-08-05',status:'present',day:'normal',leave:'none',ot:0,late:60});
-    batch.set(doc(db,'attendance','EMP01_2026-08-06'),{emp:'EMP01',date:'2026-08-06',status:'absent',day:'normal',leave:'none',ot:0,late:0});
-    batch.set(doc(db,'attendance','EMP02_2026-08-04'),{emp:'EMP02',date:'2026-08-04',status:'present',day:'normal',leave:'none',ot:0,late:0});
-    batch.set(doc(db,'attendance','EMP02_2026-08-05'),{emp:'EMP02',date:'2026-08-05',status:'present',day:'normal',leave:'none',ot:3,late:0});
-    batch.set(doc(db,'attendance','EMP03_2026-08-04'),{emp:'EMP03',date:'2026-08-04',status:'leave',day:'normal',leave:'sick',ot:0,late:0});
-    await withTimeout(batch.commit(), 20000, 'โหลดข้อมูลตัวอย่าง');
-    toast('โหลดตัวอย่างแล้ว — ลองคำนวณงวด 1-15 ส.ค. ดู');
-  } catch(e){
-    toast('โหลดไม่สำเร็จ: '+e.message,'err');
-    showDbError(e.message);
-  }
-  btn.disabled = false; btn.innerHTML = '✨ โหลดข้อมูลตัวอย่าง';
-};
-
-window.exportAll = function(){
-  const data = {emp:EMP,att:ATT,adj:ADJ,pay:PAY,set:SET,exported:new Date().toISOString()};
-  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `payroll_backup_${new Date().toISOString().slice(0,10)}.json`;
-  a.click();
-};
-
-window.importAll = async function(ev){
-  const f = ev.target.files[0]; if(!f) return;
-  const r = new FileReader();
-  r.onload = async e => {
-    try{
-      const d = JSON.parse(e.target.result);
-      const batch = writeBatch(db);
-      if(d.emp) d.emp.forEach(emp=>{ const {id,...data}=emp; batch.set(doc(db,'employees',id), data); });
-      if(d.att) d.att.forEach(a=>batch.set(doc(db,'attendance',`${a.emp}_${a.date}`), a));
-      if(d.adj) d.adj.forEach(a=>batch.set(doc(db,'adjustments',`${a.emp}_${a.start}_${a.end}`), a));
-      if(d.set) batch.set(doc(db,'settings','config'), d.set);
-      await withTimeout(batch.commit(), 20000, 'นำเข้าข้อมูล');
-      toast('นำเข้าข้อมูลสำเร็จ');
-    }catch(err){ toast('ไฟล์ไม่ถูกต้อง','err'); }
-  };
-  r.readAsText(f);
-};
-
-window.clearAll = async function(){
-  if(!confirm('⚠️ ลบข้อมูลทั้งหมดบน Cloud? (กู้คืนไม่ได้)')) return;
-  if(!confirm('ยืนยันอีกครั้ง?')) return;
-  try {
-    const batch = writeBatch(db);
-    EMP.forEach(i=>batch.delete(doc(db,'employees', i.id)));
-    ATT.forEach(i=>batch.delete(doc(db,'attendance', i.docId)));
-    ADJ.forEach(i=>batch.delete(doc(db,'adjustments', i.docId)));
-    PAY.forEach(i=>batch.delete(doc(db,'payroll', i.docId)));
-    batch.delete(doc(db,'settings','config'));
-    await withTimeout(batch.commit(), 20000, 'ลบข้อมูล');
-    toast('ลบข้อมูลทั้งหมดแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-};
-
-window.refreshEmpSelects = function(withAll){
-  const opts = (withAll ? '<option value="">— ทั้งหมด —</option>' : '') +
-    EMP.map(e=>`<option value="${e.id}">${e.id} - ${e.name}</option>`).join('');
-  const optsReq = EMP.map(e=>`<option value="${e.id}">${e.id} - ${e.name}</option>`).join('');
-  ['a-emp','j-emp','c-emp'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(el) el.innerHTML = (id==='c-emp'?opts:optsReq);
-  });
-  const femp = document.getElementById('f-emp');
-  if(femp) femp.innerHTML = '<option value="">ทั้งหมด</option>' + optsReq;
-};
-
-window.renderDash = function(){
-  document.getElementById('d-emp').textContent = EMP.length;
-  document.getElementById('d-att').textContent = ATT.length;
-  document.getElementById('d-pay').textContent = PAY.length;
-  if(PAY.length){
-    const recent = [...PAY].sort((a,b)=>(b.calculatedAt||'').localeCompare(a.calculatedAt||''));
-    const latestPeriod = recent[0];
-    const samePeriod = PAY.filter(p=>p.start===latestPeriod.start && p.end===latestPeriod.end);
-    const t = samePeriod.reduce((s,r)=>s+r.net,0);
-    document.getElementById('d-net').textContent = '฿'+fmt(t);
-  }
-};
-
-toggleAtt();
-refreshEmpSelects(true);
-renderDash();
-renderEmp();
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ระบบเงินเดือน — ยงเฮง มหาชัย รีไซเคิ้ล</title>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Sarabun',sans-serif;background:#f1f5f9;color:#1e293b;padding-bottom:60px;font-size:15px}
-header{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:22px 16px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.15);position:relative}
-header h1{font-size:1.5rem;margin-bottom:4px}
-header p{opacity:.9;font-size:.9rem}
-.status-bar{position:absolute;top:8px;right:12px;display:flex;align-items:center;gap:6px;font-size:.75rem;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,.15)}
-.status-dot{width:8px;height:8px;border-radius:50%;background:#fbbf24}
-.status-dot.ok{background:#22c55e}
-.status-dot.err{background:#ef4444}
-nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);position:sticky;top:0;z-index:10}
-.tabbtn{border:none;background:#e2e8f0;color:#334155;padding:8px 16px;border-radius:20px;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:500;transition:.2s}
-.tabbtn:hover{background:#cbd5e1}
-.tabbtn.active{background:#2563eb;color:#fff}
-main{max-width:1050px;margin:18px auto;padding:0 12px}
-.tab{display:none}
-.tab.active{display:block;animation:fade .25s}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.card{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:20px;margin-bottom:16px}
-.card h2{font-size:1.15rem;color:#1e3a8a;margin-bottom:14px;border-left:4px solid #2563eb;padding-left:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-label{font-size:.85rem;color:#475569;display:block;margin-bottom:4px;font-weight:500}
-input,select,textarea{width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:8px;font-family:inherit;font-size:.95rem;background:#fff}
-input:focus,select:focus,textarea:focus{outline:2px solid #93c5fd;border-color:#2563eb}
-.btn{border:none;border-radius:8px;padding:10px 18px;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:500;margin:4px 4px 0 0;transition:.15s}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-.btn-primary{background:#2563eb;color:#fff}.btn-primary:hover{background:#1d4ed8}
-.btn-green{background:#16a34a;color:#fff}.btn-green:hover{background:#15803d}
-.btn-red{background:#dc2626;color:#fff;padding:6px 10px;font-size:.82rem}
-.btn-red:hover{background:#b91c1c}
-.btn-gray{background:#64748b;color:#fff;padding:6px 10px;font-size:.82rem}
-.btn-yellow{background:#f59e0b;color:#fff}
-.btn-yellow:hover{background:#d97706}
-.btn-purple{background:#7c3aed;color:#fff}
-.btn-purple:hover{background:#6d28d9}
-.btn-sm{padding:6px 10px;font-size:.82rem}
-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px}
-th,td{border:1px solid #e2e8f0;padding:7px 8px;text-align:left}
-th{background:#1e3a8a;color:#fff;font-weight:500}
-tr:nth-child(even){background:#f8fafc}
-tr:hover{background:#f1f5f9}
-.r{text-align:right}
-.c{text-align:center}
-.empty{padding:30px;text-align:center;color:#94a3b8;font-style:italic}
-.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.75rem;font-weight:500}
-.badge-green{background:#dcfce7;color:#166534}
-.badge-red{background:#fee2e2;color:#991b1b}
-.badge-yellow{background:#fef9c3;color:#854d0e}
-.note{background:#fef9c3;border:1px solid #fde047;border-radius:8px;padding:10px;font-size:.85rem;margin-top:10px}
-.errbox{background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:12px;font-size:.88rem;margin-top:10px;color:#991b1b;display:none;line-height:1.6}
-.errbox b{color:#7f1d1d}
-.tbl-wrap{overflow-x:auto;border-radius:8px}
-.dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.dash-item{background:linear-gradient(135deg,#fff,#f8fafc);border:1px solid #e2e8f0;border-radius:10px;padding:14px;text-align:center}
-.dash-item .v{font-size:1.5rem;font-weight:700;color:#1e3a8a;margin-top:4px}
-.dash-item .l{font-size:.82rem;color:#64748b}
-.dash-item.green .v{color:#16a34a}
-.dash-item.yellow .v{color:#d97706}
-.dash-item.purple .v{color:#7c3aed}
-.slip{max-width:780px;margin:0 auto;background:#fff;border:1px solid #cbd5e1;padding:24px;font-size:.92rem;line-height:1.5}
-.slip .co{text-align:center;border-bottom:2px solid #1e3a8a;padding-bottom:10px;margin-bottom:12px}
-.slip .co h3{color:#1e3a8a;font-size:1.2rem;margin-bottom:4px}
-.slip .co .coen{font-weight:600;letter-spacing:.5px;font-size:.9rem}
-.slip .co p{font-size:.82rem;color:#64748b;margin-top:2px}
-.slip h4{text-align:center;color:#1e3a8a;margin:8px 0;font-size:1rem}
-.slip table{margin:8px 0;border-collapse:collapse;width:100%}
-.slip th,.slip td{padding:6px 8px;border:1px solid #cbd5e1;font-size:.88rem}
-.slip .netbox{background:#dcfce7;border:1px solid #86efac;text-align:center;font-size:1.2rem;font-weight:700;color:#15803a;padding:10px;border-radius:8px;margin:12px 0}
-.slip .sig{display:flex;justify-content:space-around;margin-top:50px}
-.slip .sig div{text-align:center;width:45%}
-.slip .sig .line{border-bottom:1px solid #334155;height:24px;margin-top:40px}
-@media print{
-  body *{visibility:hidden}
-  #printArea,#printArea *{visibility:visible}
-  #printArea{position:absolute;left:0;top:0;width:100%}
-  .slip{border:none}
-  .noprint{display:none !important}
-}
-footer{background:#1e293b;color:#cbd5e1;text-align:center;padding:16px;font-size:.85rem;margin-top:30px}
-footer a{color:#93c5fd}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:center;padding:16px}
-.modal.show{display:flex}
-.modal-box{background:#fff;border-radius:12px;padding:22px;max-width:500px;width:100%;max-height:85vh;overflow:auto}
-.modal-box.big{max-width:850px}
-.loading{display:inline-block;width:14px;height:14px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.toast{position:fixed;bottom:20px;right:20px;background:#1e293b;color:#fff;padding:12px 18px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:200;font-size:.9rem;animation:slideIn .3s;max-width:320px}
-.toast.ok{background:#16a34a}
-.toast.err{background:#dc2626}
-@keyframes slideIn{from{transform:translateX(400px)}to{transform:none}}
-</style>
-</head>
-<body>
-<header>
-  <h1>🧾 ระบบเงินเดือนพนักงานรายวัน</h1>
-  <p id="syncStatus">กำลังตรวจสอบการเชื่อมต่อ Cloud...</p>
-  <div class="status-bar">
-    <div class="status-dot" id="dbStatus"></div>
-    <span id="dbStatusText">กำลังเชื่อมต่อ</span>
-  </div>
-</header>
-
-<nav>
-  <button class="tabbtn active" data-tab="dash">📊 แดชบอร์ด</button>
-  <button class="tabbtn" data-tab="emp">👥 พนักงาน</button>
-  <button class="tabbtn" data-tab="att">⏰ ลงเวลา</button>
-  <button class="tabbtn" data-tab="adj">💵 รายการพิเศษ</button>
-  <button class="tabbtn" data-tab="calc">🧮 คำนวณเงินเดือน</button>
-  <button class="tabbtn" data-tab="report">📈 รายงาน</button>
-  <button class="tabbtn" data-tab="set">⚙️ ตั้งค่า</button>
-</nav>
-
-<main>
-
-<section class="tab active" id="dash">
-  <div class="card">
-    <h2>📊 ภาพรวมระบบ</h2>
-    <div class="dash">
-      <div class="dash-item"><div class="l">พนักงานทั้งหมด</div><div class="v" id="d-emp">0</div></div>
-      <div class="dash-item"><div class="l">เวลาทำงานที่บันทึก</div><div class="v" id="d-att">0</div></div>
-      <div class="dash-item"><div class="l">งวดที่คำนวณแล้ว</div><div class="v" id="d-pay">0</div></div>
-      <div class="dash-item green"><div class="l">เงินจ่ายรวมล่าสุด</div><div class="v" id="d-net">฿0</div></div>
-    </div>
-    <div class="errbox" id="dbError"></div>
-    <div class="note">💡 <b>กฎเงินพิเศษ:</b> ไม่ขาด/ลา/สาย → ได้เต็ม • ขาด/ลา หักวันละค่าแรงขั้นต่ำจากเงินพิเศษ • สายหักตามนาที • หักอย่างมากจนหมดเงินพิเศษ (ไม่ติดลบ) • OT 1.5/2/3 คิดเพิ่ม</div>
-  </div>
-  <div class="card">
-    <h2>🚀 การใช้งาน 4 ขั้นตอน</h2>
-    <div class="grid">
-      <div><b>1. เพิ่มพนักงาน</b><br><small>แท็บ 👥 พนักงาน</small></div>
-      <div><b>2. บันทึกเวลา</b><br><small>แท็บ ⏰ ลงเวลา (มา/ขาด/ลา/OT/สาย)</small></div>
-      <div><b>3. เพิ่มรายการพิเศษ</b><br><small>แท็บ 💵 รายการพิเศษ (เบิก/กู้)</small></div>
-      <div><b>4. คำนวณเงินเดือน</b><br><small>แท็บ 🧮 คำนวณ → ดูสลิป → พิมพ์</small></div>
-    </div>
-  </div>
 </section>
-
 <section class="tab" id="emp">
-  <div class="card">
-    <h2>➕ เพิ่ม / แก้ไขพนักงาน</h2>
-    <div class="grid">
-      <div><label>รหัสพนักงาน *</label><input id="e-id" placeholder="เช่น EMP01"></div>
-      <div><label>ชื่อ-นามสกุล *</label><input id="e-name" placeholder="เช่น นางมามิว (มอ)"></div>
-      <div><label>ตำแหน่ง</label><input id="e-pos" placeholder="เช่น คนงาน"></div>
-      <div><label>แผนก</label><input id="e-dept" placeholder="เช่น ฝ่ายผลิต"></div>
-      <div><label>ค่าแรง/วัน (บาท) *</label><input id="e-rate" type="number" step="0.01" value="372"></div>
-      <div><label>💰 เงินพิเศษ/งวด (บาท)</label><input id="e-special" type="number" step="0.01" value="0"></div>
-      <div><label>ธนาคาร</label><input id="e-bank" placeholder="เช่น กสิกรไทย"></div>
-      <div><label>เลขบัญชี</label><input id="e-acc" placeholder="เช่น 123-4-56789-0"></div>
-      <div><label>เลขประกันสังคม</label><input id="e-sso" placeholder="เช่น 1-2345-67890-12-3"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveEmp" onclick="saveEmp()">💾 บันทึกพนักงาน</button>
-      <button class="btn btn-gray" onclick="resetEmpForm()">🔄 ล้างฟอร์ม</button>
-      <button class="btn btn-purple" id="btnFillSpecial" onclick="fillSpecial()">✨ ใส่เงินพิเศษตามบัญชีบริษัท</button>
-    </div>
-    <div class="note">💰 <b>ปุ่มม่วง</b> = ใส่เงินพิเศษอัตโนมัติตามบัญชีเดิม (มอ 1330 / เอ้ย-โทน-เอก 2030 / อ๋า 1470 / ชาน 980 / เวย 630 / ซ่าน-โจ 1540 / ลิน 1610)</div>
-  </div>
-  <div class="card">
-    <h2>📋 รายชื่อพนักงาน (<span id="emp-count">0</span>)</h2>
-    <div class="tbl-wrap"><table id="emp-tbl">
-      <thead><tr><th>รหัส</th><th>ชื่อ</th><th>ตำแหน่ง</th><th>แผนก</th><th class="r">ค่าแรง/วัน</th><th class="r">💰 พิเศษ/งวด</th><th>ธนาคาร/บัญชี</th><th class="c">จัดการ</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-  </div>
-</section>
-
-<section class="tab" id="att">
-  <div class="card">
-    <h2>⏰ บันทึกเวลาทำงาน</h2>
-    <div class="grid">
-      <div><label>พนักงาน *</label><select id="a-emp"></select></div>
-      <div><label>วันที่ *</label><input id="a-date" type="date"></div>
-      <div><label>สถานะ *</label>
-        <select id="a-status" onchange="toggleAtt()">
-          <option value="present">มาทำงาน</option>
-          <option value="absent">ขาดงาน</option>
-          <option value="leave">ลา</option>
-        </select>
-      </div>
-      <div id="a-leave-wrap" style="display:none"><label>ประเภทลา</label>
-        <select id="a-leave">
-          <option value="sick">ลาป่วย (ได้ค่าจ้าง 30 วัน/ปี)</option>
-          <option value="personal">ลากิจ (ได้ค่าจ้าง 3 วัน/ปี)</option>
-          <option value="annual">ลาพักร้อน</option>
-          <option value="unpaid">ลาไม่จ่ายค่าจ้าง</option>
-        </select>
-      </div>
-      <div id="a-day-wrap"><label>ประเภทวัน</label>
-        <select id="a-day">
-          <option value="normal">วันทำงานปกติ</option>
-          <option value="holiday">วันหยุดประจำสัปดาห์</option>
-          <option value="special">วันหยุดนักขัตฤกษ์</option>
-        </select>
-      </div>
-      <div id="a-ot-wrap"><label>ชั่วโมง OT</label><input id="a-ot" type="number" step="0.5" value="0" min="0"></div>
-      <div id="a-late-wrap"><label>สาย (นาที)</label><input id="a-late" type="number" step="1" value="0" min="0"></div>
-    </div>
-    <div class="note">ℹ️ <b>OT:</b> วันปกติ ×1.5 | วันหยุด ×2 | นักขัตฤกษ์ ×3 • <b>สาย:</b> หักจากเงินพิเศษตามนาทีที่สาย</div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveAtt" onclick="saveAtt()">💾 บันทึกเวลา</button>
-    </div>
-  </div>
-  <div class="card">
-    <h2>📅 บันทึกเวลาทั้งหมด</h2>
-    <div class="grid2">
-      <div><label>กรองพนักงาน</label><select id="f-emp" onchange="renderAtt()"><option value="">ทั้งหมด</option></select></div>
-      <div><label>กรองเดือน</label><input id="f-month" type="month" onchange="renderAtt()"></div>
-    </div>
-    <div class="tbl-wrap"><table id="att-tbl">
-      <thead><tr><th>พนักงาน</th><th>วันที่</th><th>สถานะ</th><th>ประเภทวัน</th><th>ลา</th><th class="r">สาย(นาที)</th><th class="r">OT(ชม.)</th><th class="c">จัดการ</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-  </div>
-</section>
-
-<section class="tab" id="adj">
-  <div class="card">
-    <h2>💵 รายการพิเศษ / เบิก / กู้ (รายงวด)</h2>
-    <div class="grid">
-      <div><label>พนักงาน *</label><select id="j-emp"></select></div>
-      <div><label>วันเริ่มงวด *</label><input id="j-start" type="date"></div>
-      <div><label>วันสิ้นงวด *</label><input id="j-end" type="date"></div>
-      <div><label>รายรับอื่น ๆ (+)</label><input id="j-extra" type="number" step="0.01" value="0"></div>
-      <div><label>หักเบิกล่วงหน้า (-)</label><input id="j-adv" type="number" step="0.01" value="0"></div>
-      <div><label>หักเงินกู้ (-)</label><input id="j-loan" type="number" step="0.01" value="0"></div>
-      <div><label>หักอื่น ๆ (-)</label><input id="j-other" type="number" step="0.01" value="0"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveAdj" onclick="saveAdj()">💾 บันทึกรายการ</button>
-    </div>
-    <div class="note">💡 "เงินพิเศษ" ตามบัญชีบริษัท จะถูกดึงจากประวัติพนักงาน (ช่อง 💰) อัตโนมัติ — ไม่ต้องกรอกที่นี่</div>
-  </div>
-  <div class="card">
-    <h2>📋 รายการที่บันทึก</h2>
-    <div class="tbl-wrap"><table id="adj-tbl">
-      <thead><tr><th>พนักงาน</th><th>งวด</th><th class="r">รับอื่น</th><th class="r">เบิก</th><th class="r">กู้</th><th class="r">หักอื่น</th><th class="c">จัดการ</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-  </div>
-</section>
-
-<section class="tab" id="calc">
-  <div class="card">
-    <h2>🧮 คำนวณเงินเดือน</h2>
-    <div class="grid">
-      <div><label>พนักงาน</label>
-        <select id="c-emp"><option value="">— ทั้งหมด —</option></select>
-      </div>
-      <div><label>วันเริ่มงวด *</label><input id="c-start" type="date"></div>
-      <div><label>วันสิ้นงวด *</label><input id="c-end" type="date"></div>
-    </div>
-    <div style="margin-top:8px">
-      <button class="btn btn-yellow btn-sm" onclick="setPeriod('1-15')">1-15 ของเดือน</button>
-      <button class="btn btn-yellow btn-sm" onclick="setPeriod('16-end')">16-สิ้นเดือน</button>
-      <button class="btn btn-yellow btn-sm" onclick="setPeriod('full')">ทั้งเดือน</button>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-green" id="btnCalc" onclick="runPayroll()">🚀 คำนวณเงินเดือน</button>
-    </div>
-  </div>
-  <div id="calc-result"></div>
-</section>
-
-<section class="tab" id="report">
-  <div class="card">
-    <h2>📈 รายงานสรุปงวด</h2>
-    <div class="grid">
-      <div><label>วันเริ่มงวด</label><input id="r-start" type="date"></div>
-      <div><label>วันสิ้นงวด</label><input id="r-end" type="date"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-green" onclick="loadReport()">📊 ดูรายงาน</button>
-      <button class="btn btn-primary" onclick="exportCSV()">📥 Export CSV</button>
-    </div>
-  </div>
-  <div id="report-result"></div>
-</section>
-
-<section class="tab" id="set">
-  <div class="card">
-    <h2>🏢 ข้อมูลบริษัท (แสดงบนสลิป)</h2>
-    <div class="grid">
-      <div><label>ชื่อบริษัท (ไทย)</label><input id="s-co"></div>
-      <div><label>ชื่อบริษัท (อังกฤษ)</label><input id="s-coen"></div>
-      <div><label>ที่อยู่</label><input id="s-addr"></div>
-      <div><label>เบอร์โทร</label><input id="s-tel"></div>
-      <div><label>เลขผู้เสียภาษี</label><input id="s-tax" placeholder="กรอกเลข 13 หลัก"></div>
-    </div>
-  </div>
-  <div class="card">
-    <h2>⚙️ กฎเกณฑ์การคำนวณ</h2>
-    <div class="grid">
-      <div><label>ค่าแรงขั้นต่ำเริ่มต้น (บาท/วัน)</label><input id="s-rate" type="number" step="1"></div>
-      <div><label>ชั่วโมงทำงาน/วัน</label><input id="s-hr" type="number" step="0.5"></div>
-      <div><label>ประกันสังคม (%)</label><input id="s-sso" type="number" step="0.01"></div>
-      <div><label>เพดานประกันสังคม/เดือน</label><input id="s-ssomax" type="number" step="1"></div>
-      <div><label>ลาป่วยได้ค่าจ้าง (วัน/ปี)</label><input id="s-sick" type="number" step="1"></div>
-      <div><label>ลากิจได้ค่าจ้าง (วัน/ปี)</label><input id="s-personal" type="number" step="1"></div>
-    </div>
-    <div style="margin-top:12px">
-      <button class="btn btn-primary" id="btnSaveSet" onclick="saveSet()">💾 บันทึกตั้งค่า</button>
-    </div>
-  </div>
-  <div class="card">
-    <h2>🎁 ข้อมูล & สำรอง</h2>
-    <button class="btn btn-green" id="btnDemo" onclick="loadDemo()">✨ โหลดข้อมูลตัวอย่าง</button>
-    <button class="btn btn-primary" onclick="exportAll()">📥 สำรองข้อมูล (JSON)</button>
-    <button class="btn btn-yellow" onclick="document.getElementById('imp-file').click()">📤 นำเข้าข้อมูล</button>
-    <input type="file" id="imp-file" accept=".json" style="display:none" onchange="importAll(event)">
-    <button class="btn btn-red" onclick="clearAll()">🗑️ ลบข้อมูลทั้งหมด (บน Cloud)</button>
-  </div>
-  <div class="card">
-    <h2>☁️ สถานะฐานข้อมูล</h2>
-    <p><b>Project ID:</b> yh-daily-payroll</p>
-    <p><b>Collections:</b> employees, attendance, adjustments, payroll, settings</p>
-    <p style="margin-top:8px;font-size:.85rem;color:#64748b">ข้อมูลทั้งหมดถูกเก็บใน Firebase Firestore (Cloud) — เข้าถึงได้จากทุกอุปกรณ์ และจะ sync อัตโนมัติ</p>
-  </div>
-</section>
-
-</main>
-
-<div id="printArea"></div>
-<footer>☁️ ยงเฮง มหาชัย รีไซเคิ้ล — <a href="https://github.com/nithya2517-hash/payroll">GitHub Repository</a></footer>
-
-<div class="modal" id="slipModal">
-  <div class="modal-box big">
-    <div style="text-align:right;margin-bottom:10px" class="noprint">
-      <button class="btn btn-green" onclick="window.print()">🖨️ พิมพ์ / Save PDF</button>
-      <button class="btn btn-red" onclick="closeModal()">✕ ปิด</button>
-    </div>
-    <div id="slipContent"></div>
-  </div>
+<div class="card"><h2>➕ เพิ่ม/แก้ไขพนักงาน</h2>
+<div class="grid">
+<div><label>รหัส *</label><input id="e-id"></div>
+<div><label>ชื่อ *</label><input id="e-name"></div>
+<div><label>ตำแหน่ง</label><input id="e-pos"></div>
+<div><label>ฝ่าย</label><select id="e-side"><option>เหล็ก</option><option>ของแพง</option><option>ก่อสร้าง</option><option>แม่บ้าน</option><option>สำนักงาน</option></select></div>
+<div><label>ห้องพัก</label><input id="e-room" type="number"></div>
+<div><label>ค่าแรง/วัน</label><input id="e-rate" type="number" value="372"></div>
+<div><label>💰 เงินพิเศษ/งวด</label><input id="e-special" type="number" value="0"></div>
+<div><label>ธนาคาร</label><input id="e-bank"></div>
+<div><label>เลขบัญชี</label><input id="e-acc"></div>
+<div><label>ปกส.</label><input id="e-sso"></div>
 </div>
-
+<div style="margin-top:10px">
+<button class="btn btn-primary" id="btnSaveEmp" onclick="saveEmp()">💾 บันทึก</button>
+<button class="btn btn-gray" onclick="resetEmpForm()">🔄 ล้าง</button>
+<button class="btn btn-purple" onclick="fillSpecial()">✨ ใส่เงินพิเศษตามบัญชี</button>
+</div>
+</div>
+<div class="card"><h2>📋 รายชื่อ (<span id="emp-count">0</span>)</h2>
+<div class="tbl-wrap"><table id="emp-tbl"><thead><tr><th>รหัส</th><th>ชื่อ</th><th>ฝ่าย</th><th>ห้อง</th><th class="r">ค่าแรง</th><th class="r">พิเศษ</th><th>ธนาคาร/บัญชี</th><th class="c">จัดการ</th></tr></thead><tbody></tbody></table></div>
+</div>
+</section>
+<section class="tab" id="att">
+<div class="card"><h2>⏰ บันทึกเวลา</h2>
+<div class="grid">
+<div><label>พนักงาน *</label><select id="a-emp"></select></div>
+<div><label>วันที่ *</label><input id="a-date" type="date"></div>
+<div><label>สถานะ</label><select id="a-status" onchange="toggleAtt()"><option value="present">มา</option><option value="absent">ขาด</option><option value="leave">ลา</option></select></div>
+<div id="a-leave-wrap" style="display:none"><label>ลาประเภท</label><select id="a-leave"><option value="sick">ป่วย</option><option value="personal">กิจ</option><option value="annual">พักร้อน</option><option value="unpaid">ไม่จ่าย</option></select></div>
+<div id="a-day-wrap"><label>วัน</label><select id="a-day"><option value="normal">ปกติ</option><option value="holiday">หยุด</option><option value="special">นักขัต</option></select></div>
+<div id="a-ot-wrap"><label>OT ชม.</label><input id="a-ot" type="number" step="0.5" value="0"></div>
+<div id="a-late-wrap"><label>สาย นาที</label><input id="a-late" type="number" value="0"></div>
+</div>
+<div style="margin-top:10px"><button class="btn btn-primary" id="btnSaveAtt" onclick="saveAtt()">💾 บันทึกเวลา</button></div>
+</div>
+<div class="card"><h2>📅 ประวัติเวลา</h2>
+<div class="grid">
+<div><label>กรองพนักงาน</label><select id="f-emp" onchange="renderAtt()"><option value="">ทั้งหมด</option></select></div>
+<div><label>กรองเดือน</label><input id="f-month" type="month" onchange="renderAtt()"></div>
+</div>
+<div class="tbl-wrap"><table id="att-tbl"><thead><tr><th>พนักงาน</th><th>วันที่</th><th>สถานะ</th><th>วัน</th><th>ลา</th><th class="r">สาย</th><th class="r">OT</th><th class="c">ลบ</th></tr></thead><tbody></tbody></table></div>
+</div>
+</section>
+<section class="tab" id="rooms">
+<div class="card"><h2>🏠 มิเตอร์ไฟรายห้อง (รอบบิลนี้)</h2>
+<div class="grid">
+<div><label>ห้อง *</label><input id="r-room" type="number"></div>
+<div><label>มิเตอร์ก่อน</label><input id="r-prev" type="number"></div>
+<div><label>มิเตอร์ล่าสุด</label><input id="r-now" type="number"></div>
+</div>
+<div style="margin-top:10px"><button class="btn btn-primary" onclick="saveRoom()">💾 บันทึกมิเตอร์</button></div>
+<div class="note">💡 ค่าไฟ = (ล่าสุด−ก่อน) × ราคา/หน่วย แล้ว<b>หารด้วยจำนวนคนในห้อง</b> (คนนับจากช่องห้องพักของพนักงาน)</div>
+</div>
+<div class="card"><h2>📋 ตารางห้อง/ค่าไฟ</h2>
+<div class="tbl-wrap"><table id="room-tbl"><thead><tr><th>ห้อง</th><th class="r">ก่อน</th><th class="r">ล่าสุด</th><th class="r">หน่วย</th><th class="r">รวมบาท</th><th class="c">คน</th><th class="r">ต่อคน</th><th>ผู้พัก</th><th class="c">ลบ</th></tr></thead><tbody></tbody></table></div>
+</div>
+</section>
+<section class="tab" id="adj">
+<div class="card"><h2>💵 รายรับ/หักอื่น รายงวด</h2>
+<div class="grid">
+<div><label>พนักงาน</label><select id="j-emp"></select></div>
+<div><label>งวดเริ่ม</label><input id="j-start" type="date"></div>
+<div><label>งวดสิ้นสุด</label><input id="j-end" type="date"></div>
+<div><label>รับอื่น (+)</label><input id="j-extra" type="number" value="0"></div>
+<div><label>เบิก (-)</label><input id="j-adv" type="number" value="0"></div>
+<div><label>กู้ (-)</label><input id="j-loan" type="number" value="0"></div>
+<div><label>หักอื่น (-)</label><input id="j-other" type="number" value="0"></div>
+</div>
+<div style="margin-top:10px"><button class="btn btn-primary" onclick="saveAdj()">💾 บันทึก</button></div>
+</div>
+<div class="card"><h2>📋 รายการ</h2>
+<div class="tbl-wrap"><table id="adj-tbl"><thead><tr><th>พนักงาน</th><th>งวด</th><th class="r">รับ</th><th class="r">เบิก</th><th class="r">กู้</th><th class="r">อื่น</th><th class="c">ลบ</th></tr></thead><tbody></tbody></table></div>
+</div>
+</section>
+<section class="tab" id="calc">
+<div class="card"><h2>🧮 คำนวณเงินเดือน</h2>
+<div class="grid">
+<div><label>พนักงาน</label><select id="c-emp"><option value="">— ทั้งหมด —</option></select></div>
+<div><label>เริ่ม</label><input id="c-start" type="date"></div>
+<div><label>สิ้นสุด</label><input id="c-end" type="date"></div>
+</div>
+<div style="margin-top:8px">
+<button class="btn btn-yellow btn-sm" onclick="setPeriod('1-15')">1-15</button>
+<button class="btn btn-yellow btn-sm" onclick="setPeriod('16-end')">16-สิ้นเดือน (หักค่าน้ำ)</button>
+<button class="btn btn-yellow btn-sm" onclick="setPeriod('full')">ทั้งเดือน</button>
+</div>
+<div style="margin-top:10px"><button class="btn btn-green" id="btnCalc" onclick="runPayroll()">🚀 คำนวณ</button></div>
+</div>
+<div id="calc-result"></div>
+</section>
+<section class="tab" id="docs">
+<div class="card"><h2>🖨️ เอกสารงวด (พิมพ์/PDF)</h2>
+<div class="grid">
+<div><label>เริ่ม</label><input id="d-start" type="date"></div>
+<div><label>สิ้นสุด</label><input id="d-end" type="date"></div>
+</div>
+<div style="margin-top:10px">
+<button class="btn btn-green" onclick="openDocs('sig')">✍️ ใบเซ็นรับเงิน (ค่าแรงขั้นต่ำ)</button>
+<button class="btn btn-yellow" onclick="openDocs('bank')">💵 ใบแตกแบงก์เบิกเงินสด</button>
+<button class="btn btn-purple" onclick="openDocs('dept')">📒 ใบลงบัญชีสรุปเป็นฝ่าย</button>
+</div>
+<div class="note">⚠️ ต้องกดคำนวณงวดนั้นก่อน จึงพิมพ์เอกสารได้</div>
+</div>
+</section>
+<section class="tab" id="report">
+<div class="card"><h2>📈 รายงานงวด</h2>
+<div class="grid">
+<div><label>เริ่ม</label><input id="p-start" type="date"></div>
+<div><label>สิ้นสุด</label><input id="p-end" type="date"></div>
+</div>
+<div style="margin-top:10px">
+<button class="btn btn-green" onclick="loadReport()">📊 ดูรายงาน</button>
+<button class="btn btn-primary" onclick="exportCSV()">📥 CSV</button>
+</div>
+</div>
+<div id="report-result"></div>
+</section>
+<section class="tab" id="set">
+<div class="card"><h2>🏢 บริษัท + กฎเกณฑ์</h2>
+<div class="grid">
+<div><label>ชื่อบริษัท</label><input id="s-co"></div>
+<div><label>อังกฤษ</label><input id="s-coen"></div>
+<div><label>ที่อยู่</label><input id="s-addr"></div>
+<div><label>โทร</label><input id="s-tel"></div>
+<div><label>ผู้เสียภาษี</label><input id="s-tax"></div>
+<div><label>ค่าแรงขั้นต่ำ</label><input id="s-rate" type="number"></div>
+<div><label>ชม./วัน</label><input id="s-hr" type="number"></div>
+<div><label>ปกส %</label><input id="s-sso" type="number"></div>
+<div><label>เพดานปกส/เดือน</label><input id="s-ssomax" type="number"></div>
+<div><label>⚡ ราคาไฟ/หน่วย</label><input id="s-elec" type="number" step="0.01"></div>
+<div><label>💧 ค่าน้ำ/หัว/เดือน</label><input id="s-water" type="number"></div>
+</div>
+<div style="margin-top:10px"><button class="btn btn-primary" onclick="saveSet()">💾 บันทึกตั้งค่า</button></div>
+</div>
+<div class="card"><h2>🎁 ข้อมูล</h2>
+<button class="btn btn-green" onclick="loadDemo()">✨ ตัวอย่าง</button>
+<button class="btn btn-primary" onclick="exportAll()">📥 สำรอง</button>
+<button class="btn btn-yellow" onclick="document.getElementById('imp-file').click()">📤 นำเข้า</button>
+<input type="file" id="imp-file" accept=".json" style="display:none" onchange="importAll(event)">
+<button class="btn btn-red" onclick="clearAll()">🗑️ ลบทั้งหมด</button>
+</div>
+</section>
+</main>
+<div id="printArea"></div>
+<footer>☁️ ยงเฮง มหาชัย รีไซเคิ้ล — <a href="https://github.com/nithya2517-hash/payroll">GitHub</a></footer>
+<div class="modal" id="slipModal"><div class="modal-box">
+<div style="text-align:right" class="noprint"><button class="btn btn-green" onclick="window.print()">🖨️ พิมพ์</button> <button class="btn btn-red" onclick="closeModal()">✕</button></div>
+<div id="slipContent"></div>
+</div></div>
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {
-  getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot, writeBatch
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAR2P38I28JDXts1-O0xtAjn4YHDM8tFdU",
-  authDomain: "yh-daily-payroll.firebaseapp.com",
-  projectId: "yh-daily-payroll",
-  storageBucket: "yh-daily-payroll.firebasestorage.app",
-  messagingSenderId: "1026361676126",
-  appId: "1:1026361676126:web:9012c2c08989d341ec3fcf",
-  measurementId: "G-91EEL3FSLC"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// เงินพิเศษตามบัญชีบริษัท (บาท/งวด)
-const SPECIAL_PRESET = {
-  'EMP01':1330,'EMP02':2030,'EMP03':2030,'EMP04':630,
-  'EMP05':1470,'EMP06':980,'EMP07':2030,'EMP08':1540,
-  'EMP09':1540,'EMP10':1610
-};
-
-function withTimeout(promise, ms, name='operation'){
-  return Promise.race([
-    promise,
-    new Promise((_,reject) => setTimeout(()=>reject(new Error(`${name} หมดเวลา ${ms/1000} วินาที — เช็คว่า Firestore Database สร้างแล้วหรือยัง`)), ms))
-  ]);
-}
-
-window.EMP = [];
-window.ATT = [];
-window.ADJ = [];
-window.PAY = [];
-window.SET = {
-  co: 'บริษัท ยงเฮง มหาชัย รีไซเคิ้ล จำกัด',
-  coen: 'YONGHANG MAHACHAI RECCYCLE COMPANY LIMITED',
-  addr: '38/50 หมู่ที่ 8 ตำบลท่าทราย อำเภอเมืองสมุทรสาคร จ.สมุทรสาคร 74000',
-  tax: '',
-  tel: '034 414 119',
-  rate: 372, hr: 8, sso: 0.05, ssomax: 750,
-  sick: 30, personal: 3
-};
-
-const r2 = x => Math.round(x*100)/100;
-const fmt = n => Number(n||0).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2});
-const thaiDate = s => {
-  if(!s) return '-';
-  const d = new Date(s + 'T00:00:00');
-  return `${d.getDate()} ${['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'][d.getMonth()]} ${d.getFullYear()+543}`;
-};
-
-function toast(msg, type='ok'){
-  const t = document.createElement('div');
-  t.className = 'toast ' + type;
-  t.textContent = (type==='ok'?'✓ ':'⚠ ') + msg;
-  document.body.appendChild(t);
-  setTimeout(()=>t.remove(), 3500);
-}
-
-function showDbError(msg){
-  const el = document.getElementById('dbError');
-  el.style.display = 'block';
-  el.innerHTML = '❌ <b>ไม่สามารถเชื่อมต่อกับ Cloud ได้:</b><br>' + msg +
-    '<br><br><b>วิธีแก้:</b><br>' +
-    '1. ไปที่ <a href="https://console.firebase.google.com/project/yh-daily-payroll/firestore" target="_blank" style="color:#1e40af"><b>Firebase Console → Firestore Database</b></a><br>' +
-    '2. ถ้ายังไม่มี ให้กด <b>"Create database"</b><br>' +
-    '3. เลือก Location: <b>asia-southeast1 (Singapore)</b><br>' +
-    '4. เลือก <b>"Start in test mode"</b> → Enable<br>' +
-    '5. รีเฟรชหน้าเว็บนี้';
-  setConnStatus(false,'เชื่อมต่อไม่ได้');
-}
-
-function setConnStatus(ok, txt){
-  const dot = document.getElementById('dbStatus');
-  const txtEl = document.getElementById('dbStatusText');
-  const sync = document.getElementById('syncStatus');
-  dot.className = 'status-dot ' + (ok?'ok':'err');
-  txtEl.textContent = txt;
-  sync.textContent = ok ? 'เชื่อมต่อกับ Cloud แล้ว' : txt;
-}
-
-let listenersOk = 0;
-const requiredListeners = 5;
-function checkAllListeners(){
-  listenersOk++;
-  if(listenersOk >= requiredListeners){
-    setConnStatus(true,'เชื่อมต่อกับ Cloud แล้ว');
-    document.getElementById('dbError').style.display = 'none';
-  }
-}
-
-try {
-  onSnapshot(collection(db,'employees'), snap => {
-    window.EMP = snap.docs.map(d => ({id:d.id, ...d.data()}));
-    renderEmp(); refreshEmpSelects(true); renderDash();
-    checkAllListeners();
-  }, err => showDbError('employees: '+err.message));
-
-  onSnapshot(collection(db,'attendance'), snap => {
-    window.ATT = snap.docs.map(d => ({docId:d.id, ...d.data()}));
-    renderAtt(); renderDash();
-    checkAllListeners();
-  }, err => showDbError('attendance: '+err.message));
-
-  onSnapshot(collection(db,'adjustments'), snap => {
-    window.ADJ = snap.docs.map(d => ({docId:d.id, ...d.data()}));
-    renderAdj();
-    checkAllListeners();
-  }, err => showDbError('adjustments: '+err.message));
-
-  onSnapshot(collection(db,'payroll'), snap => {
-    window.PAY = snap.docs.map(d => ({docId:d.id, ...d.data()}));
-    renderDash();
-    checkAllListeners();
-  }, err => showDbError('payroll: '+err.message));
-
-  onSnapshot(doc(db,'settings','config'), snap => {
-    if(snap.exists()){
-      window.SET = {...window.SET, ...snap.data()};
-    }
-    loadSetForm();
-    checkAllListeners();
-  }, err => showDbError('settings: '+err.message));
-} catch(e){
-  showDbError('โหลด SDK: '+e.message);
-}
-
-setTimeout(()=>{
-  if(listenersOk < requiredListeners){
-    showDbError('รอการเชื่อมต่อนานเกินไป — Firestore อาจยังไม่ได้สร้าง');
-  }
-}, 10000);
-
-document.querySelectorAll('.tabbtn').forEach(b => {
-  b.onclick = () => {
-    document.querySelectorAll('.tabbtn').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    document.getElementById(b.dataset.tab).classList.add('active');
-    if(b.dataset.tab==='dash') renderDash();
-    if(b.dataset.tab==='emp') renderEmp();
-    if(b.dataset.tab==='att') { refreshEmpSelects(); renderAtt(); }
-    if(b.dataset.tab==='adj') { refreshEmpSelects(); renderAdj(); }
-    if(b.dataset.tab==='calc') refreshEmpSelects(true);
-    if(b.dataset.tab==='set') loadSetForm();
-  };
-});
-
-// ========== พนักงาน ==========
-window.saveEmp = async function(){
-  const id = document.getElementById('e-id').value.trim();
-  const name = document.getElementById('e-name').value.trim();
-  if(!id || !name){ toast('กรุณากรอกรหัสและชื่อ','err'); return; }
-  const btn = document.getElementById('btnSaveEmp');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const emp = {
-      name,
-      pos: document.getElementById('e-pos').value.trim(),
-      dept: document.getElementById('e-dept').value.trim(),
-      rate: parseFloat(document.getElementById('e-rate').value) || SET.rate,
-      special: parseFloat(document.getElementById('e-special').value) || 0,
-      bank: document.getElementById('e-bank').value.trim(),
-      acc: document.getElementById('e-acc').value.trim(),
-      sso: document.getElementById('e-sso').value.trim()
-    };
-    await withTimeout(setDoc(doc(db,'employees',id), emp), 15000, 'บันทึกพนักงาน');
-    toast('บันทึกพนักงานแล้ว');
-    resetEmpForm();
-  } catch(e){ toast(e.message,'err'); showDbError(e.message); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกพนักงาน';
-};
-
-window.resetEmpForm = function(){
-  ['e-id','e-name','e-pos','e-dept','e-bank','e-acc','e-sso'].forEach(id=>{
-    const el = document.getElementById(id);
-    el.value=''; el.readOnly=false;
-  });
-  document.getElementById('e-rate').value = SET.rate;
-  document.getElementById('e-special').value = 0;
-};
-
-window.delEmp = async function(id){
-  if(!confirm(`ลบพนักงาน ${id}?`)) return;
-  const btn = event.target;
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>';
-  try {
-    const batch = writeBatch(db);
-    batch.delete(doc(db,'employees',id));
-    ATT.filter(a=>a.emp===id).forEach(a=>batch.delete(doc(db,'attendance',a.docId)));
-    ADJ.filter(a=>a.emp===id).forEach(a=>batch.delete(doc(db,'adjustments',a.docId)));
-    PAY.filter(p=>p.emp===id).forEach(p=>batch.delete(doc(db,'payroll',p.docId)));
-    await withTimeout(batch.commit(), 20000, 'ลบพนักงาน');
-    toast('ลบพนักงานแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '🗑️';
-};
-
-window.editEmp = function(id){
-  const e = EMP.find(x=>x.id===id); if(!e) return;
-  document.getElementById('e-id').value = e.id;
-  document.getElementById('e-id').readOnly = true;
-  document.getElementById('e-name').value = e.name;
-  document.getElementById('e-pos').value = e.pos||'';
-  document.getElementById('e-dept').value = e.dept||'';
-  document.getElementById('e-rate').value = e.rate;
-  document.getElementById('e-special').value = e.special||0;
-  document.getElementById('e-bank').value = e.bank||'';
-  document.getElementById('e-acc').value = e.acc||'';
-  document.getElementById('e-sso').value = e.sso||'';
-  window.scrollTo({top:0,behavior:'smooth'});
-};
-
-window.fillSpecial = async function(){
-  if(!confirm('ใส่เงินพิเศษตามบัญชีบริษัท (มอ 1330, เอ้ย/โทน/เอก 2030, อ๋า 1470, ชาน 980, เวย 630, ซ่าน/โจ 1540, ลิน 1610)?')) return;
-  const btn = document.getElementById('btnFillSpecial');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังใส่...';
-  try {
-    const batch = writeBatch(db);
-    let n = 0;
-    EMP.forEach(e=>{
-      if(SPECIAL_PRESET[e.id] !== undefined){
-        batch.set(doc(db,'employees',e.id), {...e, special:SPECIAL_PRESET[e.id]});
-        n++;
-      }
-    });
-    await withTimeout(batch.commit(), 20000, 'ใส่เงินพิเศษ');
-    toast(`ใส่เงินพิเศษ ${n} คนแล้ว`);
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '✨ ใส่เงินพิเศษตามบัญชีบริษัท';
-};
-
-window.renderEmp = function(){
-  const tb = document.querySelector('#emp-tbl tbody');
-  document.getElementById('emp-count').textContent = EMP.length;
-  if(!EMP.length){ tb.innerHTML='<tr><td colspan="8" class="empty">ยังไม่มีพนักงาน — นำเข้า JSON หรือกดโหลดตัวอย่างที่แท็บตั้งค่า</td></tr>'; return; }
-  tb.innerHTML = EMP.map(e=>`
-    <tr>
-      <td><b>${e.id}</b></td><td>${e.name}</td><td>${e.pos||'-'}</td><td>${e.dept||'-'}</td>
-      <td class="r">${fmt(e.rate)}</td>
-      <td class="r" style="color:#7c3aed;font-weight:600">${fmt(e.special||0)}</td>
-      <td>${e.bank||'-'} ${e.acc?'<br><small>'+e.acc+'</small>':''}</td>
-      <td class="c">
-        <button class="btn btn-yellow btn-sm" onclick="editEmp('${e.id}')">✏️</button>
-        <button class="btn btn-red btn-sm" onclick="delEmp('${e.id}')">🗑️</button>
-      </td>
-    </tr>`).join('');
-};
-
-// ========== ลงเวลา ==========
-window.toggleAtt = function(){
-  const st = document.getElementById('a-status').value;
-  document.getElementById('a-leave-wrap').style.display = st==='leave'?'':'none';
-  document.getElementById('a-day-wrap').style.display = st==='present'?'':'none';
-  document.getElementById('a-ot-wrap').style.display = st==='present'?'':'none';
-  document.getElementById('a-late-wrap').style.display = st==='present'?'':'none';
-};
-
-window.saveAtt = async function(){
-  const emp = document.getElementById('a-emp').value;
-  const date = document.getElementById('a-date').value;
-  const status = document.getElementById('a-status').value;
-  if(!emp || !date){ toast('กรุณาเลือกพนักงานและวันที่','err'); return; }
-  const btn = document.getElementById('btnSaveAtt');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const data = {
-      emp, date, status,
-      day: status==='present' ? document.getElementById('a-day').value : 'normal',
-      leave: status==='leave' ? document.getElementById('a-leave').value : 'none',
-      ot: status==='present' ? parseFloat(document.getElementById('a-ot').value)||0 : 0,
-      late: status==='present' ? parseFloat(document.getElementById('a-late').value)||0 : 0
-    };
-    await withTimeout(setDoc(doc(db,'attendance', `${emp}_${date}`), data), 15000, 'บันทึกเวลา');
-    toast('บันทึกเวลาแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกเวลา';
-};
-
-window.delAtt = async function(emp,date){
-  if(!confirm('ลบบันทึกวันนี้?')) return;
-  try {
-    await deleteDoc(doc(db,'attendance', `${emp}_${date}`));
-    toast('ลบบันทึกแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-};
-
-window.renderAtt = function(){
-  const fe = document.getElementById('f-emp').value;
-  const fm = document.getElementById('f-month').value;
-  let list = ATT.slice();
-  if(fe) list = list.filter(a=>a.emp===fe);
-  if(fm) list = list.filter(a=>a.date.startsWith(fm));
-  list.sort((a,b)=>b.date.localeCompare(a.date));
-  const tb = document.querySelector('#att-tbl tbody');
-  if(!list.length){ tb.innerHTML='<tr><td colspan="8" class="empty">ไม่มีข้อมูล</td></tr>'; return; }
-  const stMap = {present:'<span class="badge badge-green">มา</span>',absent:'<span class="badge badge-red">ขาด</span>',leave:'<span class="badge badge-yellow">ลา</span>'};
-  const dayMap = {normal:'ปกติ',holiday:'วันหยุด',special:'นักขัตฤกษ์'};
-  const lvMap = {none:'-',sick:'ป่วย',personal:'กิจ',annual:'พักร้อน',unpaid:'ไม่จ่าย'};
-  tb.innerHTML = list.map(a=>{
-    const e = EMP.find(x=>x.id===a.emp);
-    return `<tr>
-      <td>${e?e.name:a.emp}<br><small>${a.emp}</small></td>
-      <td>${thaiDate(a.date)}</td>
-      <td>${stMap[a.status]||a.status}</td>
-      <td>${dayMap[a.day]||a.day}</td>
-      <td>${lvMap[a.leave]||a.leave}</td>
-      <td class="r">${a.late||0}</td>
-      <td class="r">${a.ot||0}</td>
-      <td class="c"><button class="btn btn-red btn-sm" onclick="delAtt('${a.emp}','${a.date}')">🗑️</button></td>
-    </tr>`;
-  }).join('');
-};
-
-// ========== รายการพิเศษ ==========
-window.saveAdj = async function(){
-  const emp = document.getElementById('j-emp').value;
-  const start = document.getElementById('j-start').value;
-  const end = document.getElementById('j-end').value;
-  if(!emp || !start || !end){ toast('กรุณาเลือกพนักงานและงวด','err'); return; }
-  const btn = document.getElementById('btnSaveAdj');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const data = {
-      emp, start, end,
-      extra: parseFloat(document.getElementById('j-extra').value)||0,
-      adv: parseFloat(document.getElementById('j-adv').value)||0,
-      loan: parseFloat(document.getElementById('j-loan').value)||0,
-      other: parseFloat(document.getElementById('j-other').value)||0
-    };
-    await withTimeout(setDoc(doc(db,'adjustments', `${emp}_${start}_${end}`), data), 15000, 'บันทึกรายการ');
-    toast('บันทึกรายการแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกรายการ';
-};
-
-window.delAdj = async function(docId){
-  if(!confirm('ลบรายการนี้?')) return;
-  await deleteDoc(doc(db,'adjustments', docId));
-  toast('ลบรายการแล้ว');
-};
-
-window.renderAdj = function(){
-  const tb = document.querySelector('#adj-tbl tbody');
-  if(!ADJ.length){ tb.innerHTML='<tr><td colspan="7" class="empty">ไม่มีรายการ</td></tr>'; return; }
-  tb.innerHTML = ADJ.map(a=>{
-    const e = EMP.find(x=>x.id===a.emp);
-    return `<tr>
-      <td>${e?e.name:a.emp}</td>
-      <td>${thaiDate(a.start)} - ${thaiDate(a.end)}</td>
-      <td class="r">${fmt(a.extra)}</td>
-      <td class="r">${fmt(a.adv)}</td>
-      <td class="r">${fmt(a.loan)}</td>
-      <td class="r">${fmt(a.other)}</td>
-      <td class="c"><button class="btn btn-red btn-sm" onclick="delAdj('${a.docId}')">🗑️</button></td>
-    </tr>`;
-  }).join('');
-};
-
-// ========== คำนวณ ==========
-window.setPeriod = function(kind){
-  const today = new Date();
-  const y = today.getFullYear(), m = today.getMonth();
-  const lastDay = new Date(y,m+1,0).getDate();
-  let s,e;
-  if(kind==='1-15'){ s=`${y}-${String(m+1).padStart(2,'0')}-01`; e=`${y}-${String(m+1).padStart(2,'0')}-15`; }
-  else if(kind==='16-end'){ s=`${y}-${String(m+1).padStart(2,'0')}-16`; e=`${y}-${String(m+1).padStart(2,'0')}-${lastDay}`; }
-  else { s=`${y}-${String(m+1).padStart(2,'0')}-01`; e=`${y}-${String(m+1).padStart(2,'0')}-${lastDay}`; }
-  document.getElementById('c-start').value=s;
-  document.getElementById('c-end').value=e;
-};
-
-window.calcOne = function(empId, start, end){
-  const e = EMP.find(x=>x.id===empId); if(!e) return null;
-  const daily = Number(e.rate) || 0;
-  const hourly = daily / (Number(SET.hr) || 8);
-  const recs = ATT.filter(a=>a.emp===empId && a.date>=start && a.date<=end);
-
-  let work=0, absent=0, sick=0, personal=0, annual=0, unpaid=0, holiday=0, otHr=0, lateMin=0;
-  let base=0, otPay=0, holExtra=0;
-  const year = start.slice(0,4);
-  const yearRecs = ATT.filter(a=>a.emp===empId && a.date.startsWith(year));
-  let sickY = yearRecs.filter(a=>a.status==='leave'&&a.leave==='sick').length;
-  let persY = yearRecs.filter(a=>a.status==='leave'&&a.leave==='personal').length;
-
-  for(const r of recs){
-    if(r.status==='present'){
-      work++; base += daily; otHr += r.ot||0; lateMin += r.late||0;
-      if(r.day==='holiday'||r.day==='special'){ holiday++; holExtra += daily; }
-      if(r.ot>0){
-        const mult = r.day==='normal' ? 1.5 : (r.day==='holiday' ? 2 : 3);
-        otPay += r.ot * hourly * mult;
-      }
-    } else if(r.status==='absent'){ absent++; }
-    else if(r.status==='leave'){
-      if(r.leave==='sick'){ sick++; if(sickY<=SET.sick) base += daily; }
-      else if(r.leave==='personal'){ personal++; if(persY<=SET.personal) base += daily; }
-      else if(r.leave==='annual'){ annual++; base += daily; }
-      else unpaid++;
-    }
-  }
-
-  // ===== สูตรเงินพิเศษ =====
-  const allow = Number(e.special) || 0;
-  const missedDays = absent + sick + personal + annual + unpaid;
-  const specialDed = r2(Math.min(allow, missedDays*daily + (lateMin/60)*hourly));
-  const specialNet = r2(allow - specialDed);
-
-  const adj = ADJ.find(a=>a.emp===empId && a.start===start && a.end===end) || {extra:0,adv:0,loan:0,other:0};
-  const extra = Number(adj.extra) || 0;
-  const gross = r2(base + otPay + holExtra + specialNet + extra);
-  const days = Math.max(1, Math.round((new Date(end)-new Date(start))/86400000)+1);
-  const sso = r2(Math.min(gross*SET.sso, SET.ssomax * days/30));
-  const adv = Number(adj.adv)||0;
-  const loan = Number(adj.loan)||0;
-  const otherDed = Number(adj.other)||0;
-  const totalDed = r2(sso + adv + loan + otherDed);
-  const net = r2(gross - totalDed);
-
-  return {
-    emp:e, start, end, work, absent, sick, personal, annual, unpaid, holiday, otHr, lateMin,
-    base:r2(base), otPay:r2(otPay), holExtra:r2(holExtra),
-    allow, specialDed, specialNet, extra,
-    gross, sso, adv, loan, otherDed, totalDed, net
-  };
-};
-
-window.runPayroll = async function(){
-  const empId = document.getElementById('c-emp').value;
-  const start = document.getElementById('c-start').value;
-  const end = document.getElementById('c-end').value;
-  if(!start || !end){ toast('กรุณาระบุงวด','err'); return; }
-  const btn = document.getElementById('btnCalc');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังคำนวณ...';
-  try {
-    const list = empId ? [empId] : EMP.map(e=>e.id);
-    const results = list.map(id=>calcOne(id,start,end)).filter(Boolean);
-    const batch = writeBatch(db);
-    const existing = PAY.filter(p=>p.start===start && p.end===end);
-    existing.forEach(p=>batch.delete(doc(db,'payroll',p.docId)));
-    results.forEach(r=>{
-      const docId = `${r.emp.id}_${start}_${end}`;
-      batch.set(doc(db,'payroll',docId), {
-        emp: r.emp.id, empName: r.emp.name,
-        start, end, work:r.work, absent:r.absent, lateMin:r.lateMin,
-        base:r.base, otPay:r.otPay, holExtra:r.holExtra,
-        allow:r.allow, specialDed:r.specialDed, specialNet:r.specialNet,
-        extra:r.extra, gross:r.gross, sso:r.sso,
-        adv:r.adv, loan:r.loan, otherDed:r.otherDed,
-        totalDed:r.totalDed, net:r.net, calculatedAt: new Date().toISOString()
-      });
-    });
-    await withTimeout(batch.commit(), 20000, 'บันทึกเงินเดือน');
-    toast(`คำนวณแล้ว ${results.length} คน`);
-    renderCalcResults(results);
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '🚀 คำนวณเงินเดือน';
-};
-
-window.renderCalcResults = function(list){
-  const el = document.getElementById('calc-result');
-  if(!list.length){ el.innerHTML='<div class="card"><div class="empty">ไม่มีข้อมูลให้คำนวณ</div></div>'; return; }
-  const totalNet = list.reduce((s,r)=>s+r.net,0);
-  const totalGross = list.reduce((s,r)=>s+r.gross,0);
-  el.innerHTML = `
-    <div class="card">
-      <h2>📋 ผลการคำนวณ (${list.length} คน)</h2>
-      <div class="dash">
-        <div class="dash-item"><div class="l">รายได้รวม</div><div class="v">฿${fmt(totalGross)}</div></div>
-        <div class="dash-item green"><div class="l">จ่ายสุทธิรวม</div><div class="v">฿${fmt(totalNet)}</div></div>
-      </div>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>พนักงาน</th><th class="c">ทำงาน</th><th class="c">ขาด/ลา</th><th class="c">สาย</th><th class="r">💰 พิเศษที่ได้</th><th class="r">รายได้</th><th class="r">หัก</th><th class="r">สุทธิ</th><th class="c">สลิป</th></tr></thead>
-        <tbody>${list.map(r=>`
-          <tr>
-            <td><b>${r.emp.id}</b> ${r.emp.name}</td>
-            <td class="c">${r.work}</td>
-            <td class="c">${r.absent+r.sick+r.personal+r.annual+r.unpaid}</td>
-            <td class="c">${r.lateMin} น.</td>
-            <td class="r" style="color:#7c3aed">${fmt(r.specialNet)}</td>
-            <td class="r">${fmt(r.gross)}</td>
-            <td class="r">${fmt(r.totalDed)}</td>
-            <td class="r"><b>${fmt(r.net)}</b></td>
-            <td class="c"><button class="btn btn-green btn-sm" onclick='showSlip(${JSON.stringify(r).replace(/'/g,"&#39;")})'>🧾</button></td>
-          </tr>`).join('')}
-        </tbody>
-      </table></div>
-    </div>`;
-};
-
-window.showSlip = function(r){
-  document.getElementById('slipContent').innerHTML = `
-    <div class="slip">
-      <div class="co">
-        <h3>${SET.co}</h3>
-        ${SET.coen ? `<p class="coen">${SET.coen}</p>` : ''}
-        <p>ที่ตั้ง : ${SET.addr}</p>
-        <p>โทรศัพท์ : ${SET.tel}${SET.tax ? ' | เลขผู้เสียภาษี: ' + SET.tax : ''}</p>
-      </div>
-      <h4>สลิปเงินเดือน</h4>
-      <p style="text-align:center">งวด ${thaiDate(r.start)} - ${thaiDate(r.end)}</p>
-      <table>
-        <tr><td><b>รหัส:</b> ${r.emp.id}</td><td><b>ชื่อ:</b> ${r.emp.name}</td></tr>
-        <tr><td><b>ตำแหน่ง:</b> ${r.emp.pos||'-'}</td><td><b>แผนก:</b> ${r.emp.dept||'-'}</td></tr>
-      </table>
-      <table>
-        <thead><tr><th colspan="2" style="background:#166534">รายได้</th><th colspan="2" style="background:#991b1b">รายการหัก</th></tr></thead>
-        <tbody>
-          <tr><td>ค่าแรง (${r.work} วัน)</td><td class="r">${fmt(r.base)}</td><td>ประกันสังคม (5%)</td><td class="r">${fmt(r.sso)}</td></tr>
-          <tr><td>ทำงานวันหยุด</td><td class="r">${fmt(r.holExtra)}</td><td>เบิกล่วงหน้า</td><td class="r">${fmt(r.adv)}</td></tr>
-          <tr><td>OT (1.5/2/3)</td><td class="r">${fmt(r.otPay)}</td><td>เงินกู้</td><td class="r">${fmt(r.loan)}</td></tr>
-          <tr><td>เงินพิเศษ (เต็ม ${fmt(r.allow)})</td><td class="r">${fmt(r.allow)}</td><td>หักอื่น ๆ</td><td class="r">${fmt(r.otherDed)}</td></tr>
-          <tr><td>หักพิเศษ (ขาด/ลา/สาย ${r.absent+r.sick+r.personal+r.annual+r.unpaid} วัน + สาย ${r.lateMin} น.)</td><td class="r">-${fmt(r.specialDed)}</td><td></td><td></td></tr>
-          <tr><td>รายรับอื่น ๆ</td><td class="r">${fmt(r.extra)}</td><td></td><td></td></tr>
-          <tr style="background:#f1f5f9;font-weight:700"><td>รวมรายได้</td><td class="r">${fmt(r.gross)}</td><td>รวมหัก</td><td class="r">${fmt(r.totalDed)}</td></tr>
-        </tbody>
-      </table>
-      <div class="netbox">💰 เงินสุทธิ: ฿${fmt(r.net)}</div>
-      <div style="font-size:.85rem;color:#64748b">
-        📊 ทำงาน ${r.work} | ขาด ${r.absent} | ลา ${r.sick+r.personal+r.annual+r.unpaid} | สาย ${r.lateMin} นาที | OT ${r.otHr} ชม. | ทำงานวันหยุด ${r.holiday} วัน
-      </div>
-      <div class="sig">
-        <div><div class="line"></div>ผู้จ่ายเงินเดือน</div>
-        <div><div class="line"></div>ผู้อนุมัติ</div>
-      </div>
-    </div>`;
-  document.getElementById('slipModal').classList.add('show');
-};
-
-window.closeModal = function(){ document.getElementById('slipModal').classList.remove('show'); };
-
-// ========== รายงาน ==========
-window.loadReport = function(){
-  const s = document.getElementById('r-start').value;
-  const e = document.getElementById('r-end').value;
-  if(!s||!e){ toast('กรุณาระบุงวด','err'); return; }
-  const list = PAY.filter(p=>p.start===s && p.end===e);
-  const el = document.getElementById('report-result');
-  if(!list.length){ el.innerHTML='<div class="card"><div class="empty">ไม่มีข้อมูลงวดนี้ (กดคำนวณก่อน)</div></div>'; return; }
-  const tGross = list.reduce((a,r)=>a+r.gross,0);
-  const tNet = list.reduce((a,r)=>a+r.net,0);
-  const tS = list.reduce((a,r)=>a+r.sso,0);
-  const tSp = list.reduce((a,r)=>a+(r.specialNet||0),0);
-  el.innerHTML = `
-    <div class="card">
-      <h2>📈 รายงานงวด ${thaiDate(s)} - ${thaiDate(e)}</h2>
-      <div class="dash">
-        <div class="dash-item"><div class="l">พนักงาน</div><div class="v">${list.length}</div></div>
-        <div class="dash-item purple"><div class="l">เงินพิเศษรวม</div><div class="v">฿${fmt(tSp)}</div></div>
-        <div class="dash-item yellow"><div class="l">ปกส.รวม</div><div class="v">฿${fmt(tS)}</div></div>
-        <div class="dash-item green"><div class="l">สุทธิรวม</div><div class="v">฿${fmt(tNet)}</div></div>
-      </div>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>รหัส</th><th>ชื่อ</th><th class="c">วัน</th><th class="c">ขาด/ลา</th><th class="c">สาย</th><th class="r">ค่าแรง</th><th class="r">OT</th><th class="r">พิเศษที่ได้</th><th class="r">รวมรายได้</th><th class="r">รวมหัก</th><th class="r">สุทธิ</th></tr></thead>
-        <tbody>${list.map(r=>`
-          <tr>
-            <td>${r.emp}</td>
-            <td>${r.empName}</td>
-            <td class="c">${r.work}</td>
-            <td class="c">${r.absent}</td>
-            <td class="c">${r.lateMin||0}</td>
-            <td class="r">${fmt(r.base)}</td>
-            <td class="r">${fmt(r.otPay)}</td>
-            <td class="r">${fmt(r.specialNet)}</td>
-            <td class="r"><b>${fmt(r.gross)}</b></td>
-            <td class="r">${fmt(r.totalDed)}</td>
-            <td class="r"><b style="color:#16a34a">${fmt(r.net)}</b></td>
-          </tr>`).join('')}
-        </tbody>
-        <tfoot><tr style="background:#1e3a8a;color:#fff;font-weight:700">
-          <td colspan="8">รวมทั้งหมด</td>
-          <td class="r">${fmt(tGross)}</td>
-          <td class="r">${fmt(list.reduce((a,r)=>a+r.totalDed,0))}</td>
-          <td class="r">${fmt(tNet)}</td>
-        </tr></tfoot>
-      </table></div>
-    </div>`;
-};
-
-window.exportCSV = function(){
-  const s = document.getElementById('r-start').value;
-  const e = document.getElementById('r-end').value;
-  if(!s||!e){ toast('กรุณาระบุงวดก่อน','err'); return; }
-  const list = PAY.filter(p=>p.start===s && p.end===e);
-  if(!list.length){ toast('ไม่มีข้อมูลงวดนี้','err'); return; }
-  const header = ['รหัส','ชื่อ','วันทำงาน','ขาด','ลา','สาย(นาที)','ค่าแรง','OT','ทำงานวันหยุด','เงินพิเศษเต็ม','หักพิเศษ','พิเศษที่ได้','รวมรายได้','ปกส','รวมหัก','สุทธิ'];
-  const rows = list.map(r=>[r.emp,r.empName,r.work,r.absent,(r.sick||0)+(r.personal||0)+(r.annual||0)+(r.unpaid||0),r.lateMin||0,r.base,r.otPay,r.holExtra,r.allow,r.specialDed,r.specialNet,r.gross,r.sso,r.totalDed,r.net]);
-  const csv = '\ufeff' + [header,...rows].map(r=>r.map(v=>`"${v}"`).join(',')).join('\n');
-  const blob = new Blob([csv],{type:'text/csv;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `payroll_${s}_${e}.csv`;
-  a.click();
-};
-
-// ========== ตั้งค่า ==========
-window.loadSetForm = function(){
-  document.getElementById('s-co').value = SET.co;
-  document.getElementById('s-coen').value = SET.coen||'';
-  document.getElementById('s-addr').value = SET.addr;
-  document.getElementById('s-tax').value = SET.tax||'';
-  document.getElementById('s-tel').value = SET.tel;
-  document.getElementById('s-rate').value = SET.rate;
-  document.getElementById('s-hr').value = SET.hr;
-  document.getElementById('s-sso').value = SET.sso;
-  document.getElementById('s-ssomax').value = SET.ssomax;
-  document.getElementById('s-sick').value = SET.sick;
-  document.getElementById('s-personal').value = SET.personal;
-};
-
-window.saveSet = async function(){
-  const btn = document.getElementById('btnSaveSet');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังบันทึก...';
-  try {
-    const data = {
-      co: document.getElementById('s-co').value,
-      coen: document.getElementById('s-coen').value,
-      addr: document.getElementById('s-addr').value,
-      tax: document.getElementById('s-tax').value,
-      tel: document.getElementById('s-tel').value,
-      rate: parseFloat(document.getElementById('s-rate').value)||372,
-      hr: parseFloat(document.getElementById('s-hr').value)||8,
-      sso: parseFloat(document.getElementById('s-sso').value)||0.05,
-      ssomax: parseFloat(document.getElementById('s-ssomax').value)||750,
-      sick: parseInt(document.getElementById('s-sick').value)||30,
-      personal: parseInt(document.getElementById('s-personal').value)||3
-    };
-    await withTimeout(setDoc(doc(db,'settings','config'), data), 15000, 'บันทึกตั้งค่า');
-    toast('บันทึกตั้งค่าแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-  btn.disabled = false; btn.innerHTML = '💾 บันทึกตั้งค่า';
-};
-
-window.loadDemo = async function(){
-  if(!confirm('โหลดข้อมูลตัวอย่างขึ้น Cloud?')) return;
-  const btn = document.getElementById('btnDemo');
-  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>กำลังโหลด (สูงสุด 20 วินาที)...';
-  try {
-    const batch = writeBatch(db);
-    const demoEmp = [
-      {id:'EMP01',name:'นางมามิว (มอ)',pos:'คนงาน',dept:'ฝ่ายผลิต',rate:372,special:1330},
-      {id:'EMP02',name:'นายตุนเอย (เอ้ย)',pos:'คนงาน',dept:'ฝ่ายผลิต',rate:372,special:2030},
-      {id:'EMP03',name:'นายโทนโลน (โทน)',pos:'คนงาน',dept:'ฝ่ายผลิต',rate:372,special:2030}
-    ];
-    demoEmp.forEach(e=>batch.set(doc(db,'employees',e.id), e));
-    batch.set(doc(db,'attendance','EMP01_2026-08-04'),{emp:'EMP01',date:'2026-08-04',status:'present',day:'normal',leave:'none',ot:2,late:0});
-    batch.set(doc(db,'attendance','EMP01_2026-08-05'),{emp:'EMP01',date:'2026-08-05',status:'present',day:'normal',leave:'none',ot:0,late:60});
-    batch.set(doc(db,'attendance','EMP01_2026-08-06'),{emp:'EMP01',date:'2026-08-06',status:'absent',day:'normal',leave:'none',ot:0,late:0});
-    batch.set(doc(db,'attendance','EMP02_2026-08-04'),{emp:'EMP02',date:'2026-08-04',status:'present',day:'normal',leave:'none',ot:0,late:0});
-    batch.set(doc(db,'attendance','EMP02_2026-08-05'),{emp:'EMP02',date:'2026-08-05',status:'present',day:'normal',leave:'none',ot:3,late:0});
-    batch.set(doc(db,'attendance','EMP03_2026-08-04'),{emp:'EMP03',date:'2026-08-04',status:'leave',day:'normal',leave:'sick',ot:0,late:0});
-    await withTimeout(batch.commit(), 20000, 'โหลดข้อมูลตัวอย่าง');
-    toast('โหลดตัวอย่างแล้ว — ลองคำนวณงวด 1-15 ส.ค. ดู');
-  } catch(e){
-    toast('โหลดไม่สำเร็จ: '+e.message,'err');
-    showDbError(e.message);
-  }
-  btn.disabled = false; btn.innerHTML = '✨ โหลดข้อมูลตัวอย่าง';
-};
-
-window.exportAll = function(){
-  const data = {emp:EMP,att:ATT,adj:ADJ,pay:PAY,set:SET,exported:new Date().toISOString()};
-  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `payroll_backup_${new Date().toISOString().slice(0,10)}.json`;
-  a.click();
-};
-
-window.importAll = async function(ev){
-  const f = ev.target.files[0]; if(!f) return;
-  const r = new FileReader();
-  r.onload = async e => {
-    try{
-      const d = JSON.parse(e.target.result);
-      const batch = writeBatch(db);
-      if(d.emp) d.emp.forEach(emp=>{ const {id,...data}=emp; batch.set(doc(db,'employees',id), data); });
-      if(d.att) d.att.forEach(a=>batch.set(doc(db,'attendance',`${a.emp}_${a.date}`), a));
-      if(d.adj) d.adj.forEach(a=>batch.set(doc(db,'adjustments',`${a.emp}_${a.start}_${a.end}`), a));
-      if(d.set) batch.set(doc(db,'settings','config'), d.set);
-      await withTimeout(batch.commit(), 20000, 'นำเข้าข้อมูล');
-      toast('นำเข้าข้อมูลสำเร็จ');
-    }catch(err){ toast('ไฟล์ไม่ถูกต้อง','err'); }
-  };
-  r.readAsText(f);
-};
-
-window.clearAll = async function(){
-  if(!confirm('⚠️ ลบข้อมูลทั้งหมดบน Cloud? (กู้คืนไม่ได้)')) return;
-  if(!confirm('ยืนยันอีกครั้ง?')) return;
-  try {
-    const batch = writeBatch(db);
-    EMP.forEach(i=>batch.delete(doc(db,'employees', i.id)));
-    ATT.forEach(i=>batch.delete(doc(db,'attendance', i.docId)));
-    ADJ.forEach(i=>batch.delete(doc(db,'adjustments', i.docId)));
-    PAY.forEach(i=>batch.delete(doc(db,'payroll', i.docId)));
-    batch.delete(doc(db,'settings','config'));
-    await withTimeout(batch.commit(), 20000, 'ลบข้อมูล');
-    toast('ลบข้อมูลทั้งหมดแล้ว');
-  } catch(e){ toast(e.message,'err'); }
-};
-
-window.refreshEmpSelects = function(withAll){
-  const opts = (withAll ? '<option value="">— ทั้งหมด —</option>' : '') +
-    EMP.map(e=>`<option value="${e.id}">${e.id} - ${e.name}</option>`).join('');
-  const optsReq = EMP.map(e=>`<option value="${e.id}">${e.id} - ${e.name}</option>`).join('');
-  ['a-emp','j-emp','c-emp'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(el) el.innerHTML = (id==='c-emp'?opts:optsReq);
-  });
-  const femp = document.getElementById('f-emp');
-  if(femp) femp.innerHTML = '<option value="">ทั้งหมด</option>' + optsReq;
-};
-
-window.renderDash = function(){
-  document.getElementById('d-emp').textContent = EMP.length;
-  document.getElementById('d-att').textContent = ATT.length;
-  document.getElementById('d-pay').textContent = PAY.length;
-  if(PAY.length){
-    const recent = [...PAY].sort((a,b)=>(b.calculatedAt||'').localeCompare(a.calculatedAt||''));
-    const latestPeriod = recent[0];
-    const samePeriod = PAY.filter(p=>p.start===latestPeriod.start && p.end===latestPeriod.end);
-    const t = samePeriod.reduce((s,r)=>s+r.net,0);
-    document.getElementById('d-net').textContent = '฿'+fmt(t);
-  }
-};
-
-toggleAtt();
-refreshEmpSelects(true);
-renderDash();
-renderEmp();
-</script>
-</body>
-</html>
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import{getFirestore,collection,doc,setDoc,deleteDoc,onSnapshot,writeBatch}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+const db=getFirestore(initializeApp({apiKey:"AIzaSyAR2P38I28JDXts1-O0xtAjn4YHDM8tFdU",authDomain:"yh-daily-payroll.firebaseapp.com",projectId:"yh-daily-payroll",storageBucket:"yh-daily-payroll.firebasestorage.app",messagingSenderId:"1026361676126",appId:"1:1026361676126:web:9012c2c08989d341ec3fcf"}));
+const SPECIAL_PRESET={'EMP01':1330,'EMP02':2030,'EMP03':2030,'EMP04':630,'EMP05':1470,'EMP06':980,'EMP07':2030,'EMP08':1540,'EMP09':1540,'EMP10':1610};
+const T=(p,ms,n)=>Promise.race([p,new Promise((_,rj)=>setTimeout(()=>rj(new Error(n+' หมดเวลา')),ms))]);
+window.EMP=[];window.ATT=[];window.ADJ=[];window.PAY=[];window.ROOMS=[];
+window.SET={co:'บริษัท ยงเฮง มหาชัย รีไซเคิ้ล จำกัด',coen:'YONGHANG MAHACHAI RECCYCLE COMPANY LIMITED',addr:'38/50 หมู่ที่ 8 ตำบลท่าทราย อำเภอเมืองสมุทรสาคร จ.สมุทรสาคร 74000',tax:'',tel:'034 414 119',rate:372,hr:8,sso:0.05,ssomax:750,elec:5.5,water:0};
+const r2=x=>Math.round(x*100)/100;
+const fmt=n=>Number(n||0).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2});
+const thaiDate=s=>{if(!s)return'-';const d=new Date(s+'T00:00:00');return d.getDate()+' '+['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'][d.getMonth()]+' '+(d.getFullYear()+543);};
+function toast(m,t='ok'){const e=document.createElement('div');e.className='toast '+t;e.textContent=(t==='ok'?'✓ ':'⚠ ')+m;document.body.appendChild(e);setTimeout(()=>e.remove(),3500);}
+function showDbError(m){const e=document.getElementById('dbError');e.style.display='block';e.innerHTML='❌ เชื่อมต่อไม่ได้: '+m+'<br>เช็ค Firebase Console → Firestore สร้างแล้ว+Rules เปิด';document.getElementById('dbStatus').className='status-dot err';}
+let okN=0;const okF=()=>{okN++;if(okN>=6){document.getElementById('dbStatus').className='status-dot ok';document.getElementById('dbStatusText').textContent='เชื่อมต่อแล้ว';document.getElementById('syncStatus').textContent='ยงเฮง มหาชัย รีไซเคิ้ล — เชื่อมต่อ Cloud แล้ว';document.getElementById('dbError').style.display='none';}};
+onSnapshot(collection(db,'employees'),s=>{EMP=s.docs.map(d=>({id:d.id,...d.data()}));renderEmp();refreshSelects();renderDash();okF();},e=>showDbError(e.message));
+onSnapshot(collection(db,'attendance'),s=>{ATT=s.docs.map(d=>({docId:d.id,...d.data()}));renderAtt();renderDash();okF();},e=>showDbError(e.message));
+onSnapshot(collection(db,'adjustments'),s=>{ADJ=s.docs.map(d=>({docId:d.id,...d.data()}));renderAdj();okF();},e=>showDbError(e.message));
+onSnapshot(collection(db,'payroll'),s=>{PAY=s.docs.map(d=>({docId:d.id,...d.data()}));renderDash();okF();},e=>showDbError(e.message));
+onSnapshot(collection(db,'rooms'),s=>{ROOMS=s.docs.map(d=>({docId:d.id,...d.data()}));renderRooms();okF();},e=>showDbError(e.message));
+onSnapshot(doc(db,'settings','config'),s=>{if(s.exists())SET={...SET,...s.data()};loadSetForm();okF();},e=>showDbError(e.message));
+document.querySelectorAll('.tabbtn').forEach(b=>{b.onclick=()=>{document.querySelectorAll('.tabbtn').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');if(b.dataset.tab==='rooms')renderRooms();};});
+window.saveEmp=async function(){const id=e_id.value.trim(),name=e_name.value.trim();if(!id||!name)return toast('กรอกรหัส+ชื่อ','err');btnSaveEmp.disabled=true;
+try{await T(setDoc(doc(db,'employees',id),{name,pos:e_pos.value.trim(),side:e_side.value,room:e_room.value.trim(),rate:+e_rate.value||SET.rate,special:+e_special.value||0,bank:e_bank.value.trim(),acc:e_acc.value.trim(),sso:e_sso.value.trim()}),15000,'บันทึก');toast('บันทึกแล้ว');resetEmpForm();}catch(e){toast(e.message,'err');}
+btnSaveEmp.disabled=false;};
+window.resetEmpForm=function(){['e-id','e-name','e-pos','e-room','e-bank','e-acc','e-sso'].forEach(i=>{const el=document.getElementById(i);el.value='';el.readOnly=false;});e_rate.value=SET.rate;e_special.value=0;};
+window.editEmp=function(id){const e=EMP.find(x=>x.id===id);if(!e)return;e_id.value=e.id;e_id.readOnly=true;e_name.value=e.name;e_pos.value=e.pos||'';e_side.value=e.side||'เหล็ก';e_room.value=e.room||'';e_rate.value=e.rate;e_special.value=e.special||0;e_bank.value=e.bank||'';e_acc.value=e.acc||'';e_sso.value=e.sso||'';scrollTo({top:0,behavior:'smooth'});};
+window.delEmp=async function(id,btn){if(!confirm('ลบ '+id+'?'))return;btn.disabled=true;try{const b=writeBatch(db);b.delete(doc(db,'employees',id));ATT.filter(a=>a.emp===id).forEach(a=>b.delete(doc(db,'attendance',a.docId)));PAY.filter(p=>p.emp===id).forEach(p=>b.delete(doc(db,'payroll',p.docId)));await T(b.commit(),20000,'ลบ');toast('ลบแล้ว');}catch(e){toast(e.message,'err');}btn.disabled=false;};
+window.fillSpecial=async function(){if(!confirm('ใส่เงินพิเศษตามบัญชีบริษัท?'))return;try{const b=writeBatch(db);let n=0;EMP.forEach(e=>{if(SPECIAL_PRESET[e.id]!==undefined){b.set(doc(db,'employees',e.id),{...e,special:SPECIAL_PRESET[e.id]});n++;}});await T(b.commit(),20000,'ใส่');toast('ใส่ '+n+' คน');}catch(e){toast(e.message,'err');}};
+window.renderEmp=function(){const tb=document.querySelector('#emp-tbl tbody');emp_count.textContent=EMP.length;if(!EMP.length){tb.innerHTML='<tr><td colspan="8" class="empty">ยังไม่มี</td></tr>';return;}
+tb.innerHTML=EMP.map(e=>`<tr><td><b>${e.id}</b></td><td>${e.name}</td><td>${e.side||'-'}</td><td class="c">${e.room||'-'}</td><td class="r">${fmt(e.rate)}</td><td class="r" style="color:#7c3aed">${fmt(e.special||0)}</td><td>${e.bank||'-'} ${e.acc||''}</td><td class="c"><button class="btn btn-yellow btn-sm" onclick="editEmp('${e.id}')">✏️</button> <button class="btn btn-red btn-sm" onclick="delEmp('${e.id}',this)">🗑️</button></td></tr>`).join('');};
+window.toggleAtt=function(){const s=a_status.value;a_leave_wrap.style.display=s==='leave'?'':'none';a_day_wrap.style.display=s==='present'?'':'none';a_ot_wrap.style.display=s==='present'?'':'none';a_late_wrap.style.display=s==='present'?'':'none';};
+window.saveAtt=async function(){if(!a_emp.value||!a_date.value)return toast('เลือกคน+วันที่','err');btnSaveAtt.disabled=true;const s=a_status.value;
+try{await T(setDoc(doc(db,'attendance',`${a_emp.value}_${a_date.value}`),{emp:a_emp.value,date:a_date.value,status:s,day:s==='present'?a_day.value:'normal',leave:s==='leave'?a_leave.value:'none',ot:s==='present'?(+a_ot.value||0):0,late:s==='present'?(+a_late.value||0):0}),15000,'บันทึก');toast('บันทึกเวลาแล้ว');}catch(e){toast(e.message,'err');}btnSaveAtt.disabled=false;};
+window.delAtt=async function(k){if(!confirm('ลบ?'))return;await deleteDoc(doc(db,'attendance',k));toast('ลบแล้ว');};
+window.renderAtt=function(){let l=ATT.slice();if(f_emp.value)l=l.filter(a=>a.emp===f_emp.value);if(f_month.value)l=l.filter(a=>a.date.startsWith(f_month.value));l.sort((a,b)=>b.date.localeCompare(a.date));const tb=document.querySelector('#att-tbl tbody');if(!l.length){tb.innerHTML='<tr><td colspan="8" class="empty">ไม่มี</td></tr>';return;}
+const st={present:'<span class="badge badge-green">มา</span>',absent:'<span class="badge badge-red">ขาด</span>',leave:'<span class="badge badge-yellow">ลา</span>'};
+tb.innerHTML=l.map(a=>{const e=EMP.find(x=>x.id===a.emp);return `<tr><td>${e?e.name:a.emp}</td><td>${thaiDate(a.date)}</td><td>${st[a.status]||''}</td><td>${a.day||''}</td><td>${a.leave==='none'?'-':a.leave}</td><td class="r">${a.late||0}</td><td class="r">${a.ot||0}</td><td class="c"><button class="btn btn-red btn-sm" onclick="delAtt('${a.docId}')">🗑️</button></td></tr>`;}).join('');};
+window.saveRoom=async function(){if(!r_room.value)return toast('ใส่เลขห้อง','err');try{await T(setDoc(doc(db,'rooms','R'+r_room.value),{room:r_room.value,prev:+r_prev.value||0,now:+r_now.value||0}),15000,'บันทึก');toast('บันทึกมิเตอร์ห้อง '+r_room.value);}catch(e){toast(e.message,'err');}};
+window.delRoom=async function(k){if(!confirm('ลบ?'))return;await deleteDoc(doc(db,'rooms',k));};
+function roomInfo(rm){const r=ROOMS.find(x=>x.room==rm);const occ=EMP.filter(e=>e.room==rm).length||1;const units=r?Math.max(0,(+r.now||0)-(+r.prev||0)):0;const total=units*(+SET.elec||0);return{units,total,per:r2(total/occ),occ,names:EMP.filter(e=>e.room==rm).map(e=>e.name).join(', ')||'-'};}
+window.renderRooms=function(){const tb=document.querySelector('#room-tbl tbody');if(!ROOMS.length){tb.innerHTML='<tr><td colspan="9" class="empty">ยังไม่มีมิเตอร์</td></tr>';return;}
+tb.innerHTML=ROOMS.sort((a,b)=>(+a.room)-(+b.room)).map(r=>{const i=roomInfo(r.room);return `<tr><td><b>${r.room}</b></td><td class="r">${r.prev}</td><td class="r">${r.now}</td><td class="r">${i.units}</td><td class="r">${fmt(i.total)}</td><td class="c">${i.occ}</td><td class="r" style="color:#dc2626;font-weight:600">${fmt(i.per)}</td><td style="font-size:.78rem">${i.names}</td><td class="c"><button class="btn btn-red btn-sm" onclick="delRoom('${r.docId}')">🗑️</button></td></tr>`;}).join('');};
+window.saveAdj=async function(){if(!j_emp.value||!j_start.value||!j_end.value)return toast('เลือกคน+งวด','err');try{await T(setDoc(doc(db,'adjustments',`${j_emp.value}_${j_start.value}_${j_end.value}`),{emp:j_emp.value,start:j_start.value,end:j_end.value,extra:+j_extra.value||0,adv:+j_adv.value||0,loan:+j_loan.value||0,other:+j_other.value||0}),15000,'บันทึก');toast('บันทึกแล้ว');}catch(e){toast(e.message,'err');}};
+window.delAdj=async function(k){if(!confirm('ลบ?'))return;await deleteDoc(doc(db,'adjustments',k));};
+window.renderAdj=function(){const tb=document.querySelector('#adj-tbl tbody');if(!ADJ.length){tb.innerHTML='<tr><td colspan="7" class="empty">ไม่มี</td></tr>';return;}
+tb.innerHTML=ADJ.map(a=>{const e=EMP.find(x=>x.id===a.emp);return `<tr><td>${e?e.name:a.emp}</td><td>${thaiDate(a.start)}-${thaiDate(a.end)}</td><td class="r">${fmt(a.extra)}</td><td class="r">${fmt(a.adv)}</td><td class="r">${fmt(a.loan)}</td><td class="r">${fmt(a.other)}</td><td class="c"><button class="btn btn-red btn-sm" onclick="delAdj('${a.docId}')">🗑️</button></td></tr>`;}).join('');};
+window.setPeriod=function(k){const t=new Date(),y=t.getFullYear(),m=t.getMonth(),L=new Date(y,m+1,0).getDate(),p=n=>String(n).padStart(2,'0');let s,e;if(k==='1-15'){s=`${y}-${p(m+1)}-01`;e=`${y}-${p(m+1)}-15`;}else if(k==='16-end'){s=`${y}-${p(m+1)}-16`;e=`${y}-${p(m+1)}-${L}`;}else{s=`${y}-${p(m+1)}-01`;e=`${y}-${p(m+1)}-${L}`;}c_start.value=s;c_end.value=e;};
+window.calcOne=function(id,start,end){const e=EMP.find(x=>x.id===id);if(!e)return null;
+const daily=+e.rate||0,hourly=daily/(+SET.hr||8);
+const recs=ATT.filter(a=>a.emp===id&&a.date>=start&&a.date<=end);
+let work=0,absent=0,sick=0,personal=0,annual=0,unpaid=0,holiday=0,otHr=0,lateMin=0,base=0,otPay=0,holExtra=0;
+for(const r of recs){if(r.status==='present'){work++;base+=daily;otHr+=r.ot||0;lateMin+=r.late||0;if(r.day!=='normal'){holiday++;holExtra+=daily;}if(r.ot>0)otPay+=r.ot*hourly*(r.day==='normal'?1.5:(r.day==='holiday'?2:3));}else if(r.status==='absent')absent++;else if(r.status==='leave'){if(r.leave==='sick'){sick++;if(sick<=30)base+=daily;}else if(r.leave==='personal'){personal++;if(personal<=3)base+=daily;}else if(r.leave==='annual'){annual++;base+=daily;}else unpaid++;}}
+const wageGross=r2(base+otPay+holExtra);
+const days=Math.max(1,Math.round((new Date(end)-new Date(start))/86400000)+1);
+const sso=r2(Math.min(wageGross*SET.sso,SET.ssomax*days/30));
+const ssoEmr=sso;
+const elec=e.room?roomInfo(e.room).per:0;
+const water=(Number(start.slice(8,10))>=16)?(+SET.water||0):0;
+const adj=ADJ.find(a=>a.emp===id&&a.start===start&&a.end===end)||{extra:0,adv:0,loan:0,other:0};
+const wageDed=r2(sso+elec+water+(+adj.adv||0)+(+adj.loan||0)+(+adj.other||0));
+const wageNet=r2(wageGross-wageDed);
+const allow=+e.special||0;
+const missDed=r2(Math.min(allow,(absent+sick+personal+annual+unpaid)*daily+(lateMin/60)*hourly));
+const specialNet=r2(Math.max(0,allow-missDed-ssoEmr));
+const extra=+adj.extra||0;
+const net=r2(wageNet+specialNet+extra);
+return{emp:e,side:e.side||'อื่น ๆ',start,end,work,absent,sick,personal,annual,unpaid,holiday,otHr,lateMin,base:r2(base),otPay:r2(otPay),holExtra:r2(holExtra),wageGross,sso,ssoEmr,elec:r2(elec),water,adv:+adj.adv||0,loan:+adj.loan||0,otherDed:+adj.other||0,wageDed,wageNet,allow,specialDed:missDed,specialNet,extra,net};};
+window.runPayroll=async function(){if(!c_start.value||!c_end.value)return toast('ระบุงวด','err');btnCalc.disabled=true;
+try{const ids=c_emp.value?[c_emp.value]:EMP.map(e=>e.id);const res=ids.map(i=>calcOne(i,c_start.value,c_end.value)).filter(Boolean);
+const b=writeBatch(db);PAY.filter(p=>p.start===c_start.value&&p.end===c_end.value).forEach(p=>b.delete(doc(db,'payroll',p.docId)));
+res.forEach(r=>{b.set(doc(db,'payroll',`${r.emp.id}_${r.start}_${r.end}`),{...r,emp:r.emp.id,empName:r.emp.name,calculatedAt:new Date().toISOString()});});
+await T(b.commit(),20000,'บันทึก');toast('คำนวณ '+res.length+' คน');renderCalc(res);}catch(e){toast(e.message,'err');}
+btnCalc.disabled=false;};
+window.renderCalc=function(l){if(!l.length){calc_result.innerHTML='<div class="card"><div class="empty">ไม่มีข้อมูล</div></div>';return;}
+const tN=l.reduce((s,r)=>s+r.net,0),tW=l.reduce((s,r)=>s+r.wageNet,0);
+calc_result.innerHTML=`<div class="card"><h2>📋 ผล (${l.length} คน)</h2><div class="dash"><div class="dash-item"><div class="l">เงินสดค่าแรง</div><div class="v">฿${fmt(tW)}</div></div><div class="dash-item green"><div class="l">สุทธิรวม</div><div class="v">฿${fmt(tN)}</div></div></div>
+<div class="tbl-wrap"><table><thead><tr><th>พนักงาน</th><th class="c">วัน</th><th class="c">ขาด/ลา</th><th class="r">เงินสดค่าแรง</th><th class="r">พิเศษได้</th><th class="r">สุทธิ</th><th class="c">สลิป</th></tr></thead><tbody>${l.map(r=>`<tr><td>${r.empName}</td><td class="c">${r.work}</td><td class="c">${r.absent+r.sick+r.personal+r.annual+r.unpaid}</td><td class="r">${fmt(r.wageNet)}</td><td class="r" style="color:#7c3aed">${fmt(r.specialNet)}</td><td class="r"><b>${fmt(r.net)}</b></td><td class="c"><button class="btn btn-green btn-sm" onclick='showSlip(${JSON.stringify(r).replace(/'/g,"&#39;")})'>🧾</button></td></tr>`).join('')}</tbody></table></div></div>`;};
+window.showSlip=function(r){slipContent.innerHTML=`<div class="slip"><div class="co"><h3>${SET.co}</h3><p>${SET.coen}</p><p>${SET.addr} โทร ${SET.tel}</p></div><h4>สลิปเงินเดือน งวด ${thaiDate(r.start)} - ${thaiDate(r.end)}</h4>
+<table><tr><td><b>ชื่อ:</b> ${r.empName}</td><td><b>ฝ่าย:</b> ${r.side}</td></tr></table>
+<table><thead><tr><th colspan="2" style="background:#166534">รายได้รายวัน</th><th colspan="2" style="background:#991b1b">หักจากค่าแรง</th></tr></thead><tbody>
+<tr><td>ค่าแรง ${r.work} วัน</td><td class="r">${fmt(r.base)}</td><td>ปกส.ลูกจ้าง</td><td class="r">${fmt(r.sso)}</td></tr>
+<tr><td>OT</td><td class="r">${fmt(r.otPay)}</td><td>ค่าไฟ(หารห้อง)</td><td class="r">${fmt(r.elec)}</td></tr>
+<tr><td>ทำงานวันหยุด</td><td class="r">${fmt(r.holExtra)}</td><td>ค่าน้ำ(งวด2)</td><td class="r">${fmt(r.water)}</td></tr>
+<tr><td></td><td></td><td>เบิก/กู้/อื่น</td><td class="r">${fmt(r.adv+r.loan+r.otherDed)}</td></tr>
+<tr style="font-weight:700;background:#f1f5f9"><td>รวมรายวัน</td><td class="r">${fmt(r.wageGross)}</td><td>เงินสดค่าแรง</td><td class="r">${fmt(r.wageNet)}</td></tr></tbody></table>
+<table><thead><tr><th colspan="2" style="background:#7c3aed">เงินพิเศษ</th></tr></thead><tbody>
+<tr><td>พิเศษเต็ม</td><td class="r">${fmt(r.allow)}</td></tr>
+<tr><td>หักขาด/ลา/สาย</td><td class="r">-${fmt(r.specialDed)}</td></tr>
+<tr><td>หัก ปกส.นายจ้าง</td><td class="r">-${fmt(r.ssoEmr)}</td></tr>
+<tr style="font-weight:700;background:#f1f5f9"><td>พิเศษสุทธิ</td><td class="r">${fmt(r.specialNet)}</td></tr></tbody></table>
+${r.extra?`<p>รายรับอื่น +${fmt(r.extra)}</p>`:''}
+<div class="netbox">💰 รวมสุทธิ ฿${fmt(r.net)}</div>
+<div class="sig"><div><div class="line"></div>ผู้จ่าย</div><div><div class="line"></div>ผู้รับ</div></div></div>`;slipModal.classList.add('show');};
+window.closeModal=function(){slipModal.classList.remove('show');};
+function bankBreak(x){const D=[1000,500,100,50,20,10,5,2,1],o={};let r=Math.round(x);D.forEach(v=>{o[v]=Math.floor(r/v);r%=v;});return o;}
+window.openDocs=function(kind){const s=d_start.value,e=d_end.value;const list=PAY.filter(p=>p.start===s&&p.end===e);
+if(!list.length)return toast('คำนวณงวดนี้ก่อน','err');let html='';
+if(kind==='sig'){html=`<div class="slip"><div class="co"><h3>${SET.co}</h3><p>ใบเซ็นรับเงินค่าแรง (เฉพาะค่าแรงขั้นต่ำ) งวด ${thaiDate(s)} - ${thaiDate(e)}</p></div>`;let n=0,tot=0;
+['เหล็ก','ก่อสร้าง','ของแพง','แม่บ้าน','สำนักงาน','อื่น ๆ'].forEach(sd=>{const g=list.filter(r=>r.side===sd);if(!g.length)return;html+=`<h4>ฝ่าย${sd}</h4><table><tr><th style="width:10%">ลำดับ</th><th>ชื่อ</th><th class="r" style="width:22%">จำนวนเงิน</th><th style="width:35%">เซ็นรับ</th></tr>`;g.forEach(r=>{n++;tot+=r.wageNet;html+=`<tr><td class="c">${n}</td><td>${r.empName}</td><td class="r">${fmt(r.wageNet)}</td><td></td></tr>`;});html+='</table>';});
+html+=`<div class="netbox">รวมเงินสดค่าแรง ฿${fmt(tot)}</div><div class="sig"><div><div class="line"></div>ผู้เบิก/จ่าย</div><div><div class="line"></div>ผู้ตรวจ</div></div></div>`;}
+if(kind==='bank'){const D=[1000,500,100,50,20,10,5,2,1],tot={};D.forEach(v=>tot[v]=0);
+html=`<div class="slip"><div class="co"><h3>${SET.co}</h3><p>ใบแตกแบงก์ขอเบิกเงินสด งวด ${thaiDate(s)} - ${thaiDate(e)}</p></div><table><tr><th>ชื่อ</th><th class="r">เงินสด</th>${D.map(v=>`<th class="c">${v}</th>`).join('')}</tr>`;
+list.forEach(r=>{const b=bankBreak(r.wageNet);D.forEach(v=>tot[v]+=b[v]);html+=`<tr><td>${r.empName}</td><td class="r">${fmt(r.wageNet)}</td>${D.map(v=>`<td class="c">${b[v]||''}</td>`).join('')}</tr>`;});
+html+=`<tr style="background:#1e3a8a;color:#fff;font-weight:700"><td>รวมจำนวนใบ</td><td></td>${D.map(v=>`<td class="c">${tot[v]}</td>`).join('')}</tr></table>`;
+const sum=D.reduce((a,v)=>a+tot[v]*v,0);html+=`<div class="netbox">ยอดเบิกเงินสด ฿${fmt(sum)}</div></div>`;}
+if(kind==='dept'){html=`<div class="slip"><div class="co"><h3>${SET.co}</h3><p>ใบลงบัญชีสรุปค่าใช้จ่ายตามฝ่าย งวด ${thaiDate(s)} - ${thaiDate(e)}</p></div><table><tr><th>ฝ่าย</th><th class="c">คน</th><th class="r">ค่าแรง+OT</th><th class="r">ปกส.ลูกจ้าง</th><th class="r">ปกส.นายจ้าง</th><th class="r">ค่าไฟ</th><th class="r">ค่าน้ำ</th><th class="r">เบิก/กู้/อื่น</th><th class="r">พิเศษสุทธิ</th><th class="r">จ่ายสุทธิ</th></tr>`;let G=0;
+[...new Set(list.map(r=>r.side))].forEach(sd=>{const g=list.filter(r=>r.side===sd);const t=k=>r2(g.reduce((a,r)=>a+(r[k]||0),0));G=r2(G+t('net'));
+html+=`<tr><td>${sd}</td><td class="c">${g.length}</td><td class="r">${fmt(t('wageGross'))}</td><td class="r">${fmt(t('sso'))}</td><td class="r">${fmt(t('ssoEmr'))}</td><td class="r">${fmt(t('elec'))}</td><td class="r">${fmt(t('water'))}</td><td class="r">${fmt(t('adv')+t('loan')+t('otherDed'))}</td><td class="r">${fmt(t('specialNet'))}</td><td class="r"><b>${fmt(t('net'))}</b></td></tr>`;});
+html+=`<tr style="background
