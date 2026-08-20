@@ -117,7 +117,7 @@ footer a{color:#93c5fd}
 <div style="margin-top:10px">
 <button class="btn btn-primary" id="btnSaveEmp" onclick="saveEmp()">💾 บันทึก</button>
 <button class="btn btn-gray" onclick="resetEmpForm()">🔄 ล้าง</button>
-<button class="btn btn-purple" onclick="fillSideRoom()">✨ ใส่ฝ่าย/ห้อง ตามบัญชี</button>
+<button class="btn btn-purple" onclick="fillSpecial()">✨ ใส่เงินพิเศษ/ฝ่าย/ห้อง ตามบัญชี</button>
 </div>
 </div>
 <div class="card"><h2>📋 รายชื่อ (<span id="emp-count">0</span>)</h2>
@@ -251,7 +251,7 @@ footer a{color:#93c5fd}
 <div style="text-align:right" class="noprint"><button class="btn btn-green" onclick="window.print()">🖨️ พิมพ์</button> <button class="btn btn-red" onclick="closeModal()">✕</button></div>
 <div id="slipContent"></div>
 </div></div>
-<!-- ==== ต่อด้วยส่วนที่ 2/2 (สคริปต์) ด้านล่างบรรทัดนี้ ==== -->
+<!-- ==== สคริปต์ฉบับสมบูรณ์ ==== -->
   <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -502,4 +502,84 @@ window.openDocs = function(kind){ const s=d_start.value, e=d_end.value;
     let G=0; [...new Set(list.map(r=>r.side))].forEach(sd=>{ const g=list.filter(r=>r.side===sd);
       const t=k=>r2(g.reduce((a,r)=>a+(r[k]||0),0)); G=r2(G+t('net'));
       html+=`<tr><td>${sd}</td><td class="c">${g.length}</td><td class="r">${fmt(t('wageGross'))}</td><td class="r">${fmt(t('sso'))}</td><td class="r">${fmt(t('elec'))}</td><td class="r">${fmt(t('water'))}</td><td class="r">${fmt(t('adv')+t('loan')+t('otherDed'))}</td><td class="r">${fmt(t('specialNet'))}</td><td class="r"><b>${fmt(t('net'))}</b></td></tr>`; });
-    html+=`<tr style="background
+    html+=`<tr style="background:#1e3a8a;color:#fff;font-weight:700"><td>รวมทุกฝ่าย</td><td class="c">${list.length}</td><td class="r">${fmt(list.reduce((a,r)=>a+r.wageGross,0))}</td><td class="r">${fmt(list.reduce((a,r)=>a+r.sso,0))}</td><td class="r">${fmt(list.reduce((a,r)=>a+r.elec,0))}</td><td class="r">${fmt(list.reduce((a,r)=>a+r.water,0))}</td><td class="r">${fmt(list.reduce((a,r)=>a+r.adv+r.loan+r.otherDed,0))}</td><td class="r">${fmt(list.reduce((a,r)=>a+r.specialNet,0))}</td><td class="r"><b>${fmt(G)}</b></td></tr></table>
+    <div class="sig"><div><div class="line"></div>ผู้จัดทำ</div><div><div class="line"></div>ผู้อนุมัติ</div></div></div>`; }
+  printArea.innerHTML=html; setTimeout(()=>window.print(),100); };
+
+// ===== รายงาน =====
+window.loadReport = function(){ if(!p_start.value||!p_end.value) return toast('ระบุงวด','err');
+  const list=PAY.filter(p=>p.start===p_start.value&&p.end===p_end.value);
+  if(!list.length) return report_result.innerHTML='<div class="card"><div class="empty">ไม่มีข้อมูล — กดคำนวณก่อน</div></div>';
+  const tW=r2(list.reduce((a,r)=>a+r.wageNet,0)), tN=r2(list.reduce((a,r)=>a+r.net,0));
+  const tE=r2(list.reduce((a,r)=>a+r.elec,0)), tWa=r2(list.reduce((a,r)=>a+r.water,0));
+  report_result.innerHTML=`<div class="card"><h2>📊 สรุปรวม</h2>
+  <div class="dash">
+    <div class="dash-item"><div class="l">จำนวนคน</div><div class="v">${list.length}</div></div>
+    <div class="dash-item"><div class="l">เงินสดค่าแรงรวม</div><div class="v">฿${fmt(tW)}</div></div>
+    <div class="dash-item green"><div class="l">จ่ายสุทธิรวม</div><div class="v">฿${fmt(tN)}</div></div>
+    <div class="dash-item"><div class="l">ค่าไฟ/น้ำรวม</div><div class="v">฿${fmt(tE+tWa)}</div></div>
+  </div>
+  <div class="tbl-wrap"><table><thead><tr><th>พนักงาน</th><th class="c">วันทำงาน</th><th class="r">รายได้</th><th class="r">หัก</th><th class="r">พิเศษ</th><th class="r">สุทธิ</th></tr></thead>
+  <tbody>${list.map(r=>`<tr><td>${r.empName}</td><td class="c">${r.work}</td><td class="r">${fmt(r.wageGross)}</td><td class="r">${fmt(r.wageDed)}</td><td class="r">${fmt(r.specialNet)}</td><td class="r"><b>${fmt(r.net)}</b></td></tr>`).join('')}</tbody>
+  <tfoot><tr style="background:#f1f5f9;font-weight:700"><td>รวม</td><td></td><td class="r">${fmt(list.reduce((a,r)=>a+r.wageGross,0))}</td><td class="r">${fmt(list.reduce((a,r)=>a+r.wageDed,0))}</td><td class="r">${fmt(list.reduce((a,r)=>a+r.specialNet,0))}</td><td class="r">${fmt(tN)}</td></tr></tfoot></table></div></div>`; };
+window.exportCSV = function(){ if(!p_start.value||!p_end.value) return toast('ระบุงวด','err');
+  const list=PAY.filter(p=>p.start===p_start.value&&p.end===p_end.value);
+  if(!list.length) return toast('ไม่มีข้อมูล','err');
+  let csv='\ufeffรหัส,ชื่อ,วันทำงาน,ค่าแรง,OT,หยุด,ปกส,ค่าไฟ,ค่าน้ำ,เบิก/กู้,พิเศษเต็ม,หักพิเศษ,พิเศษสุทธิ,สุทธิ\n';
+  list.forEach(r=>{ csv+=`${r.emp.id},"${r.empName}",${r.work},${r.base},${r.otPay},${r.holiday},${r.sso},${r.elec},${r.water},${r.adv+r.loan+r.otherDed},${r.allow},${r.specialDed},${r.specialNet},${r.net}\n`; });
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'}); const u=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=u; a.download=`payroll_${p_start.value}_${p_end.value}.csv`; a.click(); URL.revokeObjectURL(u); toast('ส่งออก CSV แล้ว'); };
+
+// ===== ตั้งค่า =====
+window.saveSet = async function(){
+  try{ await T(setDoc(doc(db,'settings','config'),{ co:s_co.value, coen:s_coen.value, addr:s_addr.value, tax:s_tax.value, tel:s_tel.value,
+    rate:+s_rate.value||372, hr:+s_hr.value||8, sso:+s_sso.value/100||0.05, ssomax:+s_ssomax.value||750,
+    elec:+s_elec.value||5.5, water:+s_water.value||0 }),15000,'บันทึก');
+    toast('บันทึกตั้งค่าแล้ว'); }catch(e){ toast(e.message,'err'); } };
+window.loadSetForm = function(){ s_co.value=SET.co; s_coen.value=SET.coen; s_addr.value=SET.addr; s_tax.value=SET.tax||''; s_tel.value=SET.tel||'';
+  s_rate.value=SET.rate; s_hr.value=SET.hr; s_sso.value=(+SET.sso||0.05)*100; s_ssomax.value=SET.ssomax;
+  s_elec.value=SET.elec; s_water.value=SET.water; };
+window.refreshSelects = function(calc){
+  const opts=EMP.map(e=>`<option value="${e.id}">${e.id} - ${e.name}</option>`).join('');
+  if(!calc){ a_emp.innerHTML='<option value="">-- เลือก --</option>'+opts; f_emp.innerHTML='<option value="">ทั้งหมด</option>'+opts; j_emp.innerHTML=opts; }
+  c_emp.innerHTML='<option value="">— ทั้งหมด —</option>'+opts; };
+window.renderDash = function(){ d_emp.textContent=EMP.length; d_att.textContent=ATT.length; d_pay.textContent=PAY.length;
+  const latest=PAY.slice().sort((a,b)=>b.calculatedAt.localeCompare(a.calculatedAt));
+  if(latest.length){ const p=latest[0].start===latest[1]?.start&&latest[0].end===latest[1]?.end ? latest.filter(x=>x.start===latest[0].start&&x.end===latest[0].end) : [latest[0]];
+    d_net.textContent='฿'+fmt(p.reduce((s,x)=>s+x.net,0)); } else { d_net.textContent='฿0'; } };
+window.loadDemo = async function(){ if(!confirm('โหลดข้อมูลตัวอย่าง? (จะเขียนทับข้อมูลปัจจุบันบางส่วน)')) return;
+  const b=writeBatch(db);
+  const demoEmp=[
+    {id:'EMP01',name:'สมชาย ใจดี',pos:'แยกเหล็ก',side:'เหล็ก',room:'5',rate:372,special:1330,bank:'กรุงไทย',acc:'123456',sso:'1234567890'},
+    {id:'EMP02',name:'สมหญิง รักดี',pos:'ชั่งน้ำหนัก',side:'ของแพง',room:'5',rate:372,special:2030,bank:'กสิกร',acc:'987654',sso:'0987654321'},
+    {id:'EMP03',name:'วิชัย ทำงาน',pos:'ขับรถ',side:'เหล็ก',room:'1',rate:400,special:2030,bank:'',acc:'',sso:''}
+  ];
+  demoEmp.forEach(e=>b.set(doc(db,'employees',e.id),e));
+  await T(b.commit(),20000,'โหลดตัวอย่าง'); toast('โหลดข้อมูลตัวอย่างแล้ว'); };
+window.exportAll = function(){
+  const data={employees:EMP,attendance:ATT,adjustments:ADJ,payroll:PAY,rooms:ROOMS,settings:SET};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); const u=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=u; a.download='payroll_backup_'+new Date().toISOString().slice(0,10)+'.json'; a.click(); URL.revokeObjectURL(u); toast('สำรองข้อมูลแล้ว'); };
+window.importAll = async function(ev){ const f=ev.target.files[0]; if(!f) return;
+  if(!confirm('นำเข้าข้อมูล? (จะรวมกับข้อมูลปัจจุบัน)')) return;
+  const reader=new FileReader(); reader.onload=async e=>{
+    try{ const data=JSON.parse(e.target.result); const b=writeBatch(db);
+      if(data.employees) data.employees.forEach(x=>b.set(doc(db,'employees',x.id),x));
+      if(data.attendance) data.attendance.forEach(x=>b.set(doc(db,'attendance',x.docId||`${x.emp}_${x.date}`),x));
+      if(data.adjustments) data.adjustments.forEach(x=>b.set(doc(db,'adjustments',x.docId||`${x.emp}_${x.start}_${x.end}`),x));
+      if(data.rooms) data.rooms.forEach(x=>b.set(doc(db,'rooms','R'+x.room),x));
+      if(data.settings) b.set(doc(db,'settings','config'),data.settings);
+      await T(b.commit(),30000,'นำเข้า'); toast('นำเข้าสำเร็จ'); }catch(err){ toast('ไฟล์ผิดพลาด: '+err.message,'err'); }
+    }; reader.readAsText(f); };
+window.clearAll = async function(){ if(!confirm('⚠️ ลบข้อมูลทั้งหมดออกจาก Cloud?')) return;
+  try{ const b=writeBatch(db);
+    EMP.forEach(e=>b.delete(doc(db,'employees',e.id)));
+    ATT.forEach(a=>b.delete(doc(db,'attendance',a.docId)));
+    ADJ.forEach(a=>b.delete(doc(db,'adjustments',a.docId)));
+    PAY.forEach(p=>b.delete(doc(db,'payroll',p.docId)));
+    ROOMS.forEach(r=>b.delete(doc(db,'rooms',r.docId)));
+    b.delete(doc(db,'settings','config'));
+    await T(b.commit(),20000,'ล้างข้อมูล'); toast('ลบข้อมูลทั้งหมดแล้ว'); }catch(e){ toast(e.message,'err'); } };
+  </script>
+</body>
+</html>
